@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Level Holder
+  - Poison Gas
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - Item
+  - Bullet
+  - Post Processing
+  - Structure
+  - Fire
+  - Poison Gas
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Ground
+    uniqueID: 3088471839
+    locked: 0
+  - name: Container
+    uniqueID: 1532993613
+    locked: 0
+  - name: Crator
+    uniqueID: 3467113635
+    locked: 0
+  - name: Blood Residue
+    uniqueID: 2768820653
+    locked: 0
+  - name: Crate
+    uniqueID: 4286591081
+    locked: 0
+  - name: Item Circle
+    uniqueID: 194434503
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Stone
+    uniqueID: 2357726243
+    locked: 0
+  - name: Barrel
+    uniqueID: 2223409553
+    locked: 0
+  - name: Health Circle
+    uniqueID: 2721699071
+    locked: 0
+  - name: Item On Ground
+    uniqueID: 4200250471
+    locked: 0
+  - name: GrenadeOnGround
+    uniqueID: 589926281
+    locked: 0
+  - name: GunOnGround
+    uniqueID: 3505098103
+    locked: 0
+  - name: GunInHand
+    uniqueID: 2244767593
+    locked: 0
+  - name: Rocket
+    uniqueID: 4022426691
+    locked: 0
+  - name: Player
+    uniqueID: 1014853397
+    locked: 0
+  - name: Item In Hand
+    uniqueID: 194758297
+    locked: 0
+  - name: GrenadeInHand
+    uniqueID: 761737435
+    locked: 0
+  - name: Explosion Gradient
+    uniqueID: 749795769
+    locked: 0
+  - name: Bullet
+    uniqueID: 306188621
+    locked: 0
+  - name: Laser
+    uniqueID: 4211616511
+    locked: 0
+  - name: Bush
+    uniqueID: 358150141
+    locked: 0
+  - name: Blood
+    uniqueID: 669953875
+    locked: 0
+  - name: Tree
+    uniqueID: 1607934119
+    locked: 0
+  - name: Fire
+    uniqueID: 2071691495
+    locked: 0
+  - name: Gas
+    uniqueID: 2392796857
+    locked: 0
+  - name: Snow
+    uniqueID: 3228954113
+    locked: 0
+  - name: Snow2
+    uniqueID: 1308534239
+    locked: 0
+  - name: UI
+    uniqueID: 444824829
+    locked: 0
