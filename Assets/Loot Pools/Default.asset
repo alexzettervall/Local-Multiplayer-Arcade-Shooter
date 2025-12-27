@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe50095b0e53ce448bf3c603ce03b3b, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  lootPools:
+  - lootType: 0
+    lootWeights:
+    - loot: {fileID: 1868589077219217716, guid: 5c969f3c7d857f141b740ff1d5637f3e, type: 3}
+      weight: 1
+    - loot: {fileID: 1868589077219217716, guid: 5f9ef143f2db7cf429d6d497f1d98bb0, type: 3}
+      weight: 1
+    - loot: {fileID: 1868589077219217716, guid: f855ea202f241244b91db7bc87ca668d, type: 3}
+      weight: 1
+  - lootType: 1
+    lootWeights:
+    - loot: {fileID: 1868589077219217716, guid: f855ea202f241244b91db7bc87ca668d, type: 3}
+      weight: 1
+    - loot: {fileID: 1868589077219217716, guid: aa00a9d6d8192814a9507acd54714dae, type: 3}
+      weight: 1
+    - loot: {fileID: 3086120728966875567, guid: 0ca97581e98f242c0a811976bf9a1528, type: 3}
+      weight: 1
+    - loot: {fileID: 1868589077219217716, guid: fcdd2559f0a604f0aa54661945b8a8b0, type: 3}
+      weight: 1
+  - lootType: 2
+    lootWeights:
+    - loot: {fileID: 1868589077219217716, guid: 38c6b0b261b6e9744b592dde4ef9c6fa, type: 3}
+      weight: 1
+    - loot: {fileID: 1868589077219217716, guid: acac7eb69175e0843b0214ffc880697c, type: 3}
+      weight: 1
+    - loot: {fileID: 1868589077219217716, guid: 26cb6625836f443ebabf07a0450abdb9, type: 3}
+      weight: 1
+    - loot: {fileID: 1868589077219217716, guid: fc36bae45fd623f449bff7483d2ced4e, type: 3}
+      weight: 0.1
+  - lootType: 3
+    lootWeights:
+    - loot: {fileID: 1868589077219217716, guid: 5f9ef143f2db7cf429d6d497f1d98bb0, type: 3}
+      weight: 2
+    - loot: {fileID: 1868589077219217716, guid: fcdd2559f0a604f0aa54661945b8a8b0, type: 3}
+      weight: 1
+    - loot: {fileID: 1868589077219217716, guid: 26cb6625836f443ebabf07a0450abdb9, type: 3}
+      weight: 1
+  - lootType: 4
+    lootWeights:
+    - loot: {fileID: 1868589077219217716, guid: 569c04b7cac7b3a439cb81a89695eb35, type: 3}
+      weight: 1
+  - lootType: 5
+    lootWeights:
+    - loot: {fileID: 3086120728966875567, guid: 0ca97581e98f242c0a811976bf9a1528, type: 3}
+      weight: 1

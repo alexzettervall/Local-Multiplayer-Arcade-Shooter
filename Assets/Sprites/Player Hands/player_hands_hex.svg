@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1500"
+   height="1500"
+   viewBox="0 0 396.87499 396.875"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient40">
+      <stop
+         style="stop-color:#ffac00;stop-opacity:1;"
+         offset="0"
+         id="stop40" />
+      <stop
+         style="stop-color:#806c00;stop-opacity:1;"
+         offset="1"
+         id="stop41" />
+    </linearGradient>
+    <linearGradient
+       id="swatch38">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop38" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient40"
+       id="linearGradient41"
+       x1="103.27142"
+       y1="171.96153"
+       x2="103.27142"
+       y2="235.83415"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#linearGradient40"
+       id="linearGradient43"
+       x1="224.9592"
+       y1="165.72113"
+       x2="224.9592"
+       y2="229.59375"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(22.405665,-5.4603488)">
+    <circle
+       style="fill:#2b2000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.892102;stroke-dasharray:none;stroke-opacity:1"
+       id="path38-8"
+       cy="203.89784"
+       cx="103.27142"
+       r="46.302082" />
+    <ellipse
+       style="fill:url(#linearGradient41);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.61261;stroke-dasharray:none;stroke-opacity:1"
+       id="path38"
+       cx="103.27142"
+       cy="203.89784"
+       rx="31.936317"
+       ry="31.655878" />
+  </g>
+  <g
+     id="g38"
+     transform="translate(46.238715,0.78004983)">
+    <circle
+       style="fill:#2b2000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.892102;stroke-dasharray:none;stroke-opacity:1"
+       id="circle38"
+       cy="197.65744"
+       cx="224.9592"
+       r="46.302082" />
+    <ellipse
+       style="fill:url(#linearGradient43);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.61261;stroke-dasharray:none;stroke-opacity:1"
+       id="ellipse38"
+       cx="224.9592"
+       cy="197.65744"
+       rx="31.936317"
+       ry="31.655878" />
+  </g>
+</svg>

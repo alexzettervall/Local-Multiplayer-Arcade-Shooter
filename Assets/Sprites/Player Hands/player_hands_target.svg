@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1500"
+   height="1500"
+   viewBox="0 0 396.87499 396.875"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="swatch38">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop38" />
+    </linearGradient>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(22.405665,-5.4603488)">
+    <circle
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.892102;stroke-dasharray:none;stroke-opacity:1"
+       id="path38-8"
+       cy="203.89784"
+       cx="103.27142"
+       r="46.302082" />
+    <ellipse
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.61261;stroke-dasharray:none;stroke-opacity:1"
+       id="path38"
+       cx="103.27142"
+       cy="203.89784"
+       rx="31.936317"
+       ry="31.655878" />
+  </g>
+  <g
+     id="g38"
+     transform="translate(46.238715,0.78004983)">
+    <circle
+       style="fill:#00000f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.892102;stroke-dasharray:none;stroke-opacity:1"
+       id="circle38"
+       cy="197.65744"
+       cx="224.9592"
+       r="46.302082" />
+    <ellipse
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.61261;stroke-dasharray:none;stroke-opacity:1"
+       id="ellipse38"
+       cx="224.9592"
+       cy="197.65744"
+       rx="31.936317"
+       ry="31.655878" />
+  </g>
+</svg>

@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 589fd086fa372e747bbabdb60f058a6c
+  m_SerializeEntries:
+  - m_GUID: 09d2d779143a53643ba5691ae14af2fd
+    m_Address: Assets/Audio/Sounds/footstep_grass_02.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FootStepGrass
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1512e05bef5dc9a4095205db4376b4ea
+    m_Address: Assets/Audio/Sounds/GrenadePull_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GrenadePull
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1528899fe4099b94ab4f929a406c1c0b
+    m_Address: Assets/Audio/Sounds/WoodBulletHit_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - WoodBulletHit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c1d65e138b194a40b8da056a8257046
+    m_Address: Assets/Audio/Sounds/GrenadeThrow_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GrenadeThrow
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f18ab04057c4d84d81cb74f48194cf1
+    m_Address: Assets/Audio/Sounds/footstep_grass_01.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FootStepGrass
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21dae6d7b6c43e14f941c1a661ff5653
+    m_Address: Assets/Audio/Sounds/PlayerPunchHit_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerPunchHit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27195bd246e8a7b4ea2b69284a02f1c9
+    m_Address: Assets/Audio/Sounds/PickupGrenade_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PickupGrenade
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d244c6b2348d4b48a2f04fb67666119
+    m_Address: Assets/Audio/Sounds/Punch_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Punch
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e89f9372ce702741bdd6716cfc9d0bd
+    m_Address: Assets/Audio/Sounds/ShootFlamethrower_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShootFlamethrower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39dc3bdc829cb404a96678794e0c1fe7
+    m_Address: Assets/Audio/Sounds/ShootRPG.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShootRPG
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 477523ae1f1c83448b91cb6659ba3cfd
+    m_Address: Assets/Audio/Sounds/C4Pickup_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PickupC4
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b450455d4bb2e344b91cd9718209eaf
+    m_Address: Assets/Audio/Sounds/footstep_metal_01.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FootStepMetal
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bb7d63c5ee49c14aa21debc15647287
+    m_Address: Assets/Audio/Sounds/footstep_wood_02.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FootStepWood
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f5dc7d370dc9d847aaf6d71c140a42f
+    m_Address: Assets/Audio/Sounds/StoneBulletHit_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StoneBulletHit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 523d2544a278177438b688dd26dfc6b8
+    m_Address: Assets/Audio/Sounds/WoodPunchHit_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - WoodPunchHit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5838cc7a10d79b347ae5de5026cd84ba
+    m_Address: Assets/Audio/Sounds/ShootSniper_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShootSniper
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58fedf00273b02e4e954afe9c01d0d47
+    m_Address: Assets/Audio/Sounds/footstep_wood_01.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FootStepWood
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d55acd357d74f74b9dbde3312cc3d45
+    m_Address: Assets/Audio/Sounds/PlayerBulletHit_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerBulletHit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 667c0b2318fad8841ac4e8cd7dccc03d
+    m_Address: Assets/Audio/Sounds/footstep_metal_02.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FootStepMetal
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b86a20e4ec8706438b4ee4ce525726f
+    m_Address: Assets/Audio/Sounds/FireBurn_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FireBurn
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d449725470ea50438a1e5dd3b7e8178
+    m_Address: Assets/Audio/Sounds/ShootPistol_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShootPistol
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71d4c28fb232c0345b1c3851d644e3c9
+    m_Address: Assets/Audio/Sounds/PickupGun_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PickupGun
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e7c6b49eab87a042a8d2670a6840aca
+    m_Address: Assets/Audio/Sounds/StonePunchHit_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StonePunchHit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80e6d7432306b9247a63971550b91132
+    m_Address: Assets/Audio/Sounds/ShootAR_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShootAR
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85d0e8782591bc242b1833ab446bd688
+    m_Address: Assets/Audio/Sounds/Explosion_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Explosion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86bc5b354011b404aa6090b7ce074f89
+    m_Address: Assets/Audio/Sounds/ShootLaser_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShootLaser
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8aaa03a2249533641a8a564b34673c42
+    m_Address: Assets/Prefabs/Level Canvas.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94fe9b0dffaf6ff43b7558bd0c43ec50
+    m_Address: Assets/Audio/Sounds/MetalPunchHit_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MetalPunchHit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ec7843f4c04b574e801f8fcd7b770d7
+    m_Address: Assets/Audio/Sounds/C4Remote_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - C4Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab99e2c519fa44449b58fe0fe6087e0c
+    m_Address: Assets/Audio/Sounds/GunClick_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GunClick
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad552bb6679fb7f44a457992179c8bbb
+    m_Address: Assets/Audio/Sounds/OpenPresent_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - OpenPresent
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aeca56744ebdfed4f9b996207a0cc8cb
+    m_Address: Assets/Audio/Sounds/MetalBulletHit_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MetalBulletHit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd865865910c6614989326afe97b211d
+    m_Address: Assets/Audio/Sounds/Smoke_Start_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GasStart
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e7f05218af59bf449b8af11bb137f11f
+    m_Address: Assets/Audio/Sounds/ShootSub_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShootSub
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb32afb6a4f52d0419e71f429c88cef6
+    m_Address: Assets/Audio/Sounds/footstep_stone_01.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FootStepStone
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ede6d4016c55f54479c44ce62976c4b8
+    m_Address: Assets/Audio/Sounds/footstep_wood_03.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FootStepWood
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef7e65019c673854e9010bdc69739229
+    m_Address: Assets/Audio/Sounds/ShootShotgun_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShootShotgun
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8535197e4aa463d45b87e899899b08c7, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 960a0fb21434ce64e9a25dd2471eceff, type: 2}
+    - {fileID: 11400000, guid: 4e0bd9312f9568c4ea63a280642c2b56, type: 2}
