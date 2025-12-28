@@ -201,7 +201,9 @@ public class Player : LivingEntity
                 }
             }
         }
+        
         rb.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        
     }
     protected void GasLogic()
     {

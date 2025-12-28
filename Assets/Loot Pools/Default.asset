@@ -18,7 +18,7 @@ MonoBehaviour:
     - loot: {fileID: 1868589077219217716, guid: 5c969f3c7d857f141b740ff1d5637f3e, type: 3}
       weight: 1
     - loot: {fileID: 1868589077219217716, guid: 5f9ef143f2db7cf429d6d497f1d98bb0, type: 3}
-      weight: 1
+      weight: 0
     - loot: {fileID: 1868589077219217716, guid: f855ea202f241244b91db7bc87ca668d, type: 3}
       weight: 1
   - lootType: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
     - loot: {fileID: 3086120728966875567, guid: 0ca97581e98f242c0a811976bf9a1528, type: 3}
       weight: 1
     - loot: {fileID: 1868589077219217716, guid: fcdd2559f0a604f0aa54661945b8a8b0, type: 3}
-      weight: 1
+      weight: 0
   - lootType: 2
     lootWeights:
     - loot: {fileID: 1868589077219217716, guid: 38c6b0b261b6e9744b592dde4ef9c6fa, type: 3}
@@ -38,6 +38,8 @@ MonoBehaviour:
     - loot: {fileID: 1868589077219217716, guid: acac7eb69175e0843b0214ffc880697c, type: 3}
       weight: 1
     - loot: {fileID: 1868589077219217716, guid: 26cb6625836f443ebabf07a0450abdb9, type: 3}
+      weight: 1
+    - loot: {fileID: 3086120728966875567, guid: a054b32eda131ee4091e7eda0d8bdaed, type: 3}
       weight: 1
     - loot: {fileID: 1868589077219217716, guid: fc36bae45fd623f449bff7483d2ced4e, type: 3}
       weight: 0.1

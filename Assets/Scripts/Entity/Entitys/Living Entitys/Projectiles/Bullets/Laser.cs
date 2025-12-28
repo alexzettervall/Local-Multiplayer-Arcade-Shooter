@@ -33,7 +33,7 @@ public class Laser : Bullet
             //}
 
             // Do damage
-            RaycastHit2D[] hits = Physics2D.LinecastAll(currentPos, col.point);
+            RaycastHit2D[] hits = Physics2D.LinecastAll(currentPos, col.point + (col.point - currentPos).normalized * 0.1f);
             foreach (RaycastHit2D hit in hits)
             {
                 Entity entity = hit.transform.gameObject.GetComponent<Entity>();

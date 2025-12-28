@@ -58,14 +58,14 @@ TagManager:
   - name: Item Circle
     uniqueID: 194434503
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Stone
     uniqueID: 2357726243
     locked: 0
   - name: Barrel
     uniqueID: 2223409553
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Health Circle
     uniqueID: 2721699071

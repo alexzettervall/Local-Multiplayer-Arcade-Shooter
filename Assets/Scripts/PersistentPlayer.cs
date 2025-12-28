@@ -9,6 +9,9 @@ public class PersistentPlayer : MonoBehaviour
     public PlayerInput playerInput;
     public BotAI botAI;
 
+    public float timeSinceLastRotation = 0f;
+    public Vector2 lastDirection = Vector2.zero;
+
     public void Start() {
         playerInput = GetComponent<PlayerInput>();
         botAI = new BotAI(this);
@@ -17,6 +20,7 @@ public class PersistentPlayer : MonoBehaviour
     
     public void Update() {
         
+        timeSinceLastRotation += Time.deltaTime;
         // Detect if there is a real player controlling this player
         if (playerInput.devices.Count > 0) {
             return;
@@ -35,7 +39,7 @@ public class PersistentPlayer : MonoBehaviour
             return;
         }
         player.OnMove(context.ReadValue<Vector2>().normalized);
-        player.OnRotate(context.ReadValue<Vector2>(), context.control.device);
+        
     }
     public void OnRotate(InputAction.CallbackContext context)
     {
@@ -43,6 +47,13 @@ public class PersistentPlayer : MonoBehaviour
         {
             return;
         }
+        if (timeSinceLastRotation < 0.05f && Vector2.Dot(lastDirection, context.ReadValue<Vector2>().normalized) < 0.5f)
+        {
+            return;
+        } 
+        timeSinceLastRotation = 0f;
+        lastDirection = context.ReadValue<Vector2>().normalized;
+        player.OnRotate(context.ReadValue<Vector2>().normalized, context.control.device);
         //player.OnRotate(context.ReadValue<Vector2>(), context.control.device);
     }
     public void OnInteract(InputAction.CallbackContext context)

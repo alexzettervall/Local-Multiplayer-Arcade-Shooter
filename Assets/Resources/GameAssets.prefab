@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 798386f9cb9284ce4917824f25e323b2, type: 3}
   - {fileID: 21300000, guid: ab09b0621a5d548c9953befe189e09b5, type: 3}
   - {fileID: 21300000, guid: 08cc7287d95fe4dfcab76087fe47615f, type: 3}
+  - {fileID: 21300000, guid: 4170304689a605c419d233ba325c8574, type: 3}
   playerHandSkins:
   - leftHand: {fileID: -414044508, guid: 312b30fc1c61946f492beca45549f45d, type: 3}
     rightHand: {fileID: 1440408213, guid: 312b30fc1c61946f492beca45549f45d, type: 3}

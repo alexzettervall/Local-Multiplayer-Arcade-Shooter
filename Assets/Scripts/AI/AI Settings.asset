@@ -27,7 +27,7 @@ MonoBehaviour:
   repathPeriod: 0.5
   structureAvoidanceRadius: 1
   structureAvoidanceWeight: 1
-  grenadeAvoidanceRadius: 4
+  grenadeAvoidanceRadius: 5.46
   grenadeAvoidanceWeight: 10
   gasAvoidanceRadius: 0
   gasAvoidanceWeight: 0
