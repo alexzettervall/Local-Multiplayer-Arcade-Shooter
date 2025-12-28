@@ -26,6 +26,7 @@ public class Player : LivingEntity
     [SerializeField] private CircleCollider2D col;
     [SerializeField] private SpriteRenderer leftHandSr;
     [SerializeField] private SpriteRenderer rightHandSr;
+    public bool isStatic = false;
     private float punchTimer;
     private Level level;
 
@@ -128,10 +129,8 @@ public class Player : LivingEntity
     protected override void OnUpdate()
     {
         base.OnUpdate();
-        if (isDead)
-        {
-            return;
-        }
+        if (isDead) { return; }
+        if (isStatic) { return; }
         playerUI.UpdateUI();
         punchTimer -= Time.deltaTime;
         GasLogic();
@@ -139,10 +138,8 @@ public class Player : LivingEntity
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        if (isDead)
-        {
-            return;
-        }
+        if (isDead) { return; }
+        if (isStatic) { return; }
         
 
         if (drop)
@@ -170,40 +167,44 @@ public class Player : LivingEntity
         }
         if (level.IsStarted())
         {
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-            
-            if (movement.magnitude > 0.1f)
-            {
-                if (Time.time - lastFootStepTime >= stepDelay)
-                {
-                    Physics2D.queriesHitTriggers = true;
-                    Collider2D[] cols = Physics2D.OverlapPointAll(transform.position, GameAssets.i.structuresOnly);
-                    Physics2D.queriesHitTriggers = false;
-                    Material material = null;
-                    foreach (Collider2D col in cols)
-                    {
-                        if (col == null)
-                        {
-                            continue;
-                        }
-                        Structure structure = col.GetComponent<Structure>();
-                        Material mat = structure.GetMaterial();
-                        if (material == null || mat.priority > material.priority)
-                        {
-                            material = mat;
-                        }
-                    }
-                    if (material != null)
-                    {
-                        AudioMan.PlaySound(material.footstep);
-                        lastFootStepTime = Time.time;
-                    }
-                }
-            }
+            Move(movement);
         }
         
         rb.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
         
+    }
+    public void Move(Vector2 movement)
+    {
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            
+        if (movement.magnitude > 0.1f)
+        {
+            if (Time.time - lastFootStepTime >= stepDelay)
+            {
+                Physics2D.queriesHitTriggers = true;
+                Collider2D[] cols = Physics2D.OverlapPointAll(transform.position, GameAssets.i.structuresOnly);
+                Physics2D.queriesHitTriggers = false;
+                Material material = null;
+                foreach (Collider2D col in cols)
+                {
+                    if (col == null)
+                    {
+                        continue;
+                    }
+                    Structure structure = col.GetComponent<Structure>();
+                    Material mat = structure.GetMaterial();
+                    if (material == null || mat.priority > material.priority)
+                    {
+                        material = mat;
+                    }
+                }
+                if (material != null)
+                {
+                    AudioMan.PlaySound(material.footstep);
+                    lastFootStepTime = Time.time;
+                }
+            }
+        }
     }
     protected void GasLogic()
     {
@@ -320,6 +321,10 @@ public class Player : LivingEntity
     public Transform GetLeftHand()
     {
         return leftHand;
+    }
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
     }
     public RadialAmmoDisplay GetAmmoDisplay()
     {

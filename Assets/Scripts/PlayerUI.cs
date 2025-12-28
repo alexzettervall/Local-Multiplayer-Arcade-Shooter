@@ -9,6 +9,7 @@ public class PlayerUI
     public PlayerUI(Player player)
     {
         this.player = player;
+        UpdateUI();
     }
 
     public void UpdateUI()

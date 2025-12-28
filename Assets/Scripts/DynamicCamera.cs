@@ -5,6 +5,7 @@ public class DynamicCamera : MonoBehaviour
     public float padding = 2.0f; // Extra space around the edges
     public float smoothTime = 0.3f; // Camera movement smoothing
     public float minimumSize = 5.0f; // Minimum orthographic size of the camera
+    public Vector2 defaultSize = new Vector3(34f, 20f);
 
     private Vector3 velocity = Vector3.zero;
     private Camera cam;
@@ -38,21 +39,17 @@ public class DynamicCamera : MonoBehaviour
         Player[] players = FindObjectsOfType<Player>();
 
         Bounds bounds;
-
-        if (players.Length == 0)
+        if (level == null)
+        {
+            bounds = new Bounds(Vector3.zero, defaultSize);
+        }
+        else if (players.Length == 0)
         {
             Debug.LogWarning("No objects with the tag 'Player' found. Focusing on level size.");
 
             // Focus on the entire level size if no players are found
-            if (level)
-            {
-                Vector2 levelSize = level.GetCurrentSize();
-                bounds = new Bounds(Vector3.zero, new Vector3(levelSize.x, levelSize.y, 0));
-            }
-            else
-            {
-                return; // Exit if no level reference
-            }
+            Vector2 levelSize = level.GetCurrentSize();
+            bounds = new Bounds(Vector3.zero, new Vector3(levelSize.x, levelSize.y, 0));
         }
         else if (players.Length == 1)
         {

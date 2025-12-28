@@ -54,6 +54,14 @@ public static class AudioMan
     // Play a random sound for a given SoundType
     public static void PlaySound(Sound sound)
     {
+        PlaySound(sound, 1f, 1f);
+    } 
+    public static void PlaySound(Sound sound, float volume)
+    {
+        PlaySound(sound, volume, 1f);
+    } 
+    public static void PlaySound(Sound sound, float volume, float pitch)
+    {
         float delay = soundDelay;
         if (sound == Sound.FireBurn)
         {
@@ -72,6 +80,8 @@ public static class AudioMan
             AudioClip clip = clips[randomIndex];
             source.clip = clip;
             source.pitch = soundPitches[sound];
+            source.pitch *= pitch;
+            source.volume = volume;
             source.Play();
             GameObject.Destroy(obj, clip.length);
         }

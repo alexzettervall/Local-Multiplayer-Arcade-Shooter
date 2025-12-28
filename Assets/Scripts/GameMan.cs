@@ -19,17 +19,20 @@ public class GameMan : MonoBehaviour
         public Color PlayerColor;
         public Sprite Skin;
         public HandSet HandSkin;
-        public PlayerScoreUI PlayerScoreUI;
     }
     [SerializeField] private PlayerJoinHandler playerJoinHandler;
-    [SerializeField] private GameObject canvas;
-    [SerializeField] private GameObject playerScoresHolder;
     private Dictionary<int, PlayerData> players = new Dictionary<int, PlayerData>();
     [SerializeField] private bool fillWithBots = false;
     [SerializeField] private int maxPlayers = 8;
     [SerializeField] private Level level;
     [SerializeField] private int pointsNeeded = 10;
     [SerializeField] private RectTransform[] uiPointSpots;
+    [Header("Score UI")]
+    [SerializeField] private GameObject scoreUIHolder;
+    [SerializeField] private ScoreUI scoreUI;
+    [SerializeField] private bool gameOver = false;
+    [SerializeField] private int gameWinner;
+    [SerializeField] private ParticleEmitter confettiParticles;
 
 
     // Name of the Full Screen Pass Renderer Feature
@@ -45,7 +48,6 @@ public class GameMan : MonoBehaviour
     public int gasDamage = 15;
     public UnityEngine.Material pixelation;
 
-    private PlayerData winner;
     private List<Color> playerColors = new List<Color>();
     private void Awake()
     {
@@ -68,7 +70,8 @@ public class GameMan : MonoBehaviour
     }
     public void StartGame()
     {
-        winner = null;
+        gameWinner = -1;
+        gameOver = false;
         ResetPlayerScores();
         if (fillWithBots) {
             PopulateBots();
@@ -76,12 +79,10 @@ public class GameMan : MonoBehaviour
         SceneManager.LoadScene("Game");
         SceneManager.sceneLoaded += OnGameSceneLoaded;
     }
-    public IEnumerator EndGame(PlayerData winner)
+    public void EndGame(PlayerData winner)
     {
-        yield return new WaitForSeconds(1f);
-        canvas.SetActive(false);
-        SceneManager.LoadScene("Menu");
-        SceneManager.sceneLoaded += OnGameSceneLoaded;
+        gameWinner = winner.PlayerID;
+        gameOver = true;
     }
 
     public void StartRound()
@@ -100,6 +101,7 @@ public class GameMan : MonoBehaviour
         {
             player.Score = 0;
         }
+        scoreUI.MoveScores(pointsNeeded);
     }
     private void OnGameSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -124,31 +126,78 @@ public class GameMan : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
-        float elapsed = 0f;
-        float transitionTime = 1f;
+        // MAGIC NUMBERS YAAAY
+        float transitionTime = 0.25f;
         float targetSize = 32f;
         float minSize = 1f;
 
-        while (elapsed < transitionTime)
-        {
-            elapsed += Time.deltaTime;
-            pixelation.SetFloat("_Pixel_Size", Mathf.Lerp(minSize, targetSize, elapsed / transitionTime));
-            yield return null; // Wait until the next frame.
-        }
+        // Pixilate
+        StartCoroutine(PixelateTransition(minSize, targetSize, transitionTime));
+        yield return new WaitForSeconds(transitionTime);
 
         // Fully pixelation (middle of transition)
         Destroy(level.gameObject);
-        StartRound();
 
-        elapsed = 0f;
+        bool showScores = true;
+        if (showScores)
+        {
+            // Update and show scores
+            scoreUI.UpdateScoreUI(players, pointsNeeded);
+            scoreUIHolder.SetActive(true);
+
+            // Depixilate
+            StartCoroutine(PixelateTransition(targetSize, minSize, transitionTime));
+            yield return new WaitForSeconds(transitionTime);
+
+            // Play animation
+            yield return new WaitForSeconds(1f);
+            float timeToWalk = scoreUI.MoveScores(pointsNeeded);
+            yield return new WaitForSeconds(timeToWalk + 1f);
+
+            // Check for winners
+            foreach (PlayerData player in players.Values)
+            {
+                if (player.Score >= pointsNeeded)
+                {
+                    confettiParticles.transform.position = scoreUI.playerScoreUIs[player.PlayerID].player.transform.position;
+                    StartCoroutine(confettiParticles.EmitBursts());
+                    EndGame(player);
+                    yield return new WaitForSeconds(5);
+                }
+            }
+
+            // Pixilate
+            StartCoroutine(PixelateTransition(minSize, targetSize, transitionTime));
+            yield return new WaitForSeconds(transitionTime);
+            scoreUIHolder.SetActive(false);
+        }
+
+        if (!gameOver)
+        {
+            StartRound();
+        }
+        else
+        {
+            SceneManager.LoadScene("Menu");
+            SceneManager.sceneLoaded += OnGameSceneLoaded;
+        }
+
+        // Depixilate
+        StartCoroutine(PixelateTransition(targetSize, minSize, transitionTime));
+        yield return new WaitForSeconds(transitionTime);
+    } 
+
+    public IEnumerator PixelateTransition(float start, float end, float transitionTime)
+    {
+        float elapsed = 0f;
         while (elapsed < transitionTime)
         {
             elapsed += Time.deltaTime;
-            pixelation.SetFloat("_Pixel_Size", Mathf.Lerp(targetSize, minSize, elapsed / transitionTime));
+            pixelation.SetFloat("_Pixel_Size", Mathf.Lerp(start, end, elapsed / transitionTime));
             yield return null; // Wait until the next frame.
         }
-        pixelation.SetFloat("_Pixel_Size", 1f);
-    } 
+        pixelation.SetFloat("_Pixel_Size", end);
+    }
 
     public void EndRound(Player winner)
     { 
@@ -185,8 +234,7 @@ public class GameMan : MonoBehaviour
 
         Sprite skin = GameAssets.i.playerSkins[Random.Range(0, GameAssets.i.playerSkins.Length)];
         HandSet handSkin = GameAssets.i.playerHandSkins[Random.Range(0, GameAssets.i.playerHandSkins.Length)];
-        
-        GameObject playerScore = Instantiate(GameAssets.i.playerScoreUI, playerScoresHolder.transform);
+    
         players[playerID] = new PlayerData
         {
             PersistentPlayer = persistentPlayer,
@@ -195,10 +243,8 @@ public class GameMan : MonoBehaviour
             PlayerColor = color,
             Skin = skin,
             HandSkin = handSkin,
-            Score = 0,
-            PlayerScoreUI = playerScore.GetComponent<PlayerScoreUI>()
+            Score = 0
         };
-        players[playerID].PlayerScoreUI.SetColor(color);
 
         if (level != null)
         {
