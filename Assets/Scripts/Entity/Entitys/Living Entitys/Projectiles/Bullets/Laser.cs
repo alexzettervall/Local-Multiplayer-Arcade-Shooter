@@ -20,25 +20,43 @@ public class Laser : Bullet
         for (int i = 0; i <= bounces; i++)
         {
             float length = 0f;
-            RaycastHit2D col = Physics2D.Raycast(currentPos, dir, range, GameAssets.i.structuresOnly);
-            length = col.distance + 0.5f;
+            
+            RaycastHit2D[] hits = Physics2D.RaycastAll(currentPos, dir, range, GameAssets.i.structuresOnly);
+            
+            Entity entityHit = null;
+            Vector2 hitPoint = Vector2.zero;
+            
+
+            foreach (RaycastHit2D hit in hits)
+            {
+                Entity entity = hit.transform.gameObject.GetComponent<Entity>();
+                if (entity != null && !entity.BlocksLasers()) { continue; }
+                entityHit = entity;
+                hitPoint = hit.point;
+                length = hit.distance + 0.5f;
+            }
             if (length == 0)
+            {
                 length = range;
+            }
 
             DrawBeam(currentPos, dir, Mathf.Min(length, range));
-            //Vector2 newDir = Vector2.Reflect(dir, col.normal);
-            //if (Mathf.Abs((Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg) - (Mathf.Atan2(newDir.y, newDir.x) * Mathf.Rad2Deg)) < 0.01f)
-            //{
-            //    break;
-            //}
+            
 
             // Do damage
-            RaycastHit2D[] hits = Physics2D.LinecastAll(currentPos, col.point + (col.point - currentPos).normalized * 0.1f);
+            if (entityHit != null)
+            {
+                if (entityHit == shooter) { continue; }
+                entityHit.Damage(damage, shooter, DamageSource.Bullet);
+            }
+
+            hits = Physics2D.LinecastAll(currentPos, hitPoint + (hitPoint - currentPos).normalized * 0.1f);
             foreach (RaycastHit2D hit in hits)
             {
                 Entity entity = hit.transform.gameObject.GetComponent<Entity>();
                 if (entity == null) { continue; }
                 if (entity == shooter) { continue; }
+                if (entity == entityHit) { continue; }
                 entity.Damage(damage, shooter, DamageSource.Bullet);
             }
 

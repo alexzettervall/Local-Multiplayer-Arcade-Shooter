@@ -8,7 +8,7 @@ public abstract class Structure : Entity
     [SerializeField] protected float minSize;
     [SerializeField] protected bool breakable = true;
     [SerializeField] protected bool dynamicSize = false;
-    [SerializeField] protected bool reflectBullets = false;
+    
 
     public override void Damage(int damage, Entity damager, DamageSource damageSource)
     {
@@ -27,10 +27,7 @@ public abstract class Structure : Entity
         float newScale = minSize + (maxSize - minSize) * ((float)health / (float)maxHealth);
         transform.localScale = new Vector3(newScale, newScale, 1f);
     }
-    public bool ReflectsBullets()
-    {
-        return reflectBullets;
-    }
+    
     protected override void Kill() {
         base.Kill();
         GameMan.Instance.GetLevel().RebuildNavGraph();

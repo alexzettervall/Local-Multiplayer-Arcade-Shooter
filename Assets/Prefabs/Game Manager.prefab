@@ -50,9 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerJoinHandler: {fileID: 2005360415162687556}
   fillWithBots: 1
-  maxPlayers: 2
+  maxPlayers: 8
   level: {fileID: 0}
-  pointsNeeded: 2
+  pointsNeeded: 5
   uiPointSpots:
   - {fileID: 0}
   - {fileID: 0}

@@ -173,6 +173,7 @@ public class Player : LivingEntity
         rb.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
         
     }
+    
     public void Move(Vector2 movement)
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -231,7 +232,6 @@ public class Player : LivingEntity
             return;
         }
         punchTimer = punchDelay;
-        AudioMan.PlaySound(Sound.Punch);
         if (Random.Range(0, 2) == 1)
         {
             animator.SetTrigger("Punch Right");
@@ -240,19 +240,19 @@ public class Player : LivingEntity
         {
             animator.SetTrigger("Punch Left");
         }
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + (Vector3)GetDirection() * punchDistance, punchRadius);
+        
+        AttackMelee(punchDamage, Sound.Punch, punchRadius, punchDistance);
+    }
+    public void AttackMelee(float damage, Sound sound, float attackRadius, float attackDistance)
+    {
+        AudioMan.PlaySound(sound);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + (Vector3)GetDirection() * attackDistance, attackRadius);
         foreach (Collider2D collider in colliders)
         {
             Entity entity = collider.GetComponent<Entity>();
-            if (entity == null)
-            {
-                continue;
-            }
-            if (entity == this)
-            {
-                continue;
-            }
-            entity.Damage(punchDamage, this, DamageSource.Fist);
+            if (entity == null) { continue; }
+            if (entity == this) { continue; }
+            entity.Damage(punchDamage, this, DamageSource.Melee);
         }
     }
     private Vector2 GetDirection()

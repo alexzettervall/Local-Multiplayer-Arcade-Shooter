@@ -16,6 +16,8 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected int health;
     [SerializeField] protected Item heldItem;
     [SerializeField] protected Transform itemHolder;
+    [SerializeField] protected bool reflectBullets = false;
+    [SerializeField] protected bool blocksLasers = true;
 
     // Tags (used for AI right now)
     [SerializeField] protected List<string> tags = new List<string>();
@@ -52,7 +54,7 @@ public abstract class Entity : MonoBehaviour
             {
                 hitSound = material.bulletHit;
             }
-            else if (damageSource == DamageSource.Fist)
+            else if (damageSource == DamageSource.Melee)
             {
                 hitSound = material.punchHit;
             }
@@ -182,5 +184,13 @@ public abstract class Entity : MonoBehaviour
     }
     public bool HasTag(string tag) {
         return tags.Contains(tag);
+    }
+    public bool ReflectsBullets()
+    {
+        return reflectBullets;
+    }
+    public bool BlocksLasers()
+    {
+        return blocksLasers;
     }
 }

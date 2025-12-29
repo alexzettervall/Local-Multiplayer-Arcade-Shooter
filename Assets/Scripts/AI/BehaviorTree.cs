@@ -40,8 +40,14 @@ public class BehaviorTree
         float distance = Vector2.Distance(blackboard.player.transform.position, closestEnemy.transform.position);
         bool wantToShoot = false;
         bool hasLineOfSight = true;
-        if (Physics2D.Linecast(blackboard.player.transform.position, blackboard.target.GetPosition(), GameAssets.i.structuresOnly)) {
-            hasLineOfSight = false;
+
+        // Make sure its not a shield
+        RaycastHit2D[] hits = Physics2D.LinecastAll(blackboard.player.transform.position, blackboard.target.GetPosition(), GameAssets.i.structuresOnly);
+        foreach (RaycastHit2D hit in hits)
+        {
+            Item item = hit.transform.gameObject.GetComponent<Item>();
+            if (item == null) { hasLineOfSight = false; break; }
+            if (item.GetHolder() == null) { hasLineOfSight = false; break; }
         }
         
         bool inRange = distance <= blackboard.attackRange;

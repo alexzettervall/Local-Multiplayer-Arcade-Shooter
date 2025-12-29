@@ -47,6 +47,12 @@ MonoBehaviour:
   lootTypeWeights:
   - lootType: 0
     weight: 1
+  - lootType: 4
+    weight: 0.5
   - lootType: 1
     weight: 0.5
+  - lootType: 3
+    weight: 0.2
+  - lootType: 6
+    weight: 0.2
   spawnLootOnStart: 1

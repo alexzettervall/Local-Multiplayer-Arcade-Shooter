@@ -200,7 +200,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014853397
-  m_SortingLayer: 9
+  m_SortingLayer: 7
   m_SortingOrder: 102
   m_Sprite: {fileID: 1440408213, guid: 312b30fc1c61946f492beca45549f45d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -339,7 +339,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014853397
-  m_SortingLayer: 9
+  m_SortingLayer: 7
   m_SortingOrder: 103
   m_Sprite: {fileID: -414044508, guid: 312b30fc1c61946f492beca45549f45d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 4576049797646445674}
   - component: {fileID: 5680455146642072096}
   - component: {fileID: 5049508168927380783}
+  - component: {fileID: 6708396265503994234}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -478,7 +479,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014853397
-  m_SortingLayer: 9
+  m_SortingLayer: 7
   m_SortingOrder: 100
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -573,6 +574,8 @@ MonoBehaviour:
   health: 100
   heldItem: {fileID: 0}
   itemHolder: {fileID: 6994047957897369386}
+  reflectBullets: 0
+  blocksLasers: 1
   tags: []
   material: {fileID: 11400000, guid: 45fe7e8b2674596409e80a9d8bf107bf, type: 2}
   moveSpeed: 5
@@ -595,6 +598,28 @@ MonoBehaviour:
   col: {fileID: 5680455146642072096}
   leftHandSr: {fileID: 4428804549079248311}
   rightHandSr: {fileID: 132381310886108266}
+  isStatic: 0
+--- !u!95 &6708396265503994234
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294782076889574214}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a3870f1884e5e5740b54445511bcdfc8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7498066905482289996
 GameObject:
   m_ObjectHideFlags: 0

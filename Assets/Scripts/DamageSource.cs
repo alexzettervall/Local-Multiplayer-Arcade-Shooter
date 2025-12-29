@@ -1,6 +1,6 @@
 public enum DamageSource
 {
-    Fist,
+    Melee,
     Bullet,
     Explosion,
     Fire,

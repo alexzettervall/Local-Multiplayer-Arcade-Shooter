@@ -191,9 +191,7 @@ MonoBehaviour:
     weight: 1
   - lootType: 1
     weight: 0.5
-  - lootType: 2
-    weight: 0.25
-  - lootType: 4
-    weight: 0.25
+  - lootType: 6
+    weight: 0.2
   amountMin: 1
   amountMax: 1

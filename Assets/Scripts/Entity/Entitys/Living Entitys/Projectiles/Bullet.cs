@@ -61,14 +61,10 @@ public abstract class Bullet : Projectile
             entity.Damage(damage, shooter, DamageSource.Bullet);
         }
         bool killBullet = true;
-        if (entity is Structure)
+        if (entity.ReflectsBullets())
         {
-            Structure structure = (Structure)entity;
-            if (structure.ReflectsBullets())
-            {
-                killBullet = false;
-                reflected = true;
-            }
+            killBullet = false;
+            reflected = true;
         }
         if (killBullet)
         {
