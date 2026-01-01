@@ -26,6 +26,13 @@ public static class BulletSpawner
                 bullet.SetShooter(shooter);
                 bullet.CheckForCollisions(firePoint, true);
             }
+
+            // If frag grenade start cooking
+            FragGrenade fragGrenade = bulletObj.GetComponent<FragGrenade>();
+            if (fragGrenade != null)
+            {
+                fragGrenade.StartCooking(shooter);
+            }
         }
     }
 }

@@ -7,6 +7,9 @@ public class FragGrenade : Grenade
     [SerializeField] private int damage = 250;
     [SerializeField] private float radius = 5f;
     [SerializeField] private int shrapnel = 10;
+    [SerializeField] private bool proximityGrenade;
+    [SerializeField] private float proximityRadius;
+
     public override void OnExplosion()
     {
         if (holder != null)
@@ -25,9 +28,26 @@ public class FragGrenade : Grenade
         }
         return 0f;
     }
-    public override void OnPullBack()
+    public override void StartCooking(Entity thrower)
     {
-        base.OnPullBack();
+        base.StartCooking(thrower);
         SetCircleColor(GameAssets.i.itemCircleDanger);
+    }
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (!cooking) { return; }
+        if (!proximityGrenade) { return; }
+        if (exploded) { return; }
+
+        Collider2D[] cols = Physics2D.OverlapCircleAll(rb.position, proximityRadius);
+        foreach (Collider2D col in cols)
+        {
+            Player player = col.gameObject.GetComponent<Player>();
+            if (player == null) { continue; }
+            if (player == thrower) { continue; }
+            Explode();
+        }
     }
 }

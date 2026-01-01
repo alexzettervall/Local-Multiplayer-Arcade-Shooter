@@ -54,22 +54,19 @@ public class BehaviorTree
         bool outOfThreshold = distance > blackboard.attackRange + 0.1f;
         Item heldItem = blackboard.player.GetItem();
         bool hasGun = (heldItem is Gun);
-
-        if (inRange && hasLineOfSight) {
+        
+        Vector2 directionToTarget = (blackboard.target.GetPosition() - (Vector2)blackboard.player.transform.position).normalized;
+        blackboard.lookDirection = Vector2.Lerp(blackboard.lookDirection.normalized, directionToTarget, GameAssets.i.AISettings.movementSmoothingResponsiveness * Time.deltaTime);
+        float rbRotation = blackboard.player.GetRigidbody().rotation;
+        bool lookingAt = Vector2.Dot(directionToTarget, new Vector2(Mathf.Cos(rbRotation), Mathf.Sin(rbRotation))) > 0.5f;
+        if (inRange && hasLineOfSight && true) {
             wantToShoot = true;
-        }
-        else if (outOfThreshold || !hasLineOfSight) {
-            wantToShoot = false;
         }
 
         if (wantToShoot) {
-            blackboard.move = !hasGun;
-            Vector2 direction = Vector2.Lerp(blackboard.lookDirection.normalized, (blackboard.target.GetPosition() - (Vector2)blackboard.player.transform.position).normalized, GameAssets.i.AISettings.movementSmoothingResponsiveness * Time.deltaTime);
-            float rbRotation = blackboard.player.GetRigidbody().rotation;
-            bool lookingAt = Vector2.Dot(direction, new Vector2(Mathf.Cos(rbRotation), Mathf.Sin(rbRotation))) > 0.99f;
+            blackboard.move = false;
 
-            blackboard.lookDirection = direction;
-            if (!blackboard.isUsing && (lookingAt || distance < 1f)) {
+            if (!blackboard.isUsing) {
                 blackboard.preformUse = true;
             }
         }
@@ -110,7 +107,7 @@ public class BehaviorTree
         blackboard.target = new AITarget { provider = new TransformTarget { transform = item.transform } };
         blackboard.move = true;
         float distance = Vector2.Distance(blackboard.player.transform.position, blackboard.target.GetPosition());
-        if (distance < 0.5f) {
+        if (distance < 0.25f) {
             blackboard.interact = true;
             blackboard.target = null;
             blackboard.isDirty = true;

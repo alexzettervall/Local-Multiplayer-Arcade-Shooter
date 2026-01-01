@@ -123,7 +123,7 @@ public class Gun : Item
             }
             if (raycastHit.collider != null)
             {
-                return raycastHit.point;
+                return raycastHit.point - dir * 0.1f;
             }
         }
         

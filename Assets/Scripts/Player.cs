@@ -140,7 +140,7 @@ public class Player : LivingEntity
         base.OnFixedUpdate();
         if (isDead) { return; }
         if (isStatic) { return; }
-        
+        if (HasStatusEffect(StatusEffectType.Frozen)) { return; }
 
         if (drop)
         {
@@ -170,12 +170,17 @@ public class Player : LivingEntity
             Move(movement);
         }
         
-        rb.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        Rotate(direction);
         
     }
-    
+    public void Rotate(Vector2 direction)
+    {
+        if (HasStatusEffect(StatusEffectType.Frozen)) { return; }
+        rb.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+    }
     public void Move(Vector2 movement)
     {
+        if (HasStatusEffect(StatusEffectType.Frozen)) { return; }
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
             
         if (movement.magnitude > 0.1f)

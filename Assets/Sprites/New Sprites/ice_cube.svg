@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="314.95444"
+   height="314.95444"
+   viewBox="0 0 83.331697 83.331697"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="ice_cube.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="ice_cube.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#1da417"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.28"
+     inkscape:cx="80.46875"
+     inkscape:cy="119.92188"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="83.331696"
+       height="83.331696"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <filter
+       inkscape:label="Cracked Glass"
+       inkscape:menu="Textures"
+       inkscape:menu-tooltip="Under a cracked glass"
+       style="color-interpolation-filters:sRGB"
+       id="filter10"
+       x="-0.23503061"
+       y="-0.23503061"
+       width="1.4700612"
+       height="1.4700612">
+      <feTurbulence
+         baseFrequency="0.1"
+         seed="233"
+         numOctaves="1"
+         result="result1"
+         type="fractalNoise"
+         id="feTurbulence7" />
+      <feGaussianBlur
+         stdDeviation="4"
+         result="result7"
+         id="feGaussianBlur7" />
+      <feDisplacementMap
+         result="result5"
+         in="SourceGraphic"
+         scale="10.179641"
+         xChannelSelector="G"
+         in2="result7"
+         id="feDisplacementMap7"
+         yChannelSelector="A" />
+      <feComposite
+         result="result2"
+         operator="in"
+         in2="result1"
+         in="result5"
+         id="feComposite7" />
+      <feGaussianBlur
+         stdDeviation="1"
+         result="result6"
+         id="feGaussianBlur8" />
+      <feSpecularLighting
+         surfaceScale="-2.80346823"
+         result="result4"
+         specularConstant="4.1618495"
+         specularExponent="36.6878624"
+         in="result6"
+         id="feSpecularLighting8">
+        <feDistantLight
+           elevation="51"
+           azimuth="150"
+           id="feDistantLight8" />
+      </feSpecularLighting>
+      <feComposite
+         k1="1.7"
+         k3="0.7"
+         in2="result2"
+         in="result4"
+         operator="arithmetic"
+         result="result91"
+         id="feComposite8"
+         k2="0"
+         k4="0" />
+      <feBlend
+         result="fbSourceGraphic"
+         mode="multiply"
+         in2="result91"
+         id="feBlend8" />
+      <feComposite
+         in2="fbSourceGraphic"
+         in="fbSourceGraphic"
+         result="result2"
+         operator="arithmetic"
+         id="feComposite9"
+         k1="0"
+         k2="0"
+         k3="0"
+         k4="0" />
+      <feComposite
+         in="result2"
+         result="result4"
+         operator="arithmetic"
+         k2="2"
+         k3="2"
+         in2="fbSourceGraphic"
+         id="feComposite10"
+         k1="0"
+         k4="0" />
+      <feBlend
+         mode="screen"
+         in="result4"
+         in2="result4"
+         id="feBlend10" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-181.34537,-312.31414)">
+    <rect
+       style="fill:#00fffe;fill-opacity:0.433929;stroke:#00efff;stroke-width:2.64583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter10)"
+       id="rect11-7"
+       width="56.685871"
+       height="56.685871"
+       x="194.66829"
+       y="325.63705"
+       ry="2.0367358"
+       mask="none" />
+  </g>
+</svg>

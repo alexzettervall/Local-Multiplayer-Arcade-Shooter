@@ -6,9 +6,9 @@ public abstract class Grenade : Item
 {
     [SerializeField] private Sprite pinOut;
     protected Entity thrower;
-    private bool cooking = false;
-    private bool exploded = false;
-    private float timer = 3f;
+    protected bool cooking = false;
+    protected bool exploded = false;
+    [SerializeField] private float explosionTimer = 2f;
     
     protected override void OnStart() {
         base.OnStart();
@@ -20,26 +20,30 @@ public abstract class Grenade : Item
     {
         if (cooking && !exploded)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            explosionTimer -= Time.deltaTime;
+            if (explosionTimer <= 0)
             {
                 Explode();
-                exploded = true;
             }
         }
     }
     public override void OnPullBack()
     {
         base.OnPullBack();
+        AudioMan.PlaySound(Sound.GrenadePull);
+        StartCooking(holder);
+    }
+    public virtual void StartCooking(Entity thrower)
+    {
+        this.thrower = thrower;
         if (pinOut != null)
         {
             GetComponent<SpriteRenderer>().sprite = pinOut;
         }
         cooking = true;
-        thrower = holder;
-        AudioMan.PlaySound(Sound.GrenadePull);
         tags.Remove("deadly weapon");
         tags.Add("dangerous");
+        
     }
     public override void OnThrow()
     {
@@ -49,6 +53,8 @@ public abstract class Grenade : Item
     }
     public virtual void Explode()
     { 
+        if (exploded) { return; }
+        exploded = true;
         OnExplosion();
     }
     public virtual void OnExplosion()

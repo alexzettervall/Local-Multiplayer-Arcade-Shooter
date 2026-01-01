@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098ef58275abaea4e9c3ef7e4c1755f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iceCubeIconPrefab: {fileID: 3469313790464033646, guid: 16e88714345d8b549bfcce247ba09880, type: 3}
+  fireIconPrefab: {fileID: 3607927013544751458, guid: fef6e90f021bbf7438c6ad1779ade964, type: 3}
   playerSkins:
   - {fileID: 21300000, guid: 6057bbc4abe0e4d88a555f0251df2bb6, type: 3}
   - {fileID: 21300000, guid: 4496c052f4f9542f89243d478fa05137, type: 3}

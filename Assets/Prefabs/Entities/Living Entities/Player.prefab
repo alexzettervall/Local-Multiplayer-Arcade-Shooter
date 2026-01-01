@@ -576,6 +576,7 @@ MonoBehaviour:
   itemHolder: {fileID: 6994047957897369386}
   reflectBullets: 0
   blocksLasers: 1
+  canBeFrozen: 1
   tags: []
   material: {fileID: 11400000, guid: 45fe7e8b2674596409e80a9d8bf107bf, type: 2}
   moveSpeed: 5

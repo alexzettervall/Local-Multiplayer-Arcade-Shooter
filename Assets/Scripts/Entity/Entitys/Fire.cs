@@ -61,5 +61,6 @@ public class Fire : Projectile
         }
         lastHitTime = Time.time;
         entity.Damage(Mathf.RoundToInt(strength * damage), shooter, DamageSource.Fire);
+        entity.ApplyStatusEffect(new StatusEffect(StatusEffectType.Fire, 5f, shooter));
     }
 }

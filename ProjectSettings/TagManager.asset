@@ -112,6 +112,9 @@ TagManager:
   - name: Tree
     uniqueID: 1607934119
     locked: 0
+  - name: Ice Cube Icon
+    uniqueID: 4109211537
+    locked: 0
   - name: Fire
     uniqueID: 2071691495
     locked: 0

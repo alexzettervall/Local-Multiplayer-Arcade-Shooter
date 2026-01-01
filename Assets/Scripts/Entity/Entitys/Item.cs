@@ -21,6 +21,7 @@ public abstract class Item : Entity
     protected override void OnStart()
     {
         base.OnStart();
+
         UpdateCircle();
     }
     public virtual void Use(bool use, bool unUse)
@@ -138,6 +139,10 @@ public abstract class Item : Entity
     }
     public void InitCircle()
     {
+        if (circle != null)
+        {
+            return;
+        }
         circle = new GameObject("Circle");
         circle.transform.parent = transform;
         circle.transform.localPosition = rb.centerOfMass;
@@ -174,6 +179,10 @@ public abstract class Item : Entity
     }
     public void SetCircleColor(Color color)
     {
+        if (circle == null)
+        {
+            InitCircle();
+        }
         circle.GetComponent<SpriteRenderer>().color = color;
     }
     public virtual float GetDamageLeft() {

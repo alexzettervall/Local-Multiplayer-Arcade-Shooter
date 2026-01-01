@@ -34,6 +34,7 @@ public class Laser : Bullet
                 entityHit = entity;
                 hitPoint = hit.point;
                 length = hit.distance + 0.5f;
+                break;
             }
             if (length == 0)
             {

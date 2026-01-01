@@ -13,6 +13,8 @@ public class GameAssets : MonoBehaviour
             return _i;
         }
     }
+    public GameObject iceCubeIconPrefab;
+    public GameObject fireIconPrefab;
     public Sprite[] playerSkins;
     public HandSet[] playerHandSkins;
     public LootPools lootPools;

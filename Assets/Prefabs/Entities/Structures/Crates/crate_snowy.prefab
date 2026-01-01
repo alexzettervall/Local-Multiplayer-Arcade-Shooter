@@ -179,19 +179,19 @@ MonoBehaviour:
   health: 75
   heldItem: {fileID: 0}
   itemHolder: {fileID: 0}
+  reflectBullets: 0
+  blocksLasers: 1
+  canBeFrozen: 0
   tags: []
   material: {fileID: 11400000, guid: e40bb8efa30d9224baa6f959c112ab92, type: 2}
   maxSize: 1
   minSize: 0.6
   breakable: 1
   dynamicSize: 1
-  reflectBullets: 0
   lootTypeWeights:
   - lootType: 0
     weight: 1
   - lootType: 1
     weight: 0.5
-  - lootType: 6
-    weight: 0.2
   amountMin: 1
   amountMax: 1

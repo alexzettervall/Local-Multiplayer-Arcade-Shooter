@@ -76,10 +76,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1206495457
-  m_SortingLayer: -5
+  m_SortingLayer: -8
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: fc8067b51acd7294c9c56b58927073c1, type: 3}
-  m_Color: {r: 0.654902, g: 0.58905625, b: 0.058823507, a: 1}
+  m_Color: {r: 0.6886792, g: 0.61710566, b: 0.048727296, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -192,12 +192,14 @@ MonoBehaviour:
   health: 0
   heldItem: {fileID: 0}
   itemHolder: {fileID: 0}
+  reflectBullets: 0
+  blocksLasers: 1
+  tags: []
   material: {fileID: 11400000, guid: 6d37aea56fbeac644bfa0c3005a7c6d7, type: 2}
   maxSize: 0
   minSize: 0
   breakable: 0
   dynamicSize: 0
-  reflectBullets: 0
 --- !u!61 &672487181230276291
 BoxCollider2D:
   m_ObjectHideFlags: 0

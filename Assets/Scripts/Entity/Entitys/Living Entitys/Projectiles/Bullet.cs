@@ -58,7 +58,7 @@ public abstract class Bullet : Projectile
         }
         if (doDamage)
         {
-            entity.Damage(damage, shooter, DamageSource.Bullet);
+            HitEntity(entity);
         }
         bool killBullet = true;
         if (entity.ReflectsBullets())
@@ -70,5 +70,9 @@ public abstract class Bullet : Projectile
         {
             Kill();
         }
+    }
+    public virtual void HitEntity(Entity entity)
+    {
+        entity.Damage(damage, shooter, DamageSource.Bullet);
     }
 }

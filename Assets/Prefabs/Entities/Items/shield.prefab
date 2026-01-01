@@ -85,6 +85,7 @@ MonoBehaviour:
   itemHolder: {fileID: 0}
   reflectBullets: 0
   blocksLasers: 0
+  canBeFrozen: 0
   tags: []
   material: {fileID: 11400000, guid: e40bb8efa30d9224baa6f959c112ab92, type: 2}
   holdAnimation: {fileID: 0}
@@ -97,7 +98,7 @@ MonoBehaviour:
   throwable: 0
   throwStrength: 10
   throwTorque: 100
-  attackSpeed: 1.5
+  attackSpeed: 3
   damage: 25
   attackDistance: 0.5
   attackRadius: 0.5
@@ -126,6 +127,7 @@ MonoBehaviour:
   itemHolder: {fileID: 0}
   reflectBullets: 0
   blocksLasers: 1
+  canBeFrozen: 0
   tags: []
   material: {fileID: 11400000, guid: e40bb8efa30d9224baa6f959c112ab92, type: 2}
   maxSize: 1
