@@ -4,9 +4,6 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
-    [SerializeField] private Gradient trailColor;
-    [SerializeField] private TrailRenderer trailRenderer;
-
     [SerializeField] protected int damage;
     [SerializeField] private float lifeTime;
     [SerializeField] private float lifeTimer;

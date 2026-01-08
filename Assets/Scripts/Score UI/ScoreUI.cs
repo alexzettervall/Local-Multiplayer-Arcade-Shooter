@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ScoreUI : MonoBehaviour
 {
+    public Transform finishLine;
+    public float finishLinePadding; // The distance the finishline should be from the last node
     public Transform pathStart;
     public Transform pathEnd;
     public GameObject nodePrefab;
@@ -13,8 +15,11 @@ public class ScoreUI : MonoBehaviour
     public Transform playerScoreUIHolder;
     public float spacing = 2.5f;
     public Dictionary<int, PlayerScoreUI> playerScoreUIs = new Dictionary<int, PlayerScoreUI>();
+    
     public void UpdateScoreUI(Dictionary<int, GameMan.PlayerData> playerDatas, int pointsNeeded)
     {
+        AllignFinishLine();
+
         // Delete old player score UIs
         foreach (int playerID in playerScoreUIs.Keys)
         {
@@ -45,6 +50,12 @@ public class ScoreUI : MonoBehaviour
         {
             players[i].transform.position = new Vector3(0, bottomY + deltaY * i, 0);
         }
+    }
+
+    // Make the finish line appear right before the last node
+    public void AllignFinishLine()
+    {
+        finishLine.position = new Vector3(pathEnd.position.x - finishLinePadding, 0, 0);
     }
 
     public void AddPlayerScoreUI(GameMan.PlayerData playerData, int pointsNeeded)

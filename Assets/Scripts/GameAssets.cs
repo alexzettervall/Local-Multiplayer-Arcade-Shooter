@@ -13,6 +13,7 @@ public class GameAssets : MonoBehaviour
             return _i;
         }
     }
+    public Gradient bulletGradient;
     public GameObject iceCubeIconPrefab;
     public GameObject fireIconPrefab;
     public Sprite[] playerSkins;

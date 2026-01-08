@@ -14,6 +14,8 @@ public class Melle : Item
     [Header("General")]
     public int groundColLayer;
     public int heldColLayer;
+    public int hitsToDestroy;
+    public bool canBeDestroyed = false;
     public Animation swingAnimation;
 
     protected float attackTimer = 0f;
@@ -49,6 +51,19 @@ public class Melle : Item
         player.AttackMelee(damage, Sound.StonePunchHit, attackRadius, attackDistance);
         attackTimer = 1f / attackSpeed;
         player.GetAnimator().SetTrigger("Punch Right");
+    }
+
+    public override void Damage(int damage, Entity damager, DamageSource damageSource)
+    {
+        // Only get hit by bullets and when its being held
+        if (holder == null) { return; }
+        if (damageSource != DamageSource.Bullet) { return; }
+        if (!canBeDestroyed) { return; }
+        hitsToDestroy--;
+        if (hitsToDestroy <= 0)
+        {
+            Kill();
+        }
     }
     
 }

@@ -104,6 +104,8 @@ MonoBehaviour:
   attackRadius: 0.5
   groundColLayer: 6
   heldColLayer: 9
+  hitsToDestroy: 10
+  canBeDestroyed: 1
   swingAnimation: {fileID: 0}
 --- !u!114 &6988789634612113137
 MonoBehaviour:
