@@ -17,8 +17,7 @@ public class GameMan : MonoBehaviour
         public string PlayerName;
         public int Score;
         public Color PlayerColor;
-        public Sprite Skin;
-        public HandSet HandSkin;
+        public Outfit Outfit;
     }
     [SerializeField] private PlayerJoinHandler playerJoinHandler;
     private Dictionary<int, PlayerData> players = new Dictionary<int, PlayerData>();
@@ -232,8 +231,7 @@ public class GameMan : MonoBehaviour
             playerColors.Remove(color);
         }
 
-        Sprite skin = GameAssets.i.playerSkins[Random.Range(0, GameAssets.i.playerSkins.Length)];
-        HandSet handSkin = GameAssets.i.playerHandSkins[Random.Range(0, GameAssets.i.playerHandSkins.Length)];
+        Outfit outfit = GameAssets.i.playerOutfits[Random.Range(0, GameAssets.i.playerOutfits.Length)];
     
         players[playerID] = new PlayerData
         {
@@ -241,8 +239,7 @@ public class GameMan : MonoBehaviour
             PlayerID = playerID,
             PlayerName = playerName,
             PlayerColor = color,
-            Skin = skin,
-            HandSkin = handSkin,
+            Outfit = outfit,
             Score = 0
         };
 

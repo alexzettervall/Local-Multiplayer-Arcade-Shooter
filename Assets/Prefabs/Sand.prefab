@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: -8
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: fc8067b51acd7294c9c56b58927073c1, type: 3}
-  m_Color: {r: 0.8113208, g: 0.77624005, b: 0.17986828, a: 1}
+  m_Color: {r: 0.8867924, g: 0.85709584, b: 0.35555357, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -194,6 +194,7 @@ MonoBehaviour:
   itemHolder: {fileID: 0}
   reflectBullets: 0
   blocksLasers: 1
+  canBeFrozen: 0
   tags: []
   material: {fileID: 11400000, guid: 6d37aea56fbeac644bfa0c3005a7c6d7, type: 2}
   maxSize: 0

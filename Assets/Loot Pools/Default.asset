@@ -19,8 +19,6 @@ MonoBehaviour:
       weight: 1
     - loot: {fileID: 1868589077219217716, guid: f855ea202f241244b91db7bc87ca668d, type: 3}
       weight: 1
-    - loot: {fileID: 1868589077219217716, guid: 421536c9ba1878f479e4645b2b2d424e, type: 3}
-      weight: 1
   - lootType: 1
     lootWeights:
     - loot: {fileID: 1868589077219217716, guid: f855ea202f241244b91db7bc87ca668d, type: 3}
@@ -30,8 +28,6 @@ MonoBehaviour:
     - loot: {fileID: 3086120728966875567, guid: 0ca97581e98f242c0a811976bf9a1528, type: 3}
       weight: 1
     - loot: {fileID: 1868589077219217716, guid: 823cafc3bb2b9c0469324c1f78aa698a, type: 3}
-      weight: 1
-    - loot: {fileID: 1868589077219217716, guid: 10e84ec9cf24f1347931c1aab7bd0418, type: 3}
       weight: 1
   - lootType: 2
     lootWeights:

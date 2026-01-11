@@ -76,6 +76,43 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   iceCubeIconPrefab: {fileID: 3469313790464033646, guid: 16e88714345d8b549bfcce247ba09880, type: 3}
   fireIconPrefab: {fileID: 3607927013544751458, guid: fef6e90f021bbf7438c6ad1779ade964, type: 3}
+  playerOutfits:
+  - skin: {fileID: 21300000, guid: 6057bbc4abe0e4d88a555f0251df2bb6, type: 3}
+    hands:
+      leftHand: {fileID: -414044508, guid: 312b30fc1c61946f492beca45549f45d, type: 3}
+      rightHand: {fileID: 1440408213, guid: 312b30fc1c61946f492beca45549f45d, type: 3}
+  - skin: {fileID: 21300000, guid: 4496c052f4f9542f89243d478fa05137, type: 3}
+    hands:
+      leftHand: {fileID: 1030097180, guid: 765c2cbee6a7d452280c1d448aacb2e4, type: 3}
+      rightHand: {fileID: -1391025504, guid: 765c2cbee6a7d452280c1d448aacb2e4, type: 3}
+  - skin: {fileID: 21300000, guid: c0cbf3d1e4a1c4eb4a504c978b2a3d42, type: 3}
+    hands:
+      leftHand: {fileID: 400211510, guid: d4fbbb9ffb6f540b386f0a4e23fe2353, type: 3}
+      rightHand: {fileID: -1871276287, guid: d4fbbb9ffb6f540b386f0a4e23fe2353, type: 3}
+  - skin: {fileID: 21300000, guid: edfe05706ef4748579466e488c561703, type: 3}
+    hands:
+      leftHand: {fileID: 1374927228, guid: 6990475fbf79847eba4f146697f32b18, type: 3}
+      rightHand: {fileID: -1425715616, guid: 6990475fbf79847eba4f146697f32b18, type: 3}
+  - skin: {fileID: 21300000, guid: cb1ce71d3df664287b8cc0ee8ee4f67f, type: 3}
+    hands:
+      leftHand: {fileID: -1324306125, guid: 040873ac71fff4712b11d97ef86e28d8, type: 3}
+      rightHand: {fileID: 1760294555, guid: 040873ac71fff4712b11d97ef86e28d8, type: 3}
+  - skin: {fileID: 21300000, guid: 798386f9cb9284ce4917824f25e323b2, type: 3}
+    hands:
+      leftHand: {fileID: 700577082, guid: a709adeb2c95f4ae9bf4cafae8164823, type: 3}
+      rightHand: {fileID: 539450245, guid: a709adeb2c95f4ae9bf4cafae8164823, type: 3}
+  - skin: {fileID: 21300000, guid: ab09b0621a5d548c9953befe189e09b5, type: 3}
+    hands:
+      leftHand: {fileID: 1254085411, guid: cc46b3080ab3644d8a892546334080e3, type: 3}
+      rightHand: {fileID: -399839546, guid: cc46b3080ab3644d8a892546334080e3, type: 3}
+  - skin: {fileID: 21300000, guid: 08cc7287d95fe4dfcab76087fe47615f, type: 3}
+    hands:
+      leftHand: {fileID: 1333818492, guid: 08cf1f0c7599a42dd91ad76ea058ee92, type: 3}
+      rightHand: {fileID: -1505984797, guid: 08cf1f0c7599a42dd91ad76ea058ee92, type: 3}
+  - skin: {fileID: 21300000, guid: 4170304689a605c419d233ba325c8574, type: 3}
+    hands:
+      leftHand: {fileID: 1333818492, guid: 08cf1f0c7599a42dd91ad76ea058ee92, type: 3}
+      rightHand: {fileID: -1505984797, guid: 08cf1f0c7599a42dd91ad76ea058ee92, type: 3}
   playerSkins:
   - {fileID: 21300000, guid: 6057bbc4abe0e4d88a555f0251df2bb6, type: 3}
   - {fileID: 21300000, guid: 4496c052f4f9542f89243d478fa05137, type: 3}

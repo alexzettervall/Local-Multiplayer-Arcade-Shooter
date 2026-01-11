@@ -16,6 +16,7 @@ public class GameAssets : MonoBehaviour
     public Gradient bulletGradient;
     public GameObject iceCubeIconPrefab;
     public GameObject fireIconPrefab;
+    public Outfit[] playerOutfits;
     public Sprite[] playerSkins;
     public HandSet[] playerHandSkins;
     public LootPools lootPools;

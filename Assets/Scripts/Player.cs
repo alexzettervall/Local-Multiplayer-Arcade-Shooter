@@ -52,9 +52,9 @@ public class Player : LivingEntity
         if (playerData != null)
         {
            color = playerData.PlayerColor;
-           sr.sprite = playerData.Skin;
-           leftHandSr.sprite = playerData.HandSkin.leftHand;
-           rightHandSr.sprite = playerData.HandSkin.rightHand;
+           sr.sprite = playerData.Outfit.skin;
+           leftHandSr.sprite = playerData.Outfit.hands.leftHand;
+           rightHandSr.sprite = playerData.Outfit.hands.rightHand;
         }
         playerUI = new PlayerUI(this);
     } 
