@@ -45,7 +45,6 @@ public class GameAssets : MonoBehaviour
     public GameObject ammoPrefab;
     public GameObject gunPrefab;
     public GameObject itemBackgroundPrefab;
-    public GunData[] gunDatas;
     public GameModeData[] gameModeDatas;
     public AmmoSprite[] ammoSprites;
     public AmmoLimit[] ammoLimits;
@@ -107,22 +106,6 @@ public class GameAssets : MonoBehaviour
     {
         public AmmoType ammoType;
         public int limit;
-    }
-    [System.Serializable]
-    public class GunData
-    {
-        public GunType gunType;
-        public Sprite sprite;
-        public Sprite worldSprite;
-        public Color color;
-        public GameObject bulletPrefab;
-        public bool auto;
-        public float spread;
-        public float minVelocity;
-        public float maxVelocity;
-        public int damage;
-        public int amount;
-        public float fireRate;
     }
     [System.Serializable]
     public class GameModeData
