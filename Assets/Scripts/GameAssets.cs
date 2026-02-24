@@ -51,28 +51,6 @@ public class GameAssets : MonoBehaviour
     public AmmoLimit[] ammoLimits;
     public SoundClip[] soundClips;
 
-    public Sprite GetGunSprite(GunType gunType)
-    {
-        foreach (GunData gunData in gunDatas)
-        {
-            if (gunData.gunType == gunType)
-            {
-                return gunData.sprite;
-            }
-        }
-        return null;
-    }
-    public GunData GetGunData(GunType gunType)
-    {
-        foreach (GunData gunData in gunDatas)
-        {
-            if (gunData.gunType == gunType)
-            {
-                return gunData;
-            }
-        }
-        return null;
-    }
     public GameModeData GetGameModeData(GameMode gameMode)
     {
         foreach (GameModeData gameModeData in gameModeDatas)
