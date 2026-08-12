@@ -108,22 +108,6 @@ public class Player : LivingEntity
         if (level == null || !level.IsStarted()) {
             return;
         }
-        float change = damage;
-        if (health - damage < 0)
-        {
-            change += (health - damage);
-        }
-        if (damage > 0)
-        {
-            float spread = Mathf.Lerp(0.2f, 1.5f, damage / 100f);
-            for (int i = 0; i < Mathf.CeilToInt(change/2f); i++)
-            {
-                Destroy(Instantiate(GameAssets.i.bloodSplatter, transform.position, Quaternion.identity), 5f);
-                //GameObject bloodResidue = Instantiate(GameAssets.i.bloodResidue, transform.position, Quaternion.identity, transform.parent);
-                //Randomizer randomizer = bloodResidue.GetComponent<Randomizer>();
-                //randomizer.SetMaxOffSet(new Vector2(spread, spread));
-            }
-        }
         base.Damage(damage, damager, damageSource);
     }
     protected override void OnUpdate()

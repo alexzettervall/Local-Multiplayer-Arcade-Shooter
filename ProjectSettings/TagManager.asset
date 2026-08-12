@@ -85,6 +85,9 @@ TagManager:
   - name: Rocket
     uniqueID: 4022426691
     locked: 0
+  - name: Chicken
+    uniqueID: 526041525
+    locked: 0
   - name: Player
     uniqueID: 1014853397
     locked: 0
