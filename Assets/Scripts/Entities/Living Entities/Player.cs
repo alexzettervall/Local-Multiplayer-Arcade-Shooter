@@ -40,14 +40,14 @@ public class Player : LivingEntity
     } 
 
     
-    public override void Damage(int damage, Entity damager, DamageSource damageSource)
+    public override int Damage(int damage, Entity damager, DamageSource damageSource)
     {
         // Return if the game hasnt started yet
         Level level = GameObject.FindObjectOfType<Level>();
         if (level == null || !level.IsStarted()) {
-            return;
+            return 0;
         }
-        base.Damage(damage, damager, damageSource);
+        return base.Damage(damage, damager, damageSource);
     }
     protected override void OnUpdate()
     {

@@ -275,5 +275,7 @@ MonoBehaviour:
     clips: []
   - sound: 14
     clips: []
+  chickenPrefab: {fileID: 4681750501191050108, guid: 1788e7d6f626d13489ea263e6e10fc10, type: 3}
+  eggPrefab: {fileID: 1868589077219217716, guid: 7375f4f4e07e9a645b9ef8a933cfbe42, type: 3}
   playerAISettings: {fileID: 11400000, guid: 2705f8106bcbe26419b7d32fd633af65, type: 2}
   chickenAISettings: {fileID: 11400000, guid: 391c703f90251e2449ae0218903b3f07, type: 2}

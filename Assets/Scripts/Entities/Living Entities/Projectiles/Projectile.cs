@@ -16,9 +16,9 @@ public abstract class Projectile : Entity
     {
         return shooter;
     }
-    public override void Damage(int damage, Entity damager, DamageSource damageSource)
+    public override int Damage(int damage, Entity damager, DamageSource damageSource)
     {
-        return;
+        return 0;
     }
     protected override void OnFixedUpdate()
     {

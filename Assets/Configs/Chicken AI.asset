@@ -26,10 +26,10 @@ MonoBehaviour:
   aimErrorMax: 5
   reactionDelay: 0.2
   repathPeriod: 0.5
-  structureAvoidanceRadius: 1
-  structureAvoidanceWeight: 0.1
-  grenadeAvoidanceRadius: 5.46
-  grenadeAvoidanceWeight: 10
+  structureAvoidanceRadius: 0
+  structureAvoidanceWeight: 0
+  grenadeAvoidanceRadius: 0
+  grenadeAvoidanceWeight: 0
   gasAvoidanceRadius: 0
   gasAvoidanceWeight: 0
   movementSmoothingResponsiveness: 10

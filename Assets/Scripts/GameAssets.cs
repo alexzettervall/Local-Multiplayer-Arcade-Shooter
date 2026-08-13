@@ -49,6 +49,8 @@ public class GameAssets : MonoBehaviour
     public AmmoSprite[] ammoSprites;
     public AmmoLimit[] ammoLimits;
     public SoundClip[] soundClips;
+    public GameObject chickenPrefab;
+    public GameObject eggPrefab;
 
     public AISettings playerAISettings;
     public AISettings chickenAISettings;

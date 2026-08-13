@@ -62,7 +62,7 @@ public abstract class LivingEntity : Entity
         }
     }
     
-    public override void Damage(int damage, Entity damager, DamageSource damageSource)
+    public override int Damage(int damage, Entity damager, DamageSource damageSource)
     {
         // Emit blood particles
         float change = damage;
@@ -78,7 +78,7 @@ public abstract class LivingEntity : Entity
                 Destroy(Instantiate(GameAssets.i.bloodSplatter, transform.position, Quaternion.identity), 5f);
             }
         }
-        base.Damage(damage, damager, damageSource);
+        return base.Damage(damage, damager, damageSource);
     }
 
     public void Rotate(Vector2 direction)
@@ -138,8 +138,9 @@ public abstract class LivingEntity : Entity
             Damage(GameMan.Instance.gasDamage, null, DamageSource.Gas);
         }
     }
-    public void AttackMelee(int damage, Sound sound, float attackRadius, float attackDistance)
+    public int AttackMelee(int damage, Sound sound, float attackRadius, float attackDistance)
     {
+        int damageDelt = 0;
         AudioMan.PlaySound(sound);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + (Vector3)GetDirection() * attackDistance, attackRadius);
         foreach (Collider2D collider in colliders)
@@ -147,8 +148,9 @@ public abstract class LivingEntity : Entity
             Entity entity = collider.GetComponent<Entity>();
             if (entity == null) { continue; }
             if (entity == this) { continue; }
-            entity.Damage(damage, this, DamageSource.Melee);
+            damageDelt += entity.Damage(damage, this, DamageSource.Melee);
         }
+        return damageDelt;
     }
     
     private Vector2 GetDirection()

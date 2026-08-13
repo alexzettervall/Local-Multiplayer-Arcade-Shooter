@@ -133,9 +133,9 @@ public abstract class Item : Entity
         }
         animator.SetTrigger(name);
     }
-    public override void Damage(int damage, Entity damager, DamageSource damageSource)
+    public override int Damage(int damage, Entity damager, DamageSource damageSource)
     {
-        return;
+        return 0;
     }
     public void InitCircle()
     {

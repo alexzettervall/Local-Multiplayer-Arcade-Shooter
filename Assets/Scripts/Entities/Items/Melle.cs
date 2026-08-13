@@ -53,17 +53,18 @@ public class Melle : Item
         player.GetAnimator().SetTrigger("Punch Right");
     }
 
-    public override void Damage(int damage, Entity damager, DamageSource damageSource)
+    public override int Damage(int damage, Entity damager, DamageSource damageSource)
     {
         // Only get hit by bullets and when its being held
-        if (holder == null) { return; }
-        if (damageSource != DamageSource.Bullet) { return; }
-        if (!canBeDestroyed) { return; }
+        if (holder == null) { return 0; }
+        if (damageSource != DamageSource.Bullet) { return 0; }
+        if (!canBeDestroyed) { return 0; }
         hitsToDestroy--;
         if (hitsToDestroy <= 0)
         {
             Kill();
         }
+        return damage;
     }
     
 }

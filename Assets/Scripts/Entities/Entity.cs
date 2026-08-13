@@ -55,7 +55,7 @@ public abstract class Entity : MonoBehaviour
 
 
     // Overidable Functions
-    public virtual void Damage(int damage, Entity damager, DamageSource damageSource)
+    public virtual int Damage(int damage, Entity damager, DamageSource damageSource)
     {
         if (material != null)
         {
@@ -92,6 +92,7 @@ public abstract class Entity : MonoBehaviour
                 Kill();
             }
         }
+        return damage;
     }
     protected virtual void OnAwake() {
         

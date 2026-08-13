@@ -10,17 +10,18 @@ public abstract class Structure : Entity
     [SerializeField] protected bool dynamicSize = false;
     
 
-    public override void Damage(int damage, Entity damager, DamageSource damageSource)
+    public override int Damage(int damage, Entity damager, DamageSource damageSource)
     {
         if (!breakable)
         {
             damage = 0;
         }
-        base.Damage(damage, damager, damageSource);
+        int damageDelt = base.Damage(damage, damager, damageSource);
         if (dynamicSize)
         {
             ResizeStructure();
         }
+        return damageDelt;
     }
     public virtual void ResizeStructure()
     {
