@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="1000.0002"
-   height="1207.0938"
-   viewBox="0 0 264.58338 319.37687"
+   width="459.94409"
+   height="408.21259"
+   viewBox="0 0 121.69354 108.00624"
    version="1.1"
    id="svg1"
    inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
@@ -39,8 +39,8 @@
     <inkscape:page
        x="0"
        y="0"
-       width="264.58337"
-       height="319.37686"
+       width="121.69354"
+       height="108.00624"
        id="page1"
        margin="0"
        bleed="0" />
@@ -59,41 +59,25 @@
        apply_with_weight="true"
        only_selected="false"
        uniform="false" />
-    <inkscape:path-effect
-       effect="mirror_symmetry"
-       start_point="389.18472,206.30106"
-       end_point="69.807845,206.30106"
-       center_point="229.49628,206.30106"
-       id="path-effect3"
-       is_visible="true"
-       lpeversion="1.2"
-       lpesatellites=""
-       mode="vertical"
-       discard_orig_path="false"
-       fuse_paths="false"
-       oposite_fuse="false"
-       split_items="false"
-       split_open="false"
-       link_styles="false" />
   </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-93.542574,-38.749077)">
+     transform="translate(-164.98749,-38.749077)">
     <circle
-       style="fill:#d8d8d8;fill-opacity:1;stroke-width:0.309527"
+       style="display:none;fill:#d8d8d8;fill-opacity:1;stroke-width:0.309527"
        id="path1"
        cx="-225.83424"
        cy="225.83424"
        r="132.29167"
        transform="rotate(-90)"
-       inkscape:export-filename="chicken.png"
+       inkscape:export-filename="chicken_body.png"
        inkscape:export-xdpi="19.200001"
        inkscape:export-ydpi="19.200001" />
     <path
        sodipodi:type="star"
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.05833"
+       style="display:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.05833"
        id="path5"
        inkscape:flatsided="false"
        sodipodi:sides="20"
@@ -109,7 +93,7 @@
        transform="matrix(0,-2.1224908,2.1224908,0,89.160523,445.02795)" />
     <path
        sodipodi:type="star"
-       style="fill:#ffaa00;fill-opacity:1;stroke:none;stroke-width:1.05833"
+       style="display:inline;fill:#ffaa00;fill-opacity:1;stroke:none;stroke-width:1.05833"
        id="path2"
        inkscape:flatsided="false"
        sodipodi:sides="3"
@@ -123,20 +107,12 @@
        inkscape:randomized="0"
        d="m 356.54636,141.36925 c 0,12.04349 -43.36861,21.03105 -53.79857,27.0528 -10.42997,6.02174 -39.89774,39.08628 -50.3277,33.06453 -10.42997,-6.02174 3.47087,-48.07384 3.47087,-60.11733 0,-12.04349 -13.90084,-54.095593 -3.47087,-60.117337 10.42996,-6.021744 39.89773,27.042787 50.3277,33.064537 10.42997,6.02174 53.79857,15.00931 53.79857,27.0528 z"
        transform="rotate(-90,239.88022,155.41522)"
-       inkscape:transform-center-y="-17.354383" />
+       inkscape:transform-center-y="-17.354383"
+       inkscape:export-filename="chicken_beak.png"
+       inkscape:export-xdpi="19.200001"
+       inkscape:export-ydpi="19.200001" />
     <path
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833"
-       id="path3"
-       inkscape:path-effect="#path-effect3"
-       sodipodi:type="arc"
-       sodipodi:cx="234.55475"
-       sodipodi:cy="141.26593"
-       sodipodi:rx="18.657764"
-       sodipodi:ry="18.657764"
-       d="m 253.21251,141.26593 c 0,10.3044 -8.35336,18.65776 -18.65776,18.65776 -10.3044,0 -18.65777,-8.35336 -18.65777,-18.65776 0,-10.3044 8.35337,-18.65776 18.65777,-18.65776 10.3044,0 18.65776,8.35336 18.65776,18.65776 z m 0,130.07026 c 0,-10.3044 -8.35336,-18.65776 -18.65776,-18.65776 -10.3044,0 -18.65777,8.35336 -18.65777,18.65776 0,10.3044 8.35337,18.65777 18.65777,18.65777 10.3044,0 18.65776,-8.35337 18.65776,-18.65777 z"
-       transform="rotate(-90,223.7335,204.2003)" />
-    <path
-       style="fill:#f93400;fill-opacity:1;stroke:none;stroke-width:1.05833"
+       style="display:none;fill:#f93400;fill-opacity:1;stroke:none;stroke-width:1.05833"
        d="m 288.58317,169.84209 c -7.88224,0.53514 -14.7413,9.43312 -28.31428,11.69125 -13.57298,2.25813 -33.85879,-2.12376 -50.51745,-2.53779 -16.65865,-0.41403 -29.68921,3.13976 -34.57573,9.06294 -4.88653,5.92319 -1.62889,14.21536 6.926,17.0963 8.55489,2.88093 22.40613,0.35061 36.14387,1.33993 13.73774,0.98932 27.36032,5.49816 39.83283,6.31916 12.4725,0.821 23.79366,-2.04601 32.96817,-7.30264 9.17451,-5.25662 16.20176,-12.90237 15.26285,-20.63947 -0.9389,-7.73711 -9.84402,-15.56482 -17.72626,-15.02968 z"
        id="path4"
        inkscape:path-effect="#path-effect4"

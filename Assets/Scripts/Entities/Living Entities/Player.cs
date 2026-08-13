@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using TMPro;
 
 public class Player : LivingEntity
 {
     public int playerID { get; private set; }
-    [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject gunSprite;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Image healthCircle;
@@ -21,26 +16,11 @@ public class Player : LivingEntity
     [SerializeField] private float punchDistance = 0.5f;
     [SerializeField] private int punchDamage = 15;
     [SerializeField] private float punchDelay = 0.33f;
-    [SerializeField] private float stepDelay = 0.3f;
-    [SerializeField] private LayerMask poisonGas;
-    [SerializeField] private CircleCollider2D col;
     [SerializeField] private SpriteRenderer leftHandSr;
     [SerializeField] private SpriteRenderer rightHandSr;
     public bool isStatic = false;
     private float punchTimer;
     private Level level;
-
-    private Vector2 movement;
-    private Vector2 direction;
-    private bool interact;
-    private bool drop;
-    private bool use;
-    private bool unUse;
-    private bool isUsing;
-    private float lastFootStepTime;
-
-    private bool inGas = false;
-    private float gasTimer = 0f;
   
     private PlayerUI playerUI;
     public void InitializePlayer(int playerID)
@@ -59,48 +39,7 @@ public class Player : LivingEntity
         playerUI = new PlayerUI(this);
     } 
 
-    public void OnMove(Vector2 movement)
-    {
-        this.movement = movement;
-    }
-    public void OnRotate(Vector2 direction, InputDevice device)
-    {
-        Vector2 input = direction;
-        if (device is Mouse)
-        {
-            Vector2 pos = Camera.main.ScreenToWorldPoint(input);
-            input = pos - (Vector2)transform.position;
-        }
-        else
-        {
-            if (input.magnitude < 0.1f)
-            {
-                return;
-            }
-        }
-        this.direction = input;
-    }
-    public void OnInteract(bool triggered)
-    {
-        interact = triggered;
-    }
-    public void OnDrop(bool triggered)
-    {
-        drop = triggered;
-    }
-    public void OnUse(bool performed, bool canceled)
-    {
-        if (performed)
-        {
-            use = true;
-            isUsing = true;
-        }
-        else if (canceled)
-        {
-            unUse = true;
-            isUsing = false;
-        }
-    }
+    
     public override void Damage(int damage, Entity damager, DamageSource damageSource)
     {
         // Return if the game hasnt started yet
@@ -157,63 +96,7 @@ public class Player : LivingEntity
         Rotate(direction);
         
     }
-    public void Rotate(Vector2 direction)
-    {
-        if (HasStatusEffect(StatusEffectType.Frozen)) { return; }
-        rb.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-    }
-    public void Move(Vector2 movement)
-    {
-        if (HasStatusEffect(StatusEffectType.Frozen)) { return; }
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-            
-        if (movement.magnitude > 0.1f)
-        {
-            if (Time.time - lastFootStepTime >= stepDelay)
-            {
-                Physics2D.queriesHitTriggers = true;
-                Collider2D[] cols = Physics2D.OverlapPointAll(transform.position, GameAssets.i.structuresOnly);
-                Physics2D.queriesHitTriggers = false;
-                Material material = null;
-                foreach (Collider2D col in cols)
-                {
-                    if (col == null)
-                    {
-                        continue;
-                    }
-                    Structure structure = col.GetComponent<Structure>();
-                    Material mat = structure.GetMaterial();
-                    if (material == null || mat.priority > material.priority)
-                    {
-                        material = mat;
-                    }
-                }
-                if (material != null)
-                {
-                    AudioMan.PlaySound(material.footstep);
-                    lastFootStepTime = Time.time;
-                }
-            }
-        }
-    }
-    protected void GasLogic()
-    {
-        Collider2D col_ = Physics2D.OverlapCircle(transform.position, col.radius, poisonGas);
-        inGas = !(col_ == null);
-        if (inGas)
-        {
-            gasTimer += Time.deltaTime;
-        }
-        else
-        {
-            gasTimer = 0;
-        }
-        if (gasTimer > GameMan.Instance.gasTickTime)
-        {
-            gasTimer = 0;
-            Damage(GameMan.Instance.gasDamage, null, DamageSource.Gas);
-        }
-    }
+    
     public void Punch()
     {
         if (punchTimer > 0)
@@ -231,23 +114,6 @@ public class Player : LivingEntity
         }
         
         AttackMelee(punchDamage, Sound.Punch, punchRadius, punchDistance);
-    }
-    public void AttackMelee(float damage, Sound sound, float attackRadius, float attackDistance)
-    {
-        AudioMan.PlaySound(sound);
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + (Vector3)GetDirection() * attackDistance, attackRadius);
-        foreach (Collider2D collider in colliders)
-        {
-            Entity entity = collider.GetComponent<Entity>();
-            if (entity == null) { continue; }
-            if (entity == this) { continue; }
-            entity.Damage(punchDamage, this, DamageSource.Melee);
-        }
-    }
-    private Vector2 GetDirection()
-    {
-        float rotRad = Mathf.Deg2Rad * (rb.rotation + 90f);
-        return new Vector2(Mathf.Cos(rotRad), Mathf.Sin(rotRad));
     }
     public void Interact()
     {
@@ -311,15 +177,12 @@ public class Player : LivingEntity
     {
         return leftHand;
     }
-    public float GetMoveSpeed()
-    {
-        return moveSpeed;
-    }
     public RadialAmmoDisplay GetAmmoDisplay()
     {
         return ammoDisplay;
     }
-    public float GetDPS() {
+    public override float GetDPS()
+    {
         Item item = GetItem();
         if (item == null) {
             return punchDamage / punchDelay;

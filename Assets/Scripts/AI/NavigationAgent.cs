@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NavigationAgent
 {
-    Blackboard blackboard;
+    protected Blackboard blackboard;
     List<Vector2> path = null;
     float repathTimer = 0f;
     Vector2 currentDirection = Vector2.zero;
@@ -17,7 +17,7 @@ public class NavigationAgent
         repathTimer -= Time.deltaTime;
         if (repathTimer <= 0) {
             UpdatePath();
-            repathTimer = GameAssets.i.AISettings.repathPeriod;
+            repathTimer = blackboard.settings.repathPeriod;
         }
 
         if (blackboard.move) {
@@ -29,50 +29,55 @@ public class NavigationAgent
     }
 
     public void UpdatePath() {
-        if (blackboard.target == null) return;
-        path = GameObject.FindObjectOfType<Level>().FindPath(blackboard.player.transform.position, blackboard.target.GetPosition());
+        if (!(blackboard.target is Vector2 target))
+        {
+            return;
+        }
+        path = GameObject.FindObjectOfType<Level>().FindPath(blackboard.entity.transform.position, target);
     }
 
     public void Move() {
         if (path == null) return;
-        if (blackboard.target == null) return;
+        if (!(blackboard.target is Vector2 target))
+        {
+            return;
+        }
 
-        float distToTarget = Vector2.Distance(blackboard.target.GetPosition(), blackboard.player.transform.position);
+        float distToTarget = Vector2.Distance(target, blackboard.entity.transform.position);
         Vector2 desiredDirection = Vector2.zero;
         // Determine wether to go directly for target or follow the path
         float avoidanceWeight = 1f;
-        bool hasLineOfSight = !Physics2D.Linecast(blackboard.player.transform.position, blackboard.target.GetPosition(), GameAssets.i.structuresOnly);
+        bool hasLineOfSight = !Physics2D.Linecast(blackboard.entity.transform.position, target, GameAssets.i.structuresOnly);
         bool noPath = path.Count < 1;
-        bool shouldMoveDirectly = distToTarget <= GameAssets.i.AISettings.directMovementThreshold && hasLineOfSight;
+        bool shouldMoveDirectly = distToTarget <= blackboard.settings.directMovementThreshold && hasLineOfSight;
         if (noPath || shouldMoveDirectly) {
             // Direct movement
-            desiredDirection = blackboard.target.GetPosition() - (Vector2)blackboard.player.transform.position;
-            avoidanceWeight = GameAssets.i.AISettings.directMovementAvoidanceWeight;
+            desiredDirection = target - (Vector2)blackboard.entity.transform.position;
+            avoidanceWeight = blackboard.settings.directMovementAvoidanceWeight;
         }
         else {
             // Follow path
-            desiredDirection = path[0] - (Vector2)blackboard.player.transform.position;
-            avoidanceWeight = GameAssets.i.AISettings.structureAvoidanceWeight;
+            desiredDirection = path[0] - (Vector2)blackboard.entity.transform.position;
+            avoidanceWeight = blackboard.settings.structureAvoidanceWeight;
 
-            float dist = Vector2.Distance(blackboard.player.transform.position, path[0]);
+            float dist = Vector2.Distance(blackboard.entity.transform.position, path[0]);
             if (dist < 1.42f) {
                 path.RemoveAt(0);
             }
         }
         desiredDirection += (ComputeAvoidance() * avoidanceWeight);
         desiredDirection.Normalize();
-        currentDirection = Vector2.Lerp(currentDirection, desiredDirection, GameAssets.i.AISettings.movementSmoothingResponsiveness * Time.deltaTime);
+        currentDirection = Vector2.Lerp(currentDirection, desiredDirection, blackboard.settings.movementSmoothingResponsiveness * Time.deltaTime);
         currentDirection.Normalize();
         blackboard.movement = currentDirection;
         blackboard.lookDirection = currentDirection;
     }
 
     public Vector2 ComputeAvoidance() {
-        Vector2 position = blackboard.player.transform.position;
+        Vector2 position = blackboard.entity.transform.position;
         Vector2 avoidance = Vector2.zero;
 
-        AISettings aiSettings = GameAssets.i.AISettings;
-        float maxAvoidanceRadius = Mathf.Max(aiSettings.structureAvoidanceRadius, aiSettings.grenadeAvoidanceRadius, aiSettings.gasAvoidanceRadius);
+        float maxAvoidanceRadius = Mathf.Max(blackboard.settings.structureAvoidanceRadius, blackboard.settings.grenadeAvoidanceRadius, blackboard.settings.gasAvoidanceRadius);
         Collider2D[] allCols = Physics2D.OverlapCircleAll(position, maxAvoidanceRadius);
 
         
@@ -88,19 +93,19 @@ public class NavigationAgent
             }
 
             // Structure avoidance
-            if (distance <= aiSettings.structureAvoidanceRadius && ((GameAssets.i.structuresOnly.value & (1 << hit.gameObject.layer)) != 0))
+            if (distance <= blackboard.settings.structureAvoidanceRadius && ((GameAssets.i.structuresOnly.value & (1 << hit.gameObject.layer)) != 0))
             {
-                avoidance += GameAssets.i.AISettings.structureAvoidanceWeight * toObstacle.normalized / distance;
+                avoidance += blackboard.settings.structureAvoidanceWeight * toObstacle.normalized / distance;
             }
             // Grenade Avoidance
-            else if (distance <= aiSettings.grenadeAvoidanceRadius && grenade != null && grenade.HasTag("dangerous"))
+            else if (distance <= blackboard.settings.grenadeAvoidanceRadius && grenade != null && grenade.HasTag("dangerous"))
             {
-               avoidance += GameAssets.i.AISettings.grenadeAvoidanceWeight * toObstacle.normalized / distance;
+               avoidance += blackboard.settings.grenadeAvoidanceWeight * toObstacle.normalized / distance;
             }
             // Gas avoidance
-            else if (distance <= aiSettings.gasAvoidanceRadius && hit.gameObject.tag == "Poison Gas")
+            else if (distance <= blackboard.settings.gasAvoidanceRadius && hit.gameObject.tag == "Poison Gas")
             {
-                avoidance += GameAssets.i.AISettings.gasAvoidanceWeight * toObstacle.normalized / distance;
+                avoidance += blackboard.settings.gasAvoidanceWeight * toObstacle.normalized / distance;
             }
         }
 
@@ -108,12 +113,12 @@ public class NavigationAgent
     }
 
     public void DrawGizmos() {
-        if (blackboard.player == null) {
+        if (blackboard.entity == null) {
             return;
         }
         Color nodeColor = new Color(0, 0, 1f);
         Color lineColor = new Color(0, 1f, 0);
-        Vector2 prevNode = blackboard.player.transform.position;
+        Vector2 prevNode = blackboard.entity.transform.position;
         foreach (Vector2 node in path) {
             Gizmos.color = lineColor;
             if (prevNode != null) {

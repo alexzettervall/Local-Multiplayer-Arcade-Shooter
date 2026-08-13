@@ -6,11 +6,12 @@ public class AISettings : ScriptableObject
     public float jitter = 0.1f; // Use to add randomness
 
     [Header("Perception")]
-    public float enemyPeriod;
+    public bool perceivePlayers;
+    public bool perceiveItems;
+    public bool perceiveContainers;
+    public float playerPeriod;
     public float itemPeriod;
-    public float sightRange = 15f;
-    public float hearingRange = 20f;
-    public float visionAngle = 120f;
+    public float containerPeriod;
 
     [Header("Utility Scorer")]
     public float utilityRecalcPeriod = 2f;

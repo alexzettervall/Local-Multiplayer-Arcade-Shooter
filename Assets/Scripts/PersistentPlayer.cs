@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PersistentPlayer : MonoBehaviour
 {
-    public Player player;
+    public LivingEntity entity;
     public PlayerInput playerInput;
     public BotAI botAI;
 
@@ -14,7 +14,7 @@ public class PersistentPlayer : MonoBehaviour
 
     public void Start() {
         playerInput = GetComponent<PlayerInput>();
-        botAI = new BotAI(this);
+        botAI = new PlayerBotAI();
     }
     
     
@@ -26,24 +26,25 @@ public class PersistentPlayer : MonoBehaviour
             return;
         }
 
-        if (player == null) {
+        if (entity == null) {
             return;
         }
+        botAI.SetEntity(entity);
         botAI.Update();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (player == null)
+        if (entity == null)
         {
             return;
         }
-        player.OnMove(context.ReadValue<Vector2>().normalized);
+        entity.OnMove(context.ReadValue<Vector2>().normalized);
         
     }
     public void OnRotate(InputAction.CallbackContext context)
     {
-        if (player == null)
+        if (entity == null)
         {
             return;
         }
@@ -53,32 +54,32 @@ public class PersistentPlayer : MonoBehaviour
         } 
         timeSinceLastRotation = 0f;
         lastDirection = context.ReadValue<Vector2>().normalized;
-        player.OnRotate(context.ReadValue<Vector2>().normalized, context.control.device);
+        entity.OnRotate(context.ReadValue<Vector2>().normalized, context.control.device);
         //player.OnRotate(context.ReadValue<Vector2>(), context.control.device);
     }
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (player == null)
+        if (entity == null)
         {
             return;
         }
-        player.OnInteract(context.action.triggered);
+        entity.OnInteract(context.action.triggered);
     }
     public void OnDrop(InputAction.CallbackContext context)
     {
-        if (player == null)
+        if (entity == null)
         {
             return;
         }
-        player.OnDrop(context.action.triggered);
+        entity.OnDrop(context.action.triggered);
     }
     public void OnUse(InputAction.CallbackContext context)
     {
-        if (player == null)
+        if (entity == null)
         {
             return;
         }
-        player.OnUse(context.performed, context.canceled);
+        entity.OnUse(context.performed, context.canceled);
     }
 
     public void OnDrawGizmos() {

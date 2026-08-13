@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696ffaf3a7104457697ec6b0279e113f, type: 3}
+  m_Name: Player AI
+  m_EditorClassIdentifier: 
+  jitter: 0.1
+  perceivePlayers: 1
+  perceiveItems: 1
+  perceiveContainers: 0
+  playerPeriod: 0
+  itemPeriod: 0
+  containerPeriod: 0
+  utilityRecalcPeriod: 2
+  goalSwitchPenalty: 0.2
+  stayEngagedRange: 3
+  aimErrorMin: 1
+  aimErrorMax: 5
+  reactionDelay: 0.2
+  repathPeriod: 0.5
+  structureAvoidanceRadius: 1
+  structureAvoidanceWeight: 1
+  grenadeAvoidanceRadius: 5.46
+  grenadeAvoidanceWeight: 10
+  gasAvoidanceRadius: 0
+  gasAvoidanceWeight: 0
+  movementSmoothingResponsiveness: 10
+  directMovementThreshold: 1
+  directMovementAvoidanceWeight: 0.2
+  stuckTimeThreshold: 1.5
+  drawDebugVision: 0

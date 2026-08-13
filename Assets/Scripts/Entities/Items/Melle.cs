@@ -7,7 +7,7 @@ public class Melle : Item
 {
     [Header("Weapon Attributes")]
     public float attackSpeed;
-    public float damage;
+    public int damage;
     public float attackDistance;
     public float attackRadius;
 

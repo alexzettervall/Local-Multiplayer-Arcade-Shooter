@@ -142,13 +142,15 @@ MonoBehaviour:
     rightHand: {fileID: -1505984797, guid: 08cf1f0c7599a42dd91ad76ea058ee92, type: 3}
   lootPools: {fileID: 11400000, guid: fb11e6d25c9374887b51c448dc15f4e4, type: 2}
   lootPrefab: {fileID: 6812846754001577366, guid: 2fe4abb1f02057d44ac0187a9da044bf, type: 3}
-  AISettings: {fileID: 11400000, guid: 6664b58dccb8840afa088d15b01d3f8d, type: 2}
   spawnPositionRandomization: 0
   persistentPlayer: {fileID: 3061869582776069428, guid: 009ebd8fc8941a94ea06426f8624e00c, type: 3}
   plus1Text: {fileID: 2114024878864868641, guid: 7fd984cff0186e14392addb939cb4598, type: 3}
   bloodSplatter: {fileID: 2100360263725549908, guid: 5cae439f032dcd54c88b7f048b67d5a1, type: 3}
   bloodResidue: {fileID: 7242358647907263640, guid: 923019186cb364acebea7fabd9903bfe, type: 3}
   poisonGas: {fileID: 6878751879162635581, guid: 933bd41290f7a8f4aa42fd952f5d8415, type: 3}
+  poisonGasLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   eternalFire: {fileID: 1480822453336786920, guid: fe14bc66d97600c4f879e73b1ddfb54d, type: 3}
   shrapnel: {fileID: 5406932678097414640, guid: 5c18d13bb1647e14280d4bc3ca2ab445, type: 3}
   cratorPrefab: {fileID: 6335676588257217979, guid: 0f8cbd50f71414c46ab8f11541413a0e, type: 3}
@@ -203,31 +205,6 @@ MonoBehaviour:
   ammoPrefab: {fileID: 3798581280919619339, guid: ecdc3c2432da3ce47a72f0bef650ced0, type: 3}
   gunPrefab: {fileID: 7629327261198113117, guid: 60aa731389953bc408f2e7d7ddb3b56a, type: 3}
   itemBackgroundPrefab: {fileID: 68295296536104719, guid: fb4865aec9b3a254aa378d632ce70142, type: 3}
-  gunDatas:
-  - gunType: 0
-    sprite: {fileID: 21300000, guid: 862f67bbe0d7b8a478a35068db1770ba, type: 3}
-    worldSprite: {fileID: 21300000, guid: 62622a6ac96fb4040b11be9110e897ba, type: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    bulletPrefab: {fileID: 5406932678097414640, guid: cd7caeba9a2a5fd4fbf1a235621d5d7a, type: 3}
-    auto: 0
-    spread: 6
-    minVelocity: 18
-    maxVelocity: 20
-    damage: 12
-    amount: 1
-    fireRate: 8.3
-  - gunType: 1
-    sprite: {fileID: 21300000, guid: 53c29921b5f0d0c4b87c58967f040193, type: 3}
-    worldSprite: {fileID: 21300000, guid: 8d3bfcf1141258e479b7dce0c37735a8, type: 3}
-    color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
-    bulletPrefab: {fileID: 5406932678097414640, guid: cd7caeba9a2a5fd4fbf1a235621d5d7a, type: 3}
-    auto: 1
-    spread: 5
-    minVelocity: 20
-    maxVelocity: 24
-    damage: 11
-    amount: 1
-    fireRate: 11.1
   gameModeDatas:
   - gameMode: 0
     respawn: 1
@@ -298,3 +275,5 @@ MonoBehaviour:
     clips: []
   - sound: 14
     clips: []
+  playerAISettings: {fileID: 11400000, guid: 2705f8106bcbe26419b7d32fd633af65, type: 2}
+  chickenAISettings: {fileID: 11400000, guid: 391c703f90251e2449ae0218903b3f07, type: 2}

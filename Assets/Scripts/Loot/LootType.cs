@@ -6,5 +6,6 @@ public enum LootType
     Laser,
     Grenade,
     Pumpkin,
-    Utility
+    Utility,
+    Animal
 }

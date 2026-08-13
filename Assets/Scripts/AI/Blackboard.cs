@@ -1,17 +1,20 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Blackboard
 {
-    public Player player;
+    public AISettings settings;
+    public LivingEntity entity;
     public string goal;
-    public EnemyData[] enemyDatas;
+    public PlayerData[] playerDatas;
     public ItemData[] itemDatas;
+    public ContainerData[] containerDatas;
     public bool move;
-    public AITarget target;
-    public Player targetEnemy;
-    public Item targetLoot;
+    public Vector2? target;
+    public PlayerData? targetEnemy;
+    public ItemData? targetLoot;
+    public ContainerData? targetContainer;
     public float attackRange = 2f;
     public bool isUsing = false;
     public bool isDirty = false; // If true immediately reavaluate goal
@@ -30,26 +33,37 @@ public class Blackboard
 
     }
 
-    public struct EnemyData
+    public struct PlayerData
     {
-        public EnemyData(Player player, Vector2 position, float health) {
-            this.player = player;
+        public PlayerData(Vector2 position, float health) {
             this.position = position;
             this.health = health;
         }
 
-        public Player player;
         public Vector2 position;
         public float health;
     }
     public struct ItemData
     {
-        public ItemData(Item item, float value) {
-            this.item = item;
-            this.value = value;
+        public ItemData(Vector2 position, List<String> tags, bool held, float dps) {
+            this.position = position;
+            this.tags = tags;
+            this.held = held;
+            this.dps = dps;
         }
 
-        public Item item;
-        public float value;
+        public Vector2 position;
+        public List<String> tags;
+        public bool held;
+        public float dps;
+    }
+    public struct ContainerData
+    {
+        public ContainerData(Vector2 position)
+        {
+            this.position = position;
+        }
+
+        public Vector2 position;
     }
 }

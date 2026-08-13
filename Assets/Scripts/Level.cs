@@ -302,7 +302,7 @@ public class Level : MonoBehaviour
         GameObject newPlayer = Instantiate(GameAssets.i.playerPrefab, spawnPosition, Quaternion.identity, transform);
         Player player = newPlayer.GetComponent<Player>();
         player.InitializePlayer(playerID);
-        playerData.PersistentPlayer.player = player;
+        playerData.PersistentPlayer.entity = player;
     }
     public void ShuffleSpawnPoints()
     {

@@ -63,3 +63,7 @@ MonoBehaviour:
     lootWeights:
     - loot: {fileID: 1868589077219217716, guid: 10e84ec9cf24f1347931c1aab7bd0418, type: 3}
       weight: 7.52
+  - lootType: 7
+    lootWeights:
+    - loot: {fileID: 4681750501191050108, guid: 1788e7d6f626d13489ea263e6e10fc10, type: 3}
+      weight: 1

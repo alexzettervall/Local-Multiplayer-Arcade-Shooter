@@ -59,7 +59,7 @@ public static class AStar
         List<Vector2> path = new List<Vector2>();
         while (node != null)
         {
-            path.Insert(0, node.waypoint.position + new Vector2(-GameAssets.i.AISettings.jitter, GameAssets.i.AISettings.jitter)); // Add randomness
+            path.Insert(0, node.waypoint.position); // Add randomness
             node = node.Parent;
         }
         return path;

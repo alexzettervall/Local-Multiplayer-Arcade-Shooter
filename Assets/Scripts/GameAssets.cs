@@ -21,13 +21,13 @@ public class GameAssets : MonoBehaviour
     public HandSet[] playerHandSkins;
     public LootPools lootPools;
     public GameObject lootPrefab;
-    public AISettings AISettings;
     public float spawnPositionRandomization = 0f;
     public GameObject persistentPlayer;
     public GameObject plus1Text;
     public GameObject bloodSplatter;
     public GameObject bloodResidue;
     public GameObject poisonGas;
+    public LayerMask poisonGasLayer;
     public GameObject eternalFire;
     public GameObject shrapnel;
     public GameObject cratorPrefab;
@@ -49,6 +49,9 @@ public class GameAssets : MonoBehaviour
     public AmmoSprite[] ammoSprites;
     public AmmoLimit[] ammoLimits;
     public SoundClip[] soundClips;
+
+    public AISettings playerAISettings;
+    public AISettings chickenAISettings;
 
     public GameModeData GetGameModeData(GameMode gameMode)
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -213,8 +214,8 @@ public abstract class Entity : MonoBehaviour
         heldItem.rb.bodyType = RigidbodyType2D.Dynamic;
         if (!forced)
         {
-            heldItem.rb.velocity = transform.up * 2f + transform.right * Random.Range(-1f, 1f);
-            heldItem.rb.angularVelocity = Random.Range(-1f, 1f) * 50f;
+            heldItem.rb.velocity = transform.up * 2f + transform.right * UnityEngine.Random.Range(-1f, 1f);
+            heldItem.rb.angularVelocity = UnityEngine.Random.Range(-1f, 1f) * 50f;
         }
         heldItem.OnDropped();
         heldItem = null;
@@ -274,5 +275,9 @@ public abstract class Entity : MonoBehaviour
     public bool BlocksLasers()
     {
         return blocksLasers;
+    }
+    public List<String> GetTags()
+    {
+        return tags;
     }
 }
