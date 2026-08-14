@@ -94,6 +94,9 @@ TagManager:
   - name: Player
     uniqueID: 1014853397
     locked: 0
+  - name: Ghost
+    uniqueID: 34702909
+    locked: 0
   - name: Item In Hand
     uniqueID: 194758297
     locked: 0

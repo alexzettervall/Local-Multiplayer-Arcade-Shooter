@@ -34,8 +34,11 @@ public class Chicken : LivingEntity
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        ai.SetEntity(this);
-        ai.Update();
+        if (controller == null)
+        {
+            ai.SetEntity(this);
+            ai.Update();
+        }
         Move(movement);
         Rotate(direction);
 

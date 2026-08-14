@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public abstract class LivingEntity : Entity
 {
+    public PersistentPlayer controller;
+
     protected Vector2 movement;
     protected Vector2 direction;
     protected bool interact;
@@ -79,6 +81,17 @@ public abstract class LivingEntity : Entity
             }
         }
         return base.Damage(damage, damager, damageSource);
+    }
+
+    protected override void Kill()
+    {
+        if (controller != null)
+        {
+            GameObject ghostObj = Instantiate(GameAssets.i.ghostPrefab, transform.position, Quaternion.identity, transform.parent);
+            Ghost ghost = ghostObj.GetComponent<Ghost>();
+            controller.SetEntity(ghost);
+        }
+        base.Kill();
     }
 
     public void Rotate(Vector2 direction)

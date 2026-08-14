@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PersistentPlayer : MonoBehaviour
 {
-    public LivingEntity entity;
+    private LivingEntity entity;
+
     public PlayerInput playerInput;
     public BotAI botAI;
 
@@ -86,5 +87,15 @@ public class PersistentPlayer : MonoBehaviour
         if (botAI != null) {
             botAI.DrawGizmos();
         }
+    }
+
+    public void SetEntity(LivingEntity livingEntity)
+    {
+        if (entity != null)
+        {
+            entity.controller = null;
+        }
+        entity = livingEntity;
+        livingEntity.controller = this;
     }
 }

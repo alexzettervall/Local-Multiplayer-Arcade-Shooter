@@ -51,6 +51,7 @@ public class GameAssets : MonoBehaviour
     public SoundClip[] soundClips;
     public GameObject chickenPrefab;
     public GameObject eggPrefab;
+    public GameObject ghostPrefab;
 
     public AISettings playerAISettings;
     public AISettings chickenAISettings;

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -305,7 +304,7 @@ public class Level : MonoBehaviour
         GameObject newPlayer = Instantiate(GameAssets.i.playerPrefab, spawnPosition, Quaternion.identity, transform);
         Player player = newPlayer.GetComponent<Player>();
         player.InitializePlayer(playerID);
-        playerData.PersistentPlayer.entity = player;
+        playerData.PersistentPlayer.SetEntity(player);
     }
     public void ShuffleSpawnPoints()
     {
