@@ -103,6 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291813188ec4a0d428aa427c9b2e1b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  category: 3
+  levelEnabled: 0
   levelSize: {x: 34, y: 20}
   gameMode: 1
   spawnPoints:

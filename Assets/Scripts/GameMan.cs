@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class GameMan : MonoBehaviour
 {
@@ -86,13 +87,33 @@ public class GameMan : MonoBehaviour
 
     public void StartRound()
     {
-        GameObject levelWorld = GameAssets.i.levels[Random.Range(0, GameAssets.i.levels.Length)];
+        GameObject levelWorld = GetLevelPrefab(LevelCategory.Forest);
         GameObject obj = Instantiate(levelWorld, GameObject.FindGameObjectWithTag("Level Holder").transform);
         Level level = obj.GetComponent<Level>();
 
         DynamicCamera camera = FindObjectOfType<DynamicCamera>();
         camera.level = level;
         camera.UpdateCameraPositionAndSize(true);
+    }
+    private GameObject GetLevelPrefab(LevelCategory? category = null)
+    {
+        /*
+        Get a random level prefab of a specific category.
+        */
+        var available = GameAssets.i.levels.Where(level =>
+        {
+            Level levelData = level.GetComponent<Level>();
+            return levelData.levelEnabled && (category == null || levelData.category == category);
+        }).ToArray();
+
+        return available[Random.Range(0, available.Length)];
+    }
+    private GameObject GetSpecificLevel(string levelName)
+    {
+        /*
+        Get a level prefab of a specific level.
+        */
+        return GameAssets.i.levels.First(level => level.name == levelName);
     }
     private void ResetPlayerScores()
     {
@@ -106,8 +127,7 @@ public class GameMan : MonoBehaviour
     {
         if (scene.name == "Game")
         {
-            GameObject levelWorld = GameAssets.i.levels[Random.Range(0, GameAssets.i.levels.Length)];
-            Instantiate(levelWorld, GameObject.FindGameObjectWithTag("Level Holder").transform); 
+            StartRound();
             SceneManager.sceneLoaded -= OnGameSceneLoaded;
         }
         else if (scene.name == "Menu")

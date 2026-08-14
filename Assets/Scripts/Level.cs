@@ -7,6 +7,9 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class Level : MonoBehaviour
 {
+    public LevelCategory category;
+    public bool levelEnabled = false;
+
     [SerializeField] private Vector2 levelSize;
     [SerializeField] private GameMode gameMode;
     [SerializeField] private List<PlayerRespawn> playerRespawns = new List<PlayerRespawn>();

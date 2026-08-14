@@ -18,7 +18,7 @@ public class Egg : Item
     protected override void OnUpdate()
     {
         base.OnUpdate();
-        
+
         timeUntilHatch -= Time.deltaTime;
         if (timeUntilHatch <= 0)
         {
@@ -30,7 +30,7 @@ public class Egg : Item
     {
         if (hatched) return;
         hatched = true;
-        Instantiate(GameAssets.i.chickenPrefab, transform.position, quaternion.identity);
+        Instantiate(GameAssets.i.chickenPrefab, transform.position, quaternion.identity, transform.parent);
         Kill();
     }
 }
