@@ -259,7 +259,7 @@ MonoBehaviour:
   blocksLasers: 0
   canBeFrozen: 1
   tags: []
-  material: {fileID: 11400000, guid: 45fe7e8b2674596409e80a9d8bf107bf, type: 2}
+  material: {fileID: 11400000, guid: 768c60963f91674458e89ff7c152e816, type: 2}
   controller: {fileID: 0}
   moveSpeed: 2
   moveSpeedMultiplier: 1

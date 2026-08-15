@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ChickenIdle
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 08adce6c6684fc443bc36bd5c88fb40e
+    m_Address: Assets/Audio/Sounds/chicken_hurt_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ChickenHurt
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 09d2d779143a53643ba5691ae14af2fd
     m_Address: Assets/Audio/Sounds/footstep_grass_02.mp3
     m_ReadOnly: 0
@@ -46,6 +52,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - WoodBulletHit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18052aa2e707b4b408c93b04b6ed025e
+    m_Address: Assets/Audio/Sounds/chicken_hurt_2.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ChickenHurt
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c1d65e138b194a40b8da056a8257046
     m_Address: Assets/Audio/Sounds/GrenadeThrow_1.mp3
@@ -167,6 +179,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - StonePunchHit
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f26c288cba94cd4c87a6f0ce0d82059
+    m_Address: Assets/Audio/Sounds/chicken_hurt_4.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ChickenHurt
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 80e6d7432306b9247a63971550b91132
     m_Address: Assets/Audio/Sounds/ShootAR_1.mp3
     m_ReadOnly: 0
@@ -189,6 +207,12 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Level Canvas.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90c00678dc38a844e8e428749f54b2a5
+    m_Address: Assets/Audio/Sounds/chicken_hurt_3.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ChickenHurt
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 94fe9b0dffaf6ff43b7558bd0c43ec50
     m_Address: Assets/Audio/Sounds/MetalPunchHit_1.mp3

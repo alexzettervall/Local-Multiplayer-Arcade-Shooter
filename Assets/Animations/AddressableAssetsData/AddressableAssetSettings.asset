@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 589fd086fa372e747bbabdb60f058a6c
   m_currentHash:
     serializedVersion: 2
-    Hash: 66989c80d2354defe96bd2edcc4411ee
+    Hash: aae6c98f1f2c960c3b510ecb6004b9c7
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
     - OpenPresent
     - ShootRPG
     - ChickenIdle
+    - ChickenHurt
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: bc0a1c3397520db4cbb8a5e164d7427c, type: 2}

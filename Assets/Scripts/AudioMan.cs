@@ -91,7 +91,7 @@ public static class AudioMan
         }
     }
 }
-// 33
+// 34
 public enum Sound
 {
     None = 0,
@@ -128,4 +128,5 @@ public enum Sound
     GasStart = 27,
     OpenPresent = 31,
     ChickenIdle = 33,
+    ChickenHurt = 34
 }
