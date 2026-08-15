@@ -9,6 +9,7 @@ public class Egg : Item
     [SerializeField] private float minHatchTimeWhileHeld;
     [SerializeField] private float minVelocityToHatchOnCollision;
     [SerializeField] private float entityCollisionRadius;
+    [SerializeField] private int collisionDamage;
     private bool hatched = false;
 
     protected override void OnStart()
@@ -67,6 +68,7 @@ public class Egg : Item
             if (entity != null && entity != this && entity != thrower)
             {
                 Hatch();
+                entity.Damage(collisionDamage, thrower, DamageSource.Bullet);
                 return;
             }
         }
@@ -78,6 +80,11 @@ public class Egg : Item
         if (collision.relativeVelocity.magnitude >= minVelocityToHatchOnCollision)
         {
             Hatch();
+            Structure structure = collision.gameObject.GetComponent<Structure>();
+            if (structure != null)
+            {
+                structure.Damage(collisionDamage, thrower, DamageSource.Bullet);
+            }
         }
     }
 }

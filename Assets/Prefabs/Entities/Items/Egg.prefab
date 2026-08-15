@@ -153,6 +153,7 @@ MonoBehaviour:
   minHatchTimeWhileHeld: 2
   minVelocityToHatchOnCollision: 1
   entityCollisionRadius: 0.25
+  collisionDamage: 15
 --- !u!70 &520260565179151343
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
