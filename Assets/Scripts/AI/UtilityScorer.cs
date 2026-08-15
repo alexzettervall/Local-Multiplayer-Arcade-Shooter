@@ -13,15 +13,15 @@ using System.Linq;
 using UnityEditor;
 #endif
 
-public abstract class UtilityScorer
+public abstract class UtilityScorer<TBlackboard> where TBlackboard : Blackboard
 {
-    protected Blackboard blackboard;
+    protected TBlackboard blackboard;
 
     float utilityTimer = 0f;
 
     public Dictionary<String, float> utilities = new Dictionary<string, float>();
 
-    public UtilityScorer(Blackboard blackboard) {
+    public UtilityScorer(TBlackboard blackboard) {
         this.blackboard = blackboard;
     }
 

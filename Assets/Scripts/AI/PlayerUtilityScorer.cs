@@ -5,7 +5,7 @@ using UnityEngine;
     using UnityEditor;
 #endif
 
-public class PlayerUtilityScorer : UtilityScorer
+public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
 {
     Dictionary<string, float> needs = new Dictionary<string, float>();
     float maxLootDistance = 100f;
@@ -16,7 +16,7 @@ public class PlayerUtilityScorer : UtilityScorer
     float alwaysAttackRadius = 3f;
     float minimumEnemyThreatLevel = 0.25f;
 
-    public PlayerUtilityScorer(Blackboard blackboard) : base(blackboard)
+    public PlayerUtilityScorer(PlayerBlackboard blackboard) : base(blackboard)
     {
         
     }

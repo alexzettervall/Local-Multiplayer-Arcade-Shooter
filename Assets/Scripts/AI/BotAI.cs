@@ -1,13 +1,13 @@
-public abstract class BotAI
+public abstract class BotAI<TBlackboard> where TBlackboard : Blackboard
 {
-    protected Blackboard blackboard;
-    Perception perception;
-    UtilityScorer utilityScorer;
-    BehaviorTree behaviorTree;
+    protected TBlackboard blackboard;
+    Perception<TBlackboard> perception;
+    UtilityScorer<TBlackboard> utilityScorer;
+    BehaviorTree<TBlackboard> behaviorTree;
     NavigationAgent navigationAgent;
 
     public BotAI(AISettings aiSettings) {
-        blackboard = new Blackboard();
+        blackboard = CreateBlackboard();
         blackboard.settings = aiSettings;
         perception = CreatePerception();
         utilityScorer = CreateUtilityScorer();
@@ -15,9 +15,10 @@ public abstract class BotAI
         navigationAgent = new NavigationAgent(blackboard);
     }
 
-    public abstract Perception CreatePerception();
-    public abstract UtilityScorer CreateUtilityScorer();
-    public abstract BehaviorTree CreateBehaviorTree();
+    public abstract TBlackboard CreateBlackboard();
+    public abstract Perception<TBlackboard> CreatePerception();
+    public abstract UtilityScorer<TBlackboard> CreateUtilityScorer();
+    public abstract BehaviorTree<TBlackboard> CreateBehaviorTree();
 
     public void SetEntity(LivingEntity entity)
     {
@@ -55,6 +56,11 @@ public abstract class BotAI
 
         blackboard.entity.OnDrop(blackboard.drop);
         blackboard.drop = false;
+    }
+
+    public Blackboard GetBlackboard()
+    {
+        return blackboard;
     }
 
     public void DrawGizmos() {

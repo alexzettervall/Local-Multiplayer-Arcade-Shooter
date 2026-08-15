@@ -42,12 +42,21 @@ public class Egg : Item
         CheckForEntityCollisions();
     }
 
-
     public void Hatch()
+    {
+        Hatch(null);
+    }
+    public void Hatch(LivingEntity entityToAgro)
     {
         if (hatched) return;
         hatched = true;
-        Instantiate(GameAssets.i.chickenPrefab, transform.position, quaternion.identity, transform.parent);
+        GameObject chickenObj = Instantiate(GameAssets.i.chickenPrefab, transform.position, quaternion.identity, transform.parent);
+        Chicken chicken = chickenObj.GetComponent<Chicken>();
+        if (entityToAgro != null)
+        {
+            chicken.Agro(entityToAgro);
+        }
+
         Kill();
     }
 
@@ -67,7 +76,7 @@ public class Egg : Item
 
             if (entity != null && entity != this && entity != thrower)
             {
-                Hatch();
+                Hatch(entity);
                 entity.Damage(collisionDamage, thrower, DamageSource.Bullet);
                 return;
             }

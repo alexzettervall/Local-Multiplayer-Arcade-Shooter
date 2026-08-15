@@ -2,23 +2,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blackboard
+public abstract class Blackboard
 {
+    // Essential fields
     public AISettings settings;
     public LivingEntity entity;
     public string goal;
-    public PlayerData[] playerDatas;
-    public ItemData[] itemDatas;
-    public ContainerData[] containerDatas;
     public bool move;
     public Vector2? target;
-    public PlayerData? targetEnemy;
-    public ItemData? targetLoot;
-    public ContainerData? targetContainer;
-    public float attackRange = 2f;
     public bool isUsing = false;
     public bool isDirty = false; // If true immediately reavaluate goal
-    
 
     // Inputs to send to player
     public Vector2 lookDirection;
@@ -27,6 +20,14 @@ public class Blackboard
     public bool cancelUse;
     public bool interact;
     public bool drop;
+
+    // General perception data
+    public PlayerData[] playerDatas;
+    public ItemData[] itemDatas;
+    public ContainerData[] containerDatas;
+    public PlayerData? targetEnemy;
+    public ItemData? targetLoot;
+    public ContainerData? targetContainer;
     
 
     public Blackboard() {

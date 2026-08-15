@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerBehaviorTree : BehaviorTree
+public class PlayerBehaviorTree : BehaviorTree<PlayerBlackboard>
 {
-    public PlayerBehaviorTree(Blackboard blackboard) : base(blackboard)
+    public PlayerBehaviorTree(PlayerBlackboard blackboard) : base(blackboard)
     {
         
     }

@@ -1,24 +1,28 @@
-public class PlayerBotAI : BotAI
+public class PlayerBotAI : BotAI<PlayerBlackboard>
 {
     public PlayerBotAI() : base(GameAssets.i.playerAISettings) {
 
     }
 
-    public override Perception CreatePerception()
+    public override PlayerBlackboard CreateBlackboard()
     {
-        return new GeneralPerception(blackboard);
+        return new PlayerBlackboard();
     }
 
-    public override UtilityScorer CreateUtilityScorer()
+    public override Perception<PlayerBlackboard> CreatePerception()
+    {
+        return new PlayerPerception(blackboard);
+    }
+
+    public override UtilityScorer<PlayerBlackboard> CreateUtilityScorer()
     {
         return new PlayerUtilityScorer(blackboard);
     }
 
-    public override BehaviorTree CreateBehaviorTree()
+    public override BehaviorTree<PlayerBlackboard> CreateBehaviorTree()
     {
         return new PlayerBehaviorTree(blackboard);
     }
-
 
 
     /*float directionRandomization = 0.25f;

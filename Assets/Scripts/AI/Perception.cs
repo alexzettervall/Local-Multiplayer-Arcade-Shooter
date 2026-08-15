@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Perception
+public abstract class Perception<TBlackboard> where TBlackboard : Blackboard
 {
-    protected Blackboard blackboard;
+    protected TBlackboard blackboard;
 
-    public Perception(Blackboard blackboard) {
+    public Perception(TBlackboard blackboard) {
         this.blackboard = blackboard;
     }
 

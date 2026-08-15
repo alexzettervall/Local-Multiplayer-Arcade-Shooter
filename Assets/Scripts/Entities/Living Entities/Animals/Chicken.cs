@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Chicken : LivingEntity
 {
-    private BotAI ai;
+    private BotAI<ChickenBlackboard> ai;
     [SerializeField] private int peckDamage;
     [SerializeField] private float peckRadius;
     [SerializeField] private float peckDistance;
@@ -71,5 +71,10 @@ public class Chicken : LivingEntity
         Egg egg = eggObj.GetComponent<Egg>();
         egg.GetRigidbody().velocity = -direction * eggVelocity;
         egg.GetRigidbody().angularVelocity = UnityEngine.Random.Range(-eggAngularVelocity, eggAngularVelocity);
+    }
+
+    public void Agro(LivingEntity target)
+    {
+        ((ChickenBlackboard)ai.GetBlackboard()).agroTarget = target;
     }
 }

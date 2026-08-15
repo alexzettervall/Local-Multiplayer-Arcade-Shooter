@@ -1,8 +1,8 @@
-public abstract class BehaviorTree
+public abstract class BehaviorTree<TBlackboard> where TBlackboard : Blackboard
 {
-    protected Blackboard blackboard;
+    protected TBlackboard blackboard;
     
-    public BehaviorTree(Blackboard blackboard) {
+    protected BehaviorTree(TBlackboard blackboard) {
         this.blackboard = blackboard;
     }
 

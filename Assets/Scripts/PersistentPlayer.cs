@@ -8,7 +8,7 @@ public class PersistentPlayer : MonoBehaviour
     private LivingEntity entity;
 
     public PlayerInput playerInput;
-    public BotAI botAI;
+    public BotAI<PlayerBlackboard> botAI;
 
     public float timeSinceLastRotation = 0f;
     public Vector2 lastDirection = Vector2.zero;

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ChickenUtilityScorer : UtilityScorer
+public class ChickenUtilityScorer : UtilityScorer<ChickenBlackboard>
 {
-    public ChickenUtilityScorer(Blackboard blackboard) : base(blackboard)
+    public ChickenUtilityScorer(ChickenBlackboard blackboard) : base(blackboard)
     {
         
     }

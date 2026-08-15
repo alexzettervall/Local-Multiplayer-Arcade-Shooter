@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ChickenBehaviorTree : BehaviorTree
+public class ChickenBehaviorTree : BehaviorTree<ChickenBlackboard>
 {
-    public ChickenBehaviorTree(Blackboard blackboard) : base(blackboard)
+    public ChickenBehaviorTree(ChickenBlackboard blackboard) : base(blackboard)
     {
         
     }

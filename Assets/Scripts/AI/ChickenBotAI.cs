@@ -1,20 +1,25 @@
-public class ChickenBotAI : BotAI
+public class ChickenBotAI : BotAI<ChickenBlackboard>
 {
     public ChickenBotAI() : base(GameAssets.i.chickenAISettings) {
         
     }
 
-    public override Perception CreatePerception()
+    public override ChickenBlackboard CreateBlackboard()
     {
-        return new GeneralPerception(blackboard);
+        return new ChickenBlackboard();
     }
 
-    public override UtilityScorer CreateUtilityScorer()
+    public override Perception<ChickenBlackboard> CreatePerception()
+    {
+        return new ChickenPerception(blackboard);
+    }
+
+    public override UtilityScorer<ChickenBlackboard> CreateUtilityScorer()
     {
         return new ChickenUtilityScorer(blackboard);
     }
 
-    public override BehaviorTree CreateBehaviorTree()
+    public override BehaviorTree<ChickenBlackboard> CreateBehaviorTree()
     {
         return new ChickenBehaviorTree(blackboard);
     }
