@@ -13,22 +13,38 @@ public class Chicken : LivingEntity
     [SerializeField] private int damageToLayEgg;
     [SerializeField] private float eggVelocity;
     [SerializeField] private float eggAngularVelocity;
+
+    [SerializeField] private float agroMoveSpeedMultiplier;
+    [SerializeField] private int agroPeckDamage;
+    [SerializeField] private float agroPeckDistance;
+    [SerializeField] private float agroPeckDelay;
+    [SerializeField] private float agroPeckRadius;
+    [SerializeField] private float chainAgroRadius;
+    [SerializeField] private bool overrideCurrentAgro;
+
     [SerializeField] private Animator animator;
 
     private float peckTimer;
     private int damageCounter;
+    private bool isAgro = false;
 
-    protected override void OnStart()
+    protected override void OnAwake()
     {
-        base.OnStart();
-
+        base.OnAwake();
         ai = new ChickenBotAI();
     }
-
+    
     protected override void OnUpdate()
     {
         base.OnUpdate();
         peckTimer -= Time.deltaTime;
+        if (isAgro)
+        {
+            if (ai.GetBlackboard().agroTarget == null)
+            {
+                UnAgro();
+            }
+        }
     }
 
     protected override void OnFixedUpdate()
@@ -48,16 +64,33 @@ public class Chicken : LivingEntity
         }
     }
 
+    public override int Damage(int damage, Entity damager, DamageSource damageSource)
+    {
+        if (damager is LivingEntity attacker)
+        {
+            Agro(attacker, true);
+        }
+        return base.Damage(damage, damager, damageSource);
+    }
+
     public void Peck()
     {
         if (peckTimer > 0)
         {
             return;
         }
-        peckTimer = peckDelay;
+        peckTimer = isAgro ? agroPeckDelay : peckDelay;
         animator.SetTrigger("Peck");
         
-        damageCounter += AttackMelee(peckDamage, Sound.Punch, peckRadius, peckDistance);
+        if (isAgro)
+        {
+            damageCounter += AttackMelee(agroPeckDamage, Sound.Punch, agroPeckRadius, agroPeckDistance);
+        }
+        else
+        {
+            damageCounter += AttackMelee(peckDamage, Sound.Punch, peckRadius, peckDistance);
+        }
+
         if (damageCounter > damageToLayEgg)
         {
             damageCounter = 0;
@@ -73,8 +106,36 @@ public class Chicken : LivingEntity
         egg.GetRigidbody().angularVelocity = UnityEngine.Random.Range(-eggAngularVelocity, eggAngularVelocity);
     }
 
-    public void Agro(LivingEntity target)
+    public void Agro(LivingEntity target, bool chainAgro = false)
     {
-        ((ChickenBlackboard)ai.GetBlackboard()).agroTarget = target;
+        var blackboard = ai.GetBlackboard();
+        blackboard.agroTarget = target;
+        blackboard.isDirty = true;
+        SetMoveSpeedMultiplier(agroMoveSpeedMultiplier);
+        animator.SetBool("IsAgro", true);
+        isAgro = true;
+
+        if (chainAgro)
+        {
+            foreach (Chicken chicken in FindObjectsOfType<Chicken>())
+            {
+                if (chicken == this)
+                    continue;
+
+                float distance = Vector2.Distance(chicken.transform.position, transform.position);
+
+                if (distance <= chainAgroRadius && (!chicken.isAgro || chicken.overrideCurrentAgro))
+                {
+                    chicken.Agro(target, false);
+                }
+            }
+        }
+    }
+
+    public void UnAgro()
+    {
+        SetMoveSpeedMultiplier(1f);
+        animator.SetBool("IsAgro", false);
+        isAgro = false;
     }
 }

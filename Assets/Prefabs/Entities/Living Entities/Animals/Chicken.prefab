@@ -262,6 +262,7 @@ MonoBehaviour:
   material: {fileID: 11400000, guid: 45fe7e8b2674596409e80a9d8bf107bf, type: 2}
   controller: {fileID: 0}
   moveSpeed: 2
+  moveSpeedMultiplier: 1
   stepDelay: 0.3
   col: {fileID: 8771633284519321914}
   idleSound: 33
@@ -274,6 +275,13 @@ MonoBehaviour:
   damageToLayEgg: 50
   eggVelocity: 5
   eggAngularVelocity: 800
+  agroMoveSpeedMultiplier: 2
+  agroPeckDamage: 15
+  agroPeckDistance: 0.25
+  agroPeckDelay: 0.5
+  agroPeckRadius: 0.25
+  chainAgroRadius: 15
+  overrideCurrentAgro: 1
   animator: {fileID: 282209617362064956}
 --- !u!95 &282209617362064956
 Animator:

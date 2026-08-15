@@ -52,7 +52,7 @@ public class Egg : Item
         hatched = true;
         GameObject chickenObj = Instantiate(GameAssets.i.chickenPrefab, transform.position, quaternion.identity, transform.parent);
         Chicken chicken = chickenObj.GetComponent<Chicken>();
-        if (entityToAgro != null)
+        if (entityToAgro != null && chicken != null)
         {
             chicken.Agro(entityToAgro);
         }

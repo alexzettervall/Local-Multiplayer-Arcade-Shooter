@@ -58,7 +58,7 @@ public abstract class BotAI<TBlackboard> where TBlackboard : Blackboard
         blackboard.drop = false;
     }
 
-    public Blackboard GetBlackboard()
+    public TBlackboard GetBlackboard()
     {
         return blackboard;
     }

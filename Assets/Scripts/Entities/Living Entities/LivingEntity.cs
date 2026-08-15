@@ -14,6 +14,7 @@ public abstract class LivingEntity : Entity
     protected bool isUsing;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeedMultiplier = 1f;
     [SerializeField] private float stepDelay = 0.3f;
     [SerializeField] private CircleCollider2D col;
 
@@ -119,7 +120,7 @@ public abstract class LivingEntity : Entity
     public void Move(Vector2 movement)
     {
         if (HasStatusEffect(StatusEffectType.Frozen)) { return; }
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * moveSpeed * moveSpeedMultiplier * Time.fixedDeltaTime);
             
         if (movement.magnitude > 0.1f)
         {
@@ -199,6 +200,11 @@ public abstract class LivingEntity : Entity
             Get the max dps this entity can currently deal.
         */
         return 0f;
+    }
+    
+    public void SetMoveSpeedMultiplier(float multiplier)
+    {
+        moveSpeedMultiplier = multiplier;
     }
 
     private void UpdateIdleSound()

@@ -9,8 +9,17 @@ public class ChickenUtilityScorer : UtilityScorer<ChickenBlackboard>
 
     public override void CalculateUtility()
     {
-        utilities["Eat"] = 100f;
-        blackboard.targetContainer = GetNearestContainer();
+        if (blackboard.agroTarget == null)
+        {
+            utilities["Eat"] = 100f;
+            utilities["Attack"] = 0f;
+            blackboard.targetContainer = GetNearestContainer();
+        }
+        else
+        {
+            utilities["Attack"] = 100f;
+            utilities["Eat"] = 0f;
+        }
     }
 
     public Blackboard.ContainerData? GetNearestContainer()
