@@ -17,6 +17,8 @@ public abstract class Item : Entity
     protected Entity holder;
     protected GameObject circle;
     protected bool heldBack = false;
+    protected Entity thrower;
+    protected bool thrown = false;
 
     protected override void OnStart()
     {
@@ -85,12 +87,12 @@ public abstract class Item : Entity
     public void Throw()
     {
         heldBack = false;
+        OnThrow();
         holder.DropItem(true);
         rb.centerOfMass = Vector2.zero;
         rb.velocity = transform.up * throwStrength;
         rb.angularVelocity = throwTorque;
         SetAnimatorTrigger("Throw");
-        OnThrow();
     }
 
     public virtual void OnPullBack()
@@ -99,7 +101,8 @@ public abstract class Item : Entity
     }
     public virtual void OnThrow()
     {
-
+        thrower = holder;
+        thrown = true;
     }
 
     public Entity GetHolder()
@@ -132,6 +135,10 @@ public abstract class Item : Entity
             return;
         }
         animator.SetTrigger(name);
+    }
+    public void SetThrower(Entity thrower)
+    {
+        this.thrower = thrower;
     }
     public override int Damage(int damage, Entity damager, DamageSource damageSource)
     {

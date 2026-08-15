@@ -31,7 +31,8 @@ public static class BulletSpawner
             FragGrenade fragGrenade = bulletObj.GetComponent<FragGrenade>();
             if (fragGrenade != null)
             {
-                fragGrenade.StartCooking(shooter);
+                fragGrenade.StartCooking();
+                fragGrenade.SetThrower(shooter);
             }
         }
     }

@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Grenade : Item
 {
     [SerializeField] private Sprite pinOut;
-    protected Entity thrower;
     protected bool cooking = false;
     protected bool exploded = false;
     [SerializeField] private float explosionTimer = 2f;
@@ -31,11 +30,10 @@ public abstract class Grenade : Item
     {
         base.OnPullBack();
         AudioMan.PlaySound(Sound.GrenadePull);
-        StartCooking(holder);
+        StartCooking();
     }
-    public virtual void StartCooking(Entity thrower)
+    public virtual void StartCooking()
     {
-        this.thrower = thrower;
         if (pinOut != null)
         {
             GetComponent<SpriteRenderer>().sprite = pinOut;
@@ -48,7 +46,6 @@ public abstract class Grenade : Item
     public override void OnThrow()
     {
         base.OnThrow();
-        thrower = holder;
         AudioMan.PlaySound(Sound.GrenadeThrow);
     }
     public virtual void Explode()

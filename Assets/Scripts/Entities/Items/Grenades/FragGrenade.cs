@@ -28,9 +28,9 @@ public class FragGrenade : Grenade
         }
         return 0f;
     }
-    public override void StartCooking(Entity thrower)
+    public override void StartCooking()
     {
-        base.StartCooking(thrower);
+        base.StartCooking();
         SetCircleColor(GameAssets.i.itemCircleDanger);
     }
     protected override void OnUpdate()

@@ -6,6 +6,9 @@ using UnityEngine;
 public class Egg : Item
 {
     [SerializeField] private float timeUntilHatch;
+    [SerializeField] private float minHatchTimeWhileHeld;
+    [SerializeField] private float minVelocityToHatchOnCollision;
+    [SerializeField] private float entityCollisionRadius;
     private bool hatched = false;
 
     protected override void OnStart()
@@ -19,6 +22,11 @@ public class Egg : Item
     {
         base.OnUpdate();
 
+        if (holder != null)
+        {
+            timeUntilHatch = Mathf.Max(timeUntilHatch, minHatchTimeWhileHeld);
+        }
+
         timeUntilHatch -= Time.deltaTime;
         if (timeUntilHatch <= 0)
         {
@@ -26,11 +34,50 @@ public class Egg : Item
         }
     }
 
+    protected override void OnFixedUpdate()
+    {
+        base.OnFixedUpdate();
+
+        CheckForEntityCollisions();
+    }
+
+
     public void Hatch()
     {
         if (hatched) return;
         hatched = true;
         Instantiate(GameAssets.i.chickenPrefab, transform.position, quaternion.identity, transform.parent);
         Kill();
+    }
+
+    private void CheckForEntityCollisions()
+    {
+        if (!thrown) return;
+        if (rb.velocity.magnitude < minVelocityToHatchOnCollision) return;
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(
+            transform.position,
+            entityCollisionRadius
+        );
+
+        foreach (Collider2D hit in hits)
+        {
+            LivingEntity entity = hit.GetComponent<LivingEntity>();
+
+            if (entity != null && entity != this && entity != thrower)
+            {
+                Hatch();
+                return;
+            }
+        }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.relativeVelocity.magnitude);
+        if (collision.relativeVelocity.magnitude >= minVelocityToHatchOnCollision)
+        {
+            Hatch();
+        }
     }
 }
