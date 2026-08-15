@@ -261,15 +261,16 @@ MonoBehaviour:
   canBeFrozen: 1
   tags: []
   material: {fileID: 11400000, guid: 45fe7e8b2674596409e80a9d8bf107bf, type: 2}
-  moveSpeed: 3
+  controller: {fileID: 0}
+  moveSpeed: 2
   stepDelay: 0.3
   col: {fileID: 8771633284519321914}
-  peckDamage: 10
+  peckDamage: 15
   peckRadius: 0.1
   peckDistance: 0.75
   peckDelay: 0.75
-  damageToLayEgg: 25
-  eggVelocity: 7
+  damageToLayEgg: 50
+  eggVelocity: 5
   eggAngularVelocity: 800
   animator: {fileID: 282209617362064956}
 --- !u!95 &282209617362064956
