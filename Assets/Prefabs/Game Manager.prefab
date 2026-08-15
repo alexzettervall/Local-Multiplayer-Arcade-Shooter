@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerJoinHandler: {fileID: 2005360415162687556}
   fillWithBots: 1
-  maxPlayers: 8
+  maxPlayers: 4
   level: {fileID: 0}
   pointsNeeded: 5
   uiPointSpots:
@@ -5110,7 +5110,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 444824829
-  m_SortingLayer: 21
+  m_SortingLayer: 24
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0

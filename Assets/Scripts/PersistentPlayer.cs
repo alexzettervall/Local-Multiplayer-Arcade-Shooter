@@ -23,7 +23,7 @@ public class PersistentPlayer : MonoBehaviour
         
         timeSinceLastRotation += Time.deltaTime;
         // Detect if there is a real player controlling this player
-        if (playerInput.devices.Count > 0) {
+        if (IsRealPlayer()) {
             return;
         }
 
@@ -97,5 +97,10 @@ public class PersistentPlayer : MonoBehaviour
         }
         entity = livingEntity;
         livingEntity.controller = this;
+    }
+
+    public bool IsRealPlayer()
+    {
+        return playerInput.devices.Count > 0;
     }
 }

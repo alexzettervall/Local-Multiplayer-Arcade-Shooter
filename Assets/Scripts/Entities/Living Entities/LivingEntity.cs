@@ -85,7 +85,7 @@ public abstract class LivingEntity : Entity
 
     protected override void Kill()
     {
-        if (controller != null)
+        if (controller != null && controller.IsRealPlayer())
         {
             GameObject ghostObj = Instantiate(GameAssets.i.ghostPrefab, transform.position, Quaternion.identity, transform.parent);
             Ghost ghost = ghostObj.GetComponent<Ghost>();
