@@ -17,9 +17,26 @@ public abstract class LivingEntity : Entity
     [SerializeField] private float stepDelay = 0.3f;
     [SerializeField] private CircleCollider2D col;
 
+    [SerializeField] private Sound idleSound;
+    [SerializeField] private float minIdleSoundDelay;
+    [SerializeField] private float maxIdleSoundDelay;
+
     private float lastFootStepTime;
     private bool inGas = false;
     private float gasTimer = 0f;
+    private float idleSoundTimer;
+
+    protected override void OnStart()
+    {
+        base.OnStart();
+        idleSoundTimer = Random.Range(minIdleSoundDelay, maxIdleSoundDelay);
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        UpdateIdleSound();
+    }
 
     public void OnMove(Vector2 movement)
     {
@@ -182,5 +199,16 @@ public abstract class LivingEntity : Entity
             Get the max dps this entity can currently deal.
         */
         return 0f;
+    }
+
+    private void UpdateIdleSound()
+    {
+        if (minIdleSoundDelay <= 0) return;
+        idleSoundTimer -= Time.deltaTime;
+        if (idleSoundTimer <= 0)
+        {
+            idleSoundTimer = Random.Range(minIdleSoundDelay, maxIdleSoundDelay);
+            AudioMan.PlaySound(idleSound);
+        }
     }
 }

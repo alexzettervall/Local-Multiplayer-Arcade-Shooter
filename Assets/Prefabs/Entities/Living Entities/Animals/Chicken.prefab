@@ -265,6 +265,9 @@ MonoBehaviour:
   moveSpeed: 2
   stepDelay: 0.3
   col: {fileID: 8771633284519321914}
+  idleSound: 33
+  minIdleSoundDelay: 1
+  maxIdleSoundDelay: 3
   peckDamage: 15
   peckRadius: 0.1
   peckDistance: 0.75

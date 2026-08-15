@@ -17,11 +17,23 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 589fd086fa372e747bbabdb60f058a6c
   m_SerializeEntries:
+  - m_GUID: 0520bc826e6fda7409ea2230d7b518db
+    m_Address: Assets/Audio/Sounds/chicken_idle_1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ChickenIdle
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 09d2d779143a53643ba5691ae14af2fd
     m_Address: Assets/Audio/Sounds/footstep_grass_02.mp3
     m_ReadOnly: 0
     m_SerializedLabels:
     - FootStepGrass
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 132ff123db8e57448ba54ec83acb54ac
+    m_Address: Assets/Audio/Sounds/chicken_idle_2.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ChickenIdle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1512e05bef5dc9a4095205db4376b4ea
     m_Address: Assets/Audio/Sounds/GrenadePull_1.mp3
@@ -184,6 +196,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - MetalPunchHit
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9684508aa74b89c4da9d2023946c3c34
+    m_Address: Assets/Audio/Sounds/chicken_idle_3.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ChickenIdle
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ec7843f4c04b574e801f8fcd7b770d7
     m_Address: Assets/Audio/Sounds/C4Remote_1.mp3
     m_ReadOnly: 0
@@ -225,6 +243,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - FootStepStone
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eca1bda2e3ff2ff4fbdee3596d9d6263
+    m_Address: Assets/Audio/Sounds/chicken_idle_4.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ChickenIdle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ede6d4016c55f54479c44ce62976c4b8
     m_Address: Assets/Audio/Sounds/footstep_wood_03.mp3
