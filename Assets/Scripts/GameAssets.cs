@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameAssets : MonoBehaviour
 {
@@ -49,9 +50,11 @@ public class GameAssets : MonoBehaviour
     public AmmoSprite[] ammoSprites;
     public AmmoLimit[] ammoLimits;
     public SoundClip[] soundClips;
+    public ParticleData[] particleDatas;
     public GameObject chickenPrefab;
     public GameObject eggPrefab;
     public GameObject ghostPrefab;
+    public GameObject particlePrefab;
 
     public AISettings playerAISettings;
     public AISettings chickenAISettings;
@@ -100,6 +103,17 @@ public class GameAssets : MonoBehaviour
         }
         return null;
     }
+    public ParticleData GetParticleData(ParticleType particleType)
+    {
+        foreach (ParticleData particleData in particleDatas)
+        {
+            if (particleData.particleType == particleType)
+            {
+                return particleData;
+            }
+        }
+        return null;
+    }
 
     [System.Serializable]
     public class AmmoSprite
@@ -128,6 +142,13 @@ public class GameAssets : MonoBehaviour
     {
         public Sound sound;
         public AudioClip[] clips;
+    }
+
+    [System.Serializable]
+    public class ParticleData
+    {
+        public ParticleType particleType;
+        public GameObject prefab;
     }
 }
 

@@ -22,6 +22,9 @@ public abstract class LivingEntity : Entity
     [SerializeField] private float minIdleSoundDelay;
     [SerializeField] private float maxIdleSoundDelay;
 
+    [SerializeField] private ParticleType hurtParticle;
+    [SerializeField] private float particlesPerDamage;
+
     private float lastFootStepTime;
     private bool inGas = false;
     private float gasTimer = 0f;
@@ -92,11 +95,7 @@ public abstract class LivingEntity : Entity
         }
         if (damage > 0)
         {
-            float spread = Mathf.Lerp(0.2f, 1.5f, damage / 100f);
-            for (int i = 0; i < Mathf.CeilToInt(change/2f); i++)
-            {
-                Destroy(Instantiate(GameAssets.i.bloodSplatter, transform.position, Quaternion.identity), 5f);
-            }
+            ParticleManager.EmitParticles(hurtParticle, Mathf.CeilToInt(damage * particlesPerDamage), transform.position);
         }
         return base.Damage(damage, damager, damageSource);
     }

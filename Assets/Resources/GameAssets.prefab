@@ -275,8 +275,14 @@ MonoBehaviour:
     clips: []
   - sound: 14
     clips: []
+  particleDatas:
+  - particleType: 0
+    prefab: {fileID: 2100360263725549908, guid: 5cae439f032dcd54c88b7f048b67d5a1, type: 3}
+  - particleType: 1
+    prefab: {fileID: 2100360263725549908, guid: 6190c58f73c22c64cae1c36c1c2ccfcd, type: 3}
   chickenPrefab: {fileID: 4681750501191050108, guid: 1788e7d6f626d13489ea263e6e10fc10, type: 3}
   eggPrefab: {fileID: 1868589077219217716, guid: 7375f4f4e07e9a645b9ef8a933cfbe42, type: 3}
   ghostPrefab: {fileID: 7294782076889574214, guid: d301f7b35f7982448bf8699a36e4a4b1, type: 3}
+  particlePrefab: {fileID: 0}
   playerAISettings: {fileID: 11400000, guid: 2705f8106bcbe26419b7d32fd633af65, type: 2}
   chickenAISettings: {fileID: 11400000, guid: 391c703f90251e2449ae0218903b3f07, type: 2}

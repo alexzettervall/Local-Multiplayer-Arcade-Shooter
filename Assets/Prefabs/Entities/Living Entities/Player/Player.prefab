@@ -200,7 +200,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014853397
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 102
   m_Sprite: {fileID: 1440408213, guid: 312b30fc1c61946f492beca45549f45d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -339,7 +339,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014853397
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 103
   m_Sprite: {fileID: -414044508, guid: 312b30fc1c61946f492beca45549f45d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -479,7 +479,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014853397
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 100
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -579,7 +579,16 @@ MonoBehaviour:
   canBeFrozen: 1
   tags: []
   material: {fileID: 11400000, guid: 45fe7e8b2674596409e80a9d8bf107bf, type: 2}
+  controller: {fileID: 0}
   moveSpeed: 5
+  moveSpeedMultiplier: 1
+  stepDelay: 0.3
+  col: {fileID: 5680455146642072096}
+  idleSound: 0
+  minIdleSoundDelay: 0
+  maxIdleSoundDelay: 0
+  hurtParticle: 0
+  particlesPerDamage: 1
   gunSprite: {fileID: 0}
   firePoint: {fileID: 0}
   healthCircle: {fileID: 5182050085649962413}
@@ -592,11 +601,6 @@ MonoBehaviour:
   punchDistance: 0.5
   punchDamage: 15
   punchDelay: 0.33
-  stepDelay: 0.3
-  poisonGas:
-    serializedVersion: 2
-    m_Bits: 2048
-  col: {fileID: 5680455146642072096}
   leftHandSr: {fileID: 4428804549079248311}
   rightHandSr: {fileID: 132381310886108266}
   isStatic: 0
