@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 589926281
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 949a5957496d1e64f94ed66eb235aa85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -169,6 +169,10 @@ MonoBehaviour:
   health: 0
   heldItem: {fileID: 0}
   itemHolder: {fileID: 0}
+  reflectBullets: 0
+  blocksLasers: 1
+  canBeFrozen: 0
+  tags: []
   material: {fileID: 0}
   holdAnimation: {fileID: 0}
   pickUp: 3
@@ -181,6 +185,9 @@ MonoBehaviour:
   throwStrength: 35
   throwTorque: 4500
   pinOut: {fileID: 21300000, guid: 667e66d3418125a4b801aa9c0279a7c1, type: 3}
+  explosionTimer: 3
   damage: 240
   radius: 5
   shrapnel: 10
+  proximityGrenade: 0
+  proximityRadius: 0
