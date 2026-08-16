@@ -40,7 +40,7 @@ public class PlayerBehaviorTree : BehaviorTree<PlayerBlackboard>
         Vector2 directionToTarget = (enemy.position - (Vector2)blackboard.entity.transform.position).normalized;
         blackboard.lookDirection = Vector2.Lerp(blackboard.lookDirection.normalized, directionToTarget, blackboard.settings.movementSmoothingResponsiveness * Time.deltaTime);
         float rbRotation = blackboard.entity.GetRigidbody().rotation;
-        bool lookingAt = Vector2.Dot(directionToTarget, blackboard.lookDirection) > 0.95f;
+        bool lookingAt = Vector2.Dot(directionToTarget, blackboard.lookDirection) > 0.99f;
         
 
         blackboard.move = !hasLineOfSight;
