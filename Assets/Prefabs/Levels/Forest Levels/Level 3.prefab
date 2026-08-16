@@ -51,14 +51,10 @@ MonoBehaviour:
     position: {x: -6, y: -2}
   - id: 7
     position: {x: -10, y: -4}
-  - id: 0
-    position: {x: -10, y: -2}
   - id: 1
     position: {x: -10, y: 2}
   - id: 2
     position: {x: -5, y: 1}
-  - id: 3
-    position: {x: -2, y: 9}
   - id: 8
     position: {x: -2, y: -0}
   - id: 9
@@ -79,20 +75,62 @@ MonoBehaviour:
     position: {x: -8, y: 8}
   - id: 16
     position: {x: -2, y: -9}
-  - id: 17
-    position: {x: 1, y: -9}
   - id: 18
     position: {x: -8, y: -8}
   - id: 19
     position: {x: 8, y: -8}
   - id: 20
     position: {x: 2, y: -1}
-  - id: 21
-    position: {x: 2, y: 2}
   - id: 22
     position: {x: 2, y: 8}
   - id: 23
     position: {x: 7, y: 8}
+  - id: 0
+    position: {x: -10, y: -2}
+  - id: 24
+    position: {x: 15, y: 4}
+  - id: 25
+    position: {x: 15, y: 7}
+  - id: 26
+    position: {x: 15, y: -4}
+  - id: 27
+    position: {x: 15, y: -7}
+  - id: 28
+    position: {x: 11, y: -4}
+  - id: 29
+    position: {x: 7, y: -3}
+  - id: 30
+    position: {x: 8, y: -5}
+  - id: 31
+    position: {x: 4, y: -3}
+  - id: 32
+    position: {x: 2, y: -5}
+  - id: 33
+    position: {x: -2, y: -6}
+  - id: 34
+    position: {x: -2, y: 3}
+  - id: 35
+    position: {x: -2, y: 6}
+  - id: 36
+    position: {x: -4, y: 3}
+  - id: 3
+    position: {x: -2, y: 9}
+  - id: 37
+    position: {x: -8, y: 4}
+  - id: 38
+    position: {x: 1, y: 5}
+  - id: 21
+    position: {x: 2, y: 2}
+  - id: 39
+    position: {x: 7, y: 2}
+  - id: 40
+    position: {x: 11, y: 4}
+  - id: 41
+    position: {x: 8, y: 5}
+  - id: 17
+    position: {x: 2, y: -9}
+  - id: 42
+    position: {x: 11, y: 9}
   connections:
   - a: 4
     b: 5
@@ -101,25 +139,10 @@ MonoBehaviour:
     b: 10
     cost: 0
   - a: 8
-    b: 3
-    cost: 0
-  - a: 2
-    b: 3
-    cost: 0
-  - a: 8
     b: 9
     cost: 0
   - a: 10
     b: 4
-    cost: 0
-  - a: 5
-    b: 0
-    cost: 0
-  - a: 7
-    b: 0
-    cost: 0
-  - a: 1
-    b: 0
     cost: 0
   - a: 1
     b: 2
@@ -139,9 +162,6 @@ MonoBehaviour:
   - a: 15
     b: 1
     cost: 0
-  - a: 3
-    b: 6
-    cost: 0
   - a: 16
     b: 18
     cost: 0
@@ -151,23 +171,107 @@ MonoBehaviour:
   - a: 10
     b: 16
     cost: 0
-  - a: 17
-    b: 20
-    cost: 0
-  - a: 20
-    b: 21
-    cost: 0
-  - a: 21
-    b: 22
-    cost: 0
   - a: 22
     b: 23
     cost: 0
-  - a: 19
-    b: 17
-    cost: 0
   - a: 20
     b: 9
+    cost: 0
+  - a: 7
+    b: 0
+    cost: 0
+  - a: 0
+    b: 5
+    cost: 0
+  - a: 2
+    b: 36
+    cost: 0
+  - a: 36
+    b: 35
+    cost: 0
+  - a: 35
+    b: 3
+    cost: 0
+  - a: 3
+    b: 6
+    cost: 0
+  - a: 37
+    b: 6
+    cost: 0
+  - a: 37
+    b: 15
+    cost: 0
+  - a: 1
+    b: 37
+    cost: 0
+  - a: 37
+    b: 2
+    cost: 0
+  - a: 36
+    b: 34
+    cost: 0
+  - a: 34
+    b: 35
+    cost: 0
+  - a: 34
+    b: 8
+    cost: 0
+  - a: 38
+    b: 22
+    cost: 0
+  - a: 38
+    b: 21
+    cost: 0
+  - a: 21
+    b: 20
+    cost: 0
+  - a: 21
+    b: 39
+    cost: 0
+  - a: 41
+    b: 23
+    cost: 0
+  - a: 41
+    b: 40
+    cost: 0
+  - a: 40
+    b: 24
+    cost: 0
+  - a: 24
+    b: 25
+    cost: 0
+  - a: 40
+    b: 39
+    cost: 0
+  - a: 17
+    b: 32
+    cost: 0
+  - a: 32
+    b: 20
+    cost: 0
+  - a: 32
+    b: 31
+    cost: 0
+  - a: 31
+    b: 29
+    cost: 0
+  - a: 29
+    b: 30
+    cost: 0
+  - a: 30
+    b: 28
+    cost: 0
+  - a: 30
+    b: 19
+    cost: 0
+  - a: 28
+    b: 26
+    cost: 0
+  - a: 26
+    b: 27
+    cost: 0
+  - a: 42
+    b: 40
     cost: 0
   editorGridSize: 1
 --- !u!1 &7327155125438516233

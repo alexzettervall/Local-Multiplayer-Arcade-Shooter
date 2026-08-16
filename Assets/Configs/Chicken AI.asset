@@ -25,7 +25,7 @@ MonoBehaviour:
   aimErrorMin: 1
   aimErrorMax: 5
   reactionDelay: 0.2
-  repathPeriod: 0.5
+  repathPeriod: 2
   structureAvoidanceRadius: 1
   structureAvoidanceWeight: 1
   grenadeAvoidanceRadius: 0
