@@ -363,8 +363,8 @@ public class Level : MonoBehaviour
         }
         return count;
     }
-    public List<Vector2> FindPath(Vector2 start, Vector2 goal) {
-        return navGraph.FindPath(start, goal);
+    public List<Vector2> FindPath(Vector2 start, Vector2 goal, float moveSpeed, float dps) {
+        return navGraph.FindPath(start, goal, moveSpeed, dps);
     }
     public float FindDistance(Vector2 start, Vector2 goal, out List<Vector2> path) {
         // this should pathfind but computation

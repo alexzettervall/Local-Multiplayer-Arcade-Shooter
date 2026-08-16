@@ -26,16 +26,16 @@ public class NavGraph : MonoBehaviour
         return closestWaypoint;
     }
 
-    public List<Vector2> FindPath(Vector2 start, Vector2 goal)
+    public List<Vector2> FindPath(Vector2 start, Vector2 goal, float moveSpeed, float dps)
     {
         Waypoint a = GetNearest(start);
         Waypoint b = GetNearest(goal);
         if (a == null || b == null) return new List<Vector2>();
-        return AStar.FindPath(this, a, b);
+        return AStar.FindPath(this, a, b, moveSpeed, dps);
     }
 
-    public float FindDistance(Vector2 start, Vector2 goal, out List<Vector2> path) {
-        path = FindPath(start, goal);
+    public float FindDistance(Vector2 start, Vector2 goal, float moveSpeed, float dps, out List<Vector2> path) {
+        path = FindPath(start, goal, moveSpeed, dps);
         float distance = 0f;
         Vector2 lastNode = start;
         foreach (Vector2 node in path) {
@@ -57,6 +57,12 @@ public class NavGraph : MonoBehaviour
 
     public void BuildCache()
     {
+        UpdateWaypointsCache();
+        UpdateConnectionsCache();
+    }
+
+    private void UpdateWaypointsCache()
+    {
         // Clear existing cache
         foreach (Waypoint waypoint in nodes)
         {
@@ -73,6 +79,37 @@ public class NavGraph : MonoBehaviour
 
             a.connections.Add(connection);
             b.connections.Add(connection);
+        }
+    }
+
+    private void UpdateConnectionsCache()
+    {
+        foreach (WaypointConnection connection in connections)
+        {
+            Waypoint a = GetWaypoint(connection.a);
+            Waypoint b = GetWaypoint(connection.b);
+            connection.distance = Vector2.Distance(a.position, b.position);
+            connection.structures = new List<Structure>();
+            RaycastHit2D[] hits = Physics2D.LinecastAll(a.position, b.position, GameAssets.i.structuresOnly);
+            foreach (RaycastHit2D hit in hits)
+            {
+                Structure structure = hit.transform.gameObject.GetComponent<Structure>();
+                if (structure != null)
+                {
+                    connection.structures.Add(structure);
+                }
+            }
+            float damageNeeded = 0;
+            foreach (Structure structure in connection.structures)
+            {
+                if (!structure.IsBreakable())
+                {
+                    damageNeeded = float.MaxValue;
+                    break;
+                }
+                damageNeeded += structure.GetHealth();
+            }
+            connection.damageNeeded = damageNeeded;
         }
     }
 }
