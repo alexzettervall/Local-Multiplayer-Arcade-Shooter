@@ -22,7 +22,12 @@ public class WaypointConnection
 {
     public int a;
     public int b;
-    public float cost;
+    [System.NonSerialized]
+    public List<Structure> structures;
+    [System.NonSerialized]
+    public float distance;
+    [System.NonSerialized]
+    public float damageNeeded;
 
     public WaypointConnection(int a, int b)
     {
