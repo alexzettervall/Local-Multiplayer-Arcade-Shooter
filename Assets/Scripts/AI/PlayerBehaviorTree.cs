@@ -45,16 +45,7 @@ public class PlayerBehaviorTree : BehaviorTree<PlayerBlackboard>
 
         blackboard.move = !hasLineOfSight;
 
-        if (hasLineOfSight && lookingAt) {
-            if (!blackboard.isUsing) {
-                blackboard.preformUse = true;
-            }
-        }
-        else {
-            if (blackboard.isUsing) {
-                blackboard.cancelUse = true;
-            }
-        }
+        blackboard.use = hasLineOfSight && lookingAt;
         
         // Drop gun if empty
         if (hasGun) {

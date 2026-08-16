@@ -10,14 +10,15 @@ public abstract class Blackboard
     public string goal;
     public bool move;
     public Vector2? target;
-    public bool isUsing = false;
     public bool isDirty = false; // If true immediately reavaluate goal
+
+    public bool use = false; // Abstracted use input. Changing this will automatically trigger preformUse and cancelUse
 
     // Inputs to send to player
     public Vector2 lookDirection;
     public Vector2 movement;
-    public bool preformUse;
-    public bool cancelUse;
+    public bool preformUse {get; private set;}
+    public bool cancelUse {get; private set;}
     public bool interact;
     public bool drop;
 
@@ -32,6 +33,33 @@ public abstract class Blackboard
 
     public Blackboard() {
 
+    }
+
+    public virtual void Update()
+    {
+        // inject inputs
+        entity.OnMove(movement);
+        entity.OnRotate(lookDirection, null);
+        
+        if (entity.IsUsing() && !use)
+        {
+            cancelUse = true;
+            preformUse = false;
+        }
+        else if (!entity.IsUsing() && use)
+        {
+            cancelUse = false;
+            preformUse = true;
+        }
+        entity.OnUse(preformUse, cancelUse);
+        preformUse = false;
+        cancelUse = false;
+
+        entity.OnInteract(interact);
+        interact = false;
+
+        entity.OnDrop(drop);
+        drop = false;
     }
 
     public struct PlayerData

@@ -29,16 +29,7 @@ public class ChickenBehaviorTree : BehaviorTree<ChickenBlackboard>
 
         blackboard.target = container.position;
         blackboard.move = true;
-        if (Physics2D.Raycast(blackboard.entity.transform.position, blackboard.lookDirection, 1f, GameAssets.i.structuresOnly))
-        {
-            blackboard.preformUse = true;
-            blackboard.isUsing = true;
-        }
-        else
-        {
-            blackboard.cancelUse = true;
-            blackboard.isUsing = false;
-        }
+        blackboard.use = Physics2D.Raycast(blackboard.entity.transform.position, blackboard.lookDirection, 1f, GameAssets.i.structuresOnly);
     }
 
     public void Attack()
@@ -56,15 +47,6 @@ public class ChickenBehaviorTree : BehaviorTree<ChickenBlackboard>
         }
 
         blackboard.move = true;
-        if (Vector2.Distance(target, blackboard.entity.transform.position) < 1f)
-        {
-            blackboard.preformUse = true;
-            blackboard.isUsing = true;
-        }
-        else
-        {
-            blackboard.cancelUse = true;
-            blackboard.isUsing = false;
-        }
+        blackboard.use = Vector2.Distance(target, blackboard.entity.transform.position) < 1f;
     }
 }
