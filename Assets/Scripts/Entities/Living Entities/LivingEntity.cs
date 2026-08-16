@@ -191,7 +191,7 @@ public abstract class LivingEntity : Entity
 
     public float GetMoveSpeed()
     {
-        return moveSpeed;
+        return moveSpeed * moveSpeedMultiplier;
     }
 
     public virtual float GetDPS() {
