@@ -14,7 +14,7 @@ public abstract class BotAI<TBlackboard> where TBlackboard : Blackboard
         behaviorTree = CreateBehaviorTree();
         navigationAgent = new NavigationAgent(blackboard);
     }
-
+ 
     public abstract TBlackboard CreateBlackboard();
     public abstract Perception<TBlackboard> CreatePerception();
     public abstract UtilityScorer<TBlackboard> CreateUtilityScorer();
@@ -36,26 +36,7 @@ public abstract class BotAI<TBlackboard> where TBlackboard : Blackboard
         utilityScorer.Update();
         behaviorTree.Update();
         navigationAgent.Update();
-
-        // inject inputs
-        blackboard.entity.OnMove(blackboard.movement);
-        blackboard.entity.OnRotate(blackboard.lookDirection, null);
-        blackboard.entity.OnUse(blackboard.preformUse, blackboard.cancelUse);
-        if (blackboard.preformUse) {
-            blackboard.isUsing = true;
-        }
-        if (blackboard.cancelUse) {
-            blackboard.isUsing = false;
-        }
-        // Set flags to false because they are triggers
-        blackboard.preformUse = false;
-        blackboard.cancelUse = false;
-
-        blackboard.entity.OnInteract(blackboard.interact);
-        blackboard.interact = false;
-
-        blackboard.entity.OnDrop(blackboard.drop);
-        blackboard.drop = false;
+        blackboard.Update();
     }
 
     public TBlackboard GetBlackboard()
