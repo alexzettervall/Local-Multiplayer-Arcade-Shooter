@@ -64,7 +64,7 @@ public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
 
             float weaponModifier = GetWeaponSuitability(playerData);
             
-            float attackScore = distanceFactor * healthModifier * weaponModifier;
+            float attackScore = distanceFactor;
             Debug.Log("d: " + distanceFactor + " h: " + healthModifier + " w: " + weaponModifier);
             attackScore = Mathf.Clamp01(attackScore);
 
@@ -106,7 +106,7 @@ public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
         return bestUtility;
     }
     public float GetPathFactor(Item item) {
-        List<Vector2> path = GameObject.FindObjectOfType<Level>().FindPath(blackboard.entity.transform.position, item.transform.position);
+        List<Vector2> path = GameObject.FindObjectOfType<Level>().FindPath(blackboard.entity.transform.position, item.transform.position, blackboard.entity.GetMoveSpeed(), blackboard.entity.GetDPS());
         if (path.Count < 1f)
         {
             return 0f;
