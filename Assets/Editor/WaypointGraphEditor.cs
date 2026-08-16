@@ -22,6 +22,7 @@ public class WaypointGraphEditor : Editor
         HandleDeletion();
         HandleWaypointMovement();
         HandleConnections();
+        HandleConnectionDeletion();
 
         DrawWaypoints();
         DrawConnections();
@@ -186,6 +187,63 @@ public class WaypointGraphEditor : Editor
         e.Use();
     }
 
+    private void HandleConnectionDeletion()
+    {
+        Event e = Event.current;
+
+        if (!e.control || e.type != EventType.MouseDown || e.button != 1) return;
+
+        Vector2 mousePosition = GetMouseWorldPosition(e.mousePosition);
+
+        WaypointConnection closestConnection = null;
+        float closestDistance = 0.5f;
+
+        foreach (WaypointConnection connection in graph.connections)
+        {
+            Waypoint a = GetWaypoint(connection.a);
+            Waypoint b = GetWaypoint(connection.b);
+
+            if (a == null || b == null) continue;
+
+            float distance = DistanceToLineSegment(mousePosition ,a.position, b.position);
+
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestConnection = connection;
+            }
+        }
+
+        if (closestConnection != null)
+        {
+            Undo.RecordObject(graph, "Delete Connection");
+
+            graph.connections.Remove(closestConnection);
+
+            EditorUtility.SetDirty(graph);
+            SceneView.RepaintAll();
+
+            e.Use();
+        }
+    }
+
+    private float DistanceToLineSegment(Vector2 point, Vector2 lineStart, Vector2 lineEnd)
+    {
+        Vector2 line = lineEnd - lineStart;
+
+        float lengthSquared = line.sqrMagnitude;
+
+        if (lengthSquared == 0f) return Vector2.Distance(point, lineStart);
+
+        float t = Vector2.Dot(point - lineStart, line) / lengthSquared;
+
+        t = Mathf.Clamp01(t);
+
+        Vector2 closestPoint = lineStart + line * t;
+
+        return Vector2.Distance(point, closestPoint);
+    }
+
     private void ConnectWaypoints(Waypoint a, Waypoint b)
     {
         Undo.RecordObject(graph, "Connect Waypoints");
@@ -283,8 +341,10 @@ public class WaypointGraphEditor : Editor
     {
         foreach (WaypointConnection connection in graph.connections)
         {
+            Vector2 a = GetWaypoint(connection.a).position;
+            Vector2 b = GetWaypoint(connection.b).position;
             Handles.color = Color.blue;
-            Handles.DrawAAPolyLine(8f, GetWaypoint(connection.a).position, GetWaypoint(connection.b).position);
+            Handles.DrawAAPolyLine(8f, a, b);
         }
     }
 
