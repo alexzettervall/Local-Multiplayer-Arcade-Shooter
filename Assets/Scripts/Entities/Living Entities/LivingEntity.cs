@@ -201,6 +201,11 @@ public abstract class LivingEntity : Entity
         return 0f;
     }
     
+    public bool IsUsing()
+    {
+        return isUsing;
+    }
+    
     public void SetMoveSpeedMultiplier(float multiplier)
     {
         moveSpeedMultiplier = multiplier;
