@@ -32,4 +32,9 @@ public abstract class Structure : Entity
     protected override void Kill() {
         base.Kill();
     }
+
+    public bool IsBreakable()
+    {
+        return breakable;
+    }
 }
