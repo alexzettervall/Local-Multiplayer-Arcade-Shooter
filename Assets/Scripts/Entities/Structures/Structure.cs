@@ -31,6 +31,5 @@ public abstract class Structure : Entity
     
     protected override void Kill() {
         base.Kill();
-        GameMan.Instance.GetLevel().RebuildNavGraph();
     }
 }

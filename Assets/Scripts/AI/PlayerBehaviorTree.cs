@@ -29,42 +29,28 @@ public class PlayerBehaviorTree : BehaviorTree<PlayerBlackboard>
         blackboard.target = enemy.position;
 
         float distance = Vector2.Distance(blackboard.entity.transform.position, enemy.position);
-        bool wantToShoot = false;
-        bool hasLineOfSight = true;
-
-        // Make sure its not a shield
+        
         RaycastHit2D[] hits = Physics2D.LinecastAll(blackboard.entity.transform.position, enemy.position, GameAssets.i.structuresOnly);
-        foreach (RaycastHit2D hit in hits)
-        {
-            Item item = hit.transform.gameObject.GetComponent<Item>();
-            if (item == null) { hasLineOfSight = false; break; }
-            if (item.GetHolder() == null) { hasLineOfSight = false; break; }
-        }
+        bool hasLineOfSight = hits.Length == 0;
         
         bool inRange = distance <= blackboard.attackRange;
-        bool outOfThreshold = distance > blackboard.attackRange + 0.1f;
         Item heldItem = blackboard.entity.GetItem();
-        bool hasGun = (heldItem is Gun);
+        bool hasGun = heldItem is Gun;
         
         Vector2 directionToTarget = (enemy.position - (Vector2)blackboard.entity.transform.position).normalized;
         blackboard.lookDirection = Vector2.Lerp(blackboard.lookDirection.normalized, directionToTarget, blackboard.settings.movementSmoothingResponsiveness * Time.deltaTime);
         float rbRotation = blackboard.entity.GetRigidbody().rotation;
-        bool lookingAt = Vector2.Dot(directionToTarget, new Vector2(Mathf.Cos(rbRotation), Mathf.Sin(rbRotation))) > 0.5f;
-        if (inRange && hasLineOfSight && true) {
-            wantToShoot = true;
-        }
+        bool lookingAt = Vector2.Dot(directionToTarget, blackboard.lookDirection) > 0.95f;
+        
 
-        if (wantToShoot) {
-            blackboard.move = false;
+        blackboard.move = !hasLineOfSight;
 
+        if (hasLineOfSight && lookingAt) {
             if (!blackboard.isUsing) {
                 blackboard.preformUse = true;
             }
         }
         else {
-            // Tell navigator to goto
-            blackboard.move = true;
-
             if (blackboard.isUsing) {
                 blackboard.cancelUse = true;
             }

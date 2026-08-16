@@ -70,6 +70,9 @@ TagManager:
   - name: Health Circle
     uniqueID: 2721699071
     locked: 0
+  - name: Wall
+    uniqueID: 640545
+    locked: 0
   - name: Egg
     uniqueID: 3586186539
     locked: 0

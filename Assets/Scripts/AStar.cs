@@ -3,8 +3,10 @@ using UnityEngine;
 
 public static class AStar
 {
-    public static List<Vector2> FindPath(Waypoint start, Waypoint goal)
+    public static List<Vector2> FindPath(NavGraph navGraph, Waypoint start, Waypoint goal)
     {
+        if (start == null) return new List<Vector2>();
+
         var open = new List<PathNode>();
         var closed = new HashSet<Waypoint>();
 
@@ -23,8 +25,11 @@ public static class AStar
 
             closed.Add(current.waypoint);
 
-            foreach (var neighbor in current.waypoint.neighbors)
+            Debug.Log(current.waypoint.connections);
+            foreach (var connection in current.waypoint.connections)
             {
+                Waypoint neighbor = navGraph.GetWaypoint(connection.GetOther(current.waypoint));
+
                 if (closed.Contains(neighbor)) continue;
 
                 float gScore = current.G + Vector2.Distance(current.waypoint.position, neighbor.position);

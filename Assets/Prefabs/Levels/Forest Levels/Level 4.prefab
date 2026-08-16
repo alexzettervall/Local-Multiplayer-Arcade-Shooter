@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   category: 0
-  levelEnabled: 1
+  levelEnabled: 0
   levelSize: {x: 34, y: 20}
   gameMode: 1
   spawnPoints:

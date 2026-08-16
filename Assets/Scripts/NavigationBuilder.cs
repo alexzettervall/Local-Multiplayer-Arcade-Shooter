@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class NavigationBuilder
 {
-    public static List<Waypoint> BuildFromScene(float spacing, float connectRadius)
+    /*public static List<Waypoint> BuildFromScene(float spacing, float connectRadius)
     {
         LayerMask layerMask = GameAssets.i.structuresOnly;
         List<Waypoint> nodes = new List<Waypoint>();
@@ -15,7 +15,7 @@ public static class NavigationBuilder
             {
                 Vector2 position = new Vector2(x, y);
                 if (!Physics2D.OverlapCircle(position, spacing * 0.4f, layerMask)) {
-                    nodes.Add(new Waypoint(position));
+                    nodes.Add(new Waypoint(1, position));
                 }
             
             }
@@ -34,5 +34,5 @@ public static class NavigationBuilder
         }
 
         return nodes;
-    }
+    }*/
 }

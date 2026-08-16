@@ -11,6 +11,7 @@ public class Level : MonoBehaviour
 
     [SerializeField] private Vector2 levelSize;
     [SerializeField] private GameMode gameMode;
+    [SerializeField] private NavGraph navGraph;
     [SerializeField] private List<PlayerRespawn> playerRespawns = new List<PlayerRespawn>();
     [SerializeField] private List<GameMan.PlayerData> players = new List<GameMan.PlayerData>();
     [SerializeField] private Transform[] spawnPoints;
@@ -28,21 +29,11 @@ public class Level : MonoBehaviour
 
     private float timer;
 
-    private NavGraph navGraph;
     private List<Waypoint> waypoints = new List<Waypoint>();
     private void Awake()
     {
         currentSize = new Vector2(levelSize.x, levelSize.y);
-
-        // Create navmesh
-        RebuildNavGraph();
-
     }
-
-    public void RebuildNavGraph() {
-        navGraph = new NavGraph(NavigationBuilder.BuildFromScene(1f, 1.415f));
-    }
-
 
     private void OnDrawGizmos()
     {
@@ -54,17 +45,17 @@ public class Level : MonoBehaviour
 
         Gizmos.color = nodeColor;
 
+        // Draw nodes
         foreach (var wp in navGraph.nodes)
         {
-            // Draw node
             Gizmos.DrawSphere(wp.position, 0.05f);
+        }
 
-            // Draw links
-            Gizmos.color = connectionColor;
-            foreach (var neighbor in wp.neighbors)
-                Gizmos.DrawLine(wp.position, neighbor.position);
-
-            Gizmos.color = nodeColor;
+        // Draw connections
+        Gizmos.color = connectionColor;
+        foreach (WaypointConnection connection in navGraph.connections)
+        {
+            Gizmos.DrawLine(navGraph.GetWaypoint(connection.a).position, navGraph.GetWaypoint(connection.b).position);
         }
     }
 
@@ -76,6 +67,7 @@ public class Level : MonoBehaviour
             {
                 GameObject obj = Instantiate(handle.Result, transform);
                 LevelCanvas levelCanvas = obj.GetComponent<LevelCanvas>();
+                navGraph.BuildCache();
                 readyText = levelCanvas.GetReadyText();
                 goText = levelCanvas.GetGoText();
                 SetPlayers(GameMan.Instance.GetAllPlayers());

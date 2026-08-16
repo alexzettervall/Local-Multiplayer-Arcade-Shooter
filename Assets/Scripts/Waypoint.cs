@@ -7,12 +7,31 @@ public class Waypoint
 {
     public int id;
     public Vector2 position;
-    public List<int> neighborIds = new List<int>();
 
-    [System.NonSerialized] 
-    public List<Waypoint> neighbors = new List<Waypoint>();
+    [System.NonSerialized]
+    public List<WaypointConnection> connections = new List<WaypointConnection>();
 
-    public Waypoint(Vector2 position) {
+    public Waypoint(int id, Vector2 position) {
+        this.id = id;
         this.position = position;
+    }
+}
+
+[System.Serializable]
+public class WaypointConnection
+{
+    public int a;
+    public int b;
+    public float cost;
+
+    public WaypointConnection(int a, int b)
+    {
+        this.a = a;
+        this.b = b;
+    }
+
+    public int GetOther(Waypoint waypoint)
+    {
+        return waypoint.id == a ? b : a;
     }
 }
