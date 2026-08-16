@@ -29,16 +29,28 @@ public class NavigationAgent
     }
 
     public void UpdatePath() {
-        if (!(blackboard.target is Vector2 target))
+        if (blackboard.target is not Vector2 target)
         {
             return;
         }
-        path = GameObject.FindObjectOfType<Level>().FindPath(blackboard.entity.transform.position, target);
+        path = GameObject.FindObjectOfType<Level>().FindPath(blackboard.entity.transform.position, target, blackboard.entity.GetMoveSpeed(), blackboard.entity.GetDPS());
+        // Skip first node if its behind entity
+        if (path.Count > 1)
+        {
+            Vector2 dir1 = path[0] - (Vector2)blackboard.entity.transform.position;
+            Vector2 dir2 = path[1] - (Vector2)blackboard.entity.transform.position;
+
+            float dot = Vector2.Dot(dir1, dir2);
+            if (dot < 0)
+            {
+                path.RemoveAt(0);
+            }
+        }
     }
 
     public void Move() {
         if (path == null) return;
-        if (!(blackboard.target is Vector2 target))
+        if (blackboard.target is not Vector2 target)
         {
             return;
         }
