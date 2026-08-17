@@ -27,7 +27,7 @@ MonoBehaviour:
   reactionDelay: 0.2
   repathPeriod: 2
   structureAvoidanceRadius: 1
-  structureAvoidanceWeight: 1
+  structureAvoidanceWeight: 0.2
   grenadeAvoidanceRadius: 0
   grenadeAvoidanceWeight: 0
   gasAvoidanceRadius: 0
