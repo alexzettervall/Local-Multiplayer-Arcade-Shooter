@@ -58,6 +58,7 @@ public class NavigationAgent
 
         Vector2 desiredDirection;
         if (GetNextPosition() is not Vector2 nextPosition) return;
+        List<Structure> structuresInWay = GetStructuresInWay();
         float avoidanceWeight;
 
         // Determine wether to go directly for target or follow the path
@@ -86,6 +87,7 @@ public class NavigationAgent
         currentDirection.Normalize();
         blackboard.movement = currentDirection;
         blackboard.lookDirection = currentDirection;
+        blackboard.use = structuresInWay.Count > 0;
     }
 
     public Vector2 ComputeAvoidance() {
@@ -136,6 +138,12 @@ public class NavigationAgent
             return path.steps[0].from.position;
         }
         return path.steps[pathStepIndex].to.position;
+    }
+
+    public List<Structure> GetStructuresInWay()
+    {
+        if (path == null || pathStepIndex == -1 || pathStepIndex >= path.steps.Count) return new List<Structure>();
+        return path.steps[pathStepIndex].connection.structures;
     }
 
     public void DrawGizmos() {
