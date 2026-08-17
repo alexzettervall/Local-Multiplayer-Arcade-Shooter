@@ -171,6 +171,8 @@ MonoBehaviour:
   padding: 1.5
   smoothTime: 0.3
   minimumSize: 5
+  defaultSize: {x: 34, y: 20}
+  level: {fileID: 0}
 --- !u!114 &3558524202836670961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,10 +268,6 @@ PrefabInstance:
     - target: {fileID: 4408873973274879663, guid: c5eb57b8d4d883d41a5b33ba66411388, type: 3}
       propertyPath: m_Name
       value: Post Processing
-      objectReference: {fileID: 0}
-    - target: {fileID: 4408873973274879663, guid: c5eb57b8d4d883d41a5b33ba66411388, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
