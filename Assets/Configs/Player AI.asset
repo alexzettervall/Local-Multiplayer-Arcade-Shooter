@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player AI
   m_EditorClassIdentifier: 
   jitter: 0.1
-  perceptionPeriod: 1
+  perceptionPeriod: 0.2
   utilityRecalcPeriod: 2
   goalSwitchPenalty: 0.2
   stayEngagedRange: 3
