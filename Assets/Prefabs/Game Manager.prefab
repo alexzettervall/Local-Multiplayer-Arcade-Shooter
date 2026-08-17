@@ -71,6 +71,7 @@ MonoBehaviour:
   confettiParticles: {fileID: 7388089350805068777}
   fullScreenPassName: Pixelation
   floatPropertyName: Pixel Size
+  doGasZone: 0
   zoneTime: 75
   zoneGracePeriod: 5
   gasTickTime: 0.3

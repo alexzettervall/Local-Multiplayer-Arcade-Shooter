@@ -243,7 +243,10 @@ public class Level : MonoBehaviour
         goText.SetActive(false);
 
         started = true;
-        StartCoroutine(SpawnZone());
+        if (GameMan.Instance.doGasZone)
+        {
+            StartCoroutine(SpawnZone());
+        }
     }
     public IEnumerator EndLevel()
     {

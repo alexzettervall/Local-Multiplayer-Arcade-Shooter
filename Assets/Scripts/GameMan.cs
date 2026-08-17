@@ -42,6 +42,7 @@ public class GameMan : MonoBehaviour
     public string floatPropertyName = "Pixel Size";
  
 
+    public bool doGasZone = false;
     public float zoneTime = 30f;
     public float zoneGracePeriod = 5f;
     public float gasTickTime = 1f;
