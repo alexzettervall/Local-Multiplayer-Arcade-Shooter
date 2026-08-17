@@ -95,7 +95,10 @@ public class NavigationAgent
                 pathStepIndex++;
             }
         }
-        desiredDirection += (ComputeAvoidance() * avoidanceWeight);
+        if (structuresInWay.Count == 0)
+        {
+            desiredDirection += (ComputeAvoidance() * avoidanceWeight);
+        }
         desiredDirection.Normalize();
         currentDirection = Vector2.Lerp(currentDirection, desiredDirection, blackboard.settings.movementSmoothingResponsiveness * Time.deltaTime);
         currentDirection.Normalize();
