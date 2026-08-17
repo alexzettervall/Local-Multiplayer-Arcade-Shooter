@@ -15,6 +15,18 @@ public class Waypoint
         this.id = id;
         this.position = position;
     }
+
+    public WaypointConnection GetConnection(Waypoint other)
+    {
+        foreach (WaypointConnection connection in connections)
+        {
+            if (connection.GetOther(this) == other.id)
+            {
+                return connection;
+            }
+        }
+        return null;
+    }
 }
 
 [System.Serializable]
