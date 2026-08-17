@@ -32,7 +32,7 @@ public class NavigationAgent
             blackboard.movement = Vector2.zero;
         }
 
-        if (wantToUse && !overridedUse)
+        if (wantToUse && !blackboard.use)
         {
             blackboard.use = true;
             overridedUse = true;
