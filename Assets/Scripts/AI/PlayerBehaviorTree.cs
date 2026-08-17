@@ -66,16 +66,18 @@ public class PlayerBehaviorTree : BehaviorTree<PlayerBlackboard>
 
     public void Loot() {
         if (!(blackboard.targetLoot is Blackboard.ItemData targetLoot))
-        {
-            return;
-        }
+        if (blackboard.targetLoot is not Blackboard.ItemData loot) return;
+        if (blackboard.entity is not Player player) return;
 
-        blackboard.target = targetLoot.position;
         blackboard.move = true;
-        float distance = Vector2.Distance(blackboard.entity.transform.position, targetLoot.position);
-        if (distance < 0.25f) {
-            blackboard.interact = true;
-            blackboard.isDirty = true;
-        }
+        blackboard.target = loot.position;
+
+        Item item = GameMan.Instance.GetClosestItemInRange(player.transform.position, player.GetPickUpRadius(), player.GetItem());
+        if (item == null) return;
+        if (!item.GetTags().Contains("deadly weapon")) return;
+
+        blackboard.interact = true;
+        blackboard.isDirty = true;
+        blackboard.move = false;
     }
 }
