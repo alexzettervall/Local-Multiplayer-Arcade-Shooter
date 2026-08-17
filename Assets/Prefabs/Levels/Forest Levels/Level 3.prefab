@@ -152,175 +152,118 @@ MonoBehaviour:
   connections:
   - a: 9
     b: 10
-    cost: 0
   - a: 10
     b: 4
-    cost: 0
   - a: 1
     b: 2
-    cost: 0
   - a: 11
     b: 7
-    cost: 0
   - a: 12
     b: 11
-    cost: 0
   - a: 13
     b: 14
-    cost: 0
   - a: 14
     b: 15
-    cost: 0
   - a: 15
     b: 1
-    cost: 0
   - a: 16
     b: 18
-    cost: 0
   - a: 18
     b: 5
-    cost: 0
   - a: 10
     b: 16
-    cost: 0
   - a: 20
     b: 9
-    cost: 0
   - a: 2
     b: 36
-    cost: 0
   - a: 36
     b: 35
-    cost: 0
   - a: 35
     b: 3
-    cost: 0
   - a: 3
     b: 6
-    cost: 0
   - a: 37
     b: 6
-    cost: 0
   - a: 37
     b: 15
-    cost: 0
   - a: 1
     b: 37
-    cost: 0
   - a: 37
     b: 2
-    cost: 0
   - a: 36
     b: 34
-    cost: 0
   - a: 34
     b: 35
-    cost: 0
   - a: 34
     b: 8
-    cost: 0
   - a: 38
     b: 22
-    cost: 0
   - a: 38
     b: 21
-    cost: 0
   - a: 21
     b: 20
-    cost: 0
   - a: 41
     b: 23
-    cost: 0
   - a: 41
     b: 40
-    cost: 0
   - a: 40
     b: 24
-    cost: 0
   - a: 24
     b: 25
-    cost: 0
   - a: 40
     b: 39
-    cost: 0
   - a: 17
     b: 32
-    cost: 0
   - a: 32
     b: 20
-    cost: 0
   - a: 32
     b: 31
-    cost: 0
   - a: 31
     b: 29
-    cost: 0
   - a: 29
     b: 30
-    cost: 0
   - a: 30
     b: 28
-    cost: 0
   - a: 30
     b: 19
-    cost: 0
   - a: 28
     b: 26
-    cost: 0
   - a: 26
     b: 27
-    cost: 0
   - a: 42
     b: 40
-    cost: 0
   - a: 8
     b: 9
-    cost: 0
   - a: 5
     b: 4
-    cost: 0
   - a: 5
     b: 0
-    cost: 0
   - a: 0
     b: 7
-    cost: 0
   - a: 43
     b: 0
-    cost: 0
   - a: 7
     b: 44
-    cost: 0
   - a: 45
     b: 15
-    cost: 0
   - a: 46
     b: 45
-    cost: 0
   - a: 46
     b: 6
-    cost: 0
   - a: 48
     b: 28
-    cost: 0
   - a: 28
     b: 47
-    cost: 0
   - a: 49
     b: 40
-    cost: 0
   - a: 21
     b: 50
-    cost: 0
   - a: 50
     b: 39
-    cost: 0
   - a: 51
     b: 23
-    cost: 0
   - a: 51
     b: 22
-    cost: 0
   editorGridSize: 1
 --- !u!1 &7327155125438516233
 GameObject:
