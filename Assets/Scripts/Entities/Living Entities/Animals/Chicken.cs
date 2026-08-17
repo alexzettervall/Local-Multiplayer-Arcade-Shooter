@@ -66,7 +66,7 @@ public class Chicken : LivingEntity
 
     public override int Damage(int damage, Entity damager, DamageSource damageSource)
     {
-        if (damager is LivingEntity attacker)
+        if (damager is LivingEntity attacker && damager is not Chicken)
         {
             Agro(attacker, true);
         }
