@@ -65,7 +65,6 @@ public class PlayerBehaviorTree : BehaviorTree<PlayerBlackboard>
     }
 
     public void Loot() {
-        if (!(blackboard.targetLoot is Blackboard.ItemData targetLoot))
         if (blackboard.targetLoot is not Blackboard.ItemData loot) return;
         if (blackboard.entity is not Player player) return;
 
