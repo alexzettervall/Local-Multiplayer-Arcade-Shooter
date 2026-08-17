@@ -32,6 +32,7 @@ public class Level : MonoBehaviour
     private List<Waypoint> waypoints = new List<Waypoint>();
     private void Awake()
     {
+        navGraph.BuildCache();
         currentSize = new Vector2(levelSize.x, levelSize.y);
     }
 
@@ -67,7 +68,6 @@ public class Level : MonoBehaviour
             {
                 GameObject obj = Instantiate(handle.Result, transform);
                 LevelCanvas levelCanvas = obj.GetComponent<LevelCanvas>();
-                navGraph.BuildCache();
                 readyText = levelCanvas.GetReadyText();
                 goText = levelCanvas.GetGoText();
                 SetPlayers(GameMan.Instance.GetAllPlayers());
@@ -363,7 +363,7 @@ public class Level : MonoBehaviour
         }
         return count;
     }
-    public List<Vector2> FindPath(Vector2 start, Vector2 goal, float moveSpeed, float dps) {
+    public AStar.Path FindPath(Vector2 start, Vector2 goal, float moveSpeed, float dps) {
         return navGraph.FindPath(start, goal, moveSpeed, dps);
     }
     public float FindDistance(Vector2 start, Vector2 goal, out List<Vector2> path) {
