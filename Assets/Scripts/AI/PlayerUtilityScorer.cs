@@ -65,7 +65,7 @@ public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
             float weaponModifier = GetWeaponSuitability(playerData);
             
             float attackScore = distanceFactor;
-            Debug.Log("d: " + distanceFactor + " h: " + healthModifier + " w: " + weaponModifier);
+            //Debug.Log("d: " + distanceFactor + " h: " + healthModifier + " w: " + weaponModifier);
             attackScore = Mathf.Clamp01(attackScore);
 
             if (attackScore > highestAttackScore) {
