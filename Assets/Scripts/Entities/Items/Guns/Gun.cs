@@ -56,10 +56,6 @@ public class Gun : Item
     public override void Use(bool use, bool unUse)
     {
         Shoot(use);
-        if (ammo <= 0) {
-            GetHolder().DropItem(true);
-            
-        }
     }
     public override void PickUp(Entity holder)
     {
@@ -69,10 +65,6 @@ public class Gun : Item
     public override void OnDropped()
     {
         SetAnimatorBool("Holding Gun", false);
-        if (ammo < 1)
-        {
-            Destroy(gameObject);
-        }
         base.OnDropped();
     }
     public virtual void Shoot(bool pressed)
