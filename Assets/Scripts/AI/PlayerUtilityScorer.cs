@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerBlackboard;
+
 #if UNITY_EDITOR
-    using UnityEditor;
+using UnityEditor;
 #endif
 
 public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
@@ -49,15 +51,15 @@ public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
         }
     }
     public float GetAttackUtility() {
-        Blackboard.PlayerData? bestPlayerToAttack = null;
+        PlayerData? bestPlayerToAttack = null;
         float highestAttackScore = -1f;
         List<Vector2> path = null;
         if (blackboard.playerDatas == null || blackboard.playerDatas.Length < 1) {
             blackboard.targetEnemy = null;
             return 0f;
         }
-        foreach (Blackboard.PlayerData playerData in blackboard.playerDatas) {
-            float distanceToEnemy = GameMan.Instance.GetLevel().FindDistance(blackboard.entity.transform.position, playerData.position, out path);
+        foreach (PlayerData playerData in blackboard.playerDatas) {
+            float distanceToEnemy = GameMan.Instance.GetLevel().FindDistance(blackboard.entity.transform.position, playerData.Position, out path);
             float distanceFactor = 1 - Mathf.Clamp01(distanceToEnemy / maxAttackDistance);
 
             float healthModifier = (float)blackboard.entity.GetHealth() / (float)blackboard.entity.GetMaxHealth();
@@ -78,15 +80,15 @@ public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
         return highestAttackScore;
     }
     public float GetLootUtility() {
-        Blackboard.ItemData? bestItem = null;
+        ItemData? bestItem = null;
         float bestUtility = 0.01f;
         List<Vector2> path = null;
 
-        foreach (Blackboard.ItemData itemData in blackboard.itemDatas) {
+        foreach (ItemData itemData in blackboard.itemDatas) {
             if (itemData.held) continue;
             if (!itemData.tags.Contains("deadly weapon")) continue;
 
-            float distance = GameMan.Instance.GetLevel().FindDistance(blackboard.entity.transform.position, itemData.position, out path);
+            float distance = GameMan.Instance.GetLevel().FindDistance(blackboard.entity.transform.position, itemData.Position, out path);
             float distanceFactor = 1f - distance / maxLootDistance;
             
             //float pathFactor = GetPathFactor(itemData.item);
@@ -114,8 +116,8 @@ public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
 
         return DPSFactor * damageFactor;
     }
-    public float GetWeaponSuitability(Blackboard.PlayerData playerData) {
-        float distance = Vector3.Distance(blackboard.entity.transform.position, playerData.position);
+    public float GetWeaponSuitability(PlayerData playerData) {
+        float distance = Vector3.Distance(blackboard.entity.transform.position, playerData.Position);
         float range = blackboard.attackRange;
         float distanceFactor = range / distance;
 
@@ -139,19 +141,5 @@ public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
 
         // Health
         needs["health"] = 1f - (float)blackboard.entity.GetHealth() / (float)blackboard.entity.GetMaxHealth();
-    }
-    public Blackboard.PlayerData? GetClosestEnemy() {
-        Blackboard.PlayerData? closestEnemy = null;
-        float closestDist = float.MaxValue;
-
-        foreach(Blackboard.PlayerData playerData in blackboard.playerDatas) {
-            float distance = Vector2.Distance(blackboard.entity.transform.position, playerData.position);
-            if (distance < closestDist) {
-                closestDist = distance;
-                closestEnemy = playerData;
-            }
-        }
-
-        return closestEnemy;
     }
 }

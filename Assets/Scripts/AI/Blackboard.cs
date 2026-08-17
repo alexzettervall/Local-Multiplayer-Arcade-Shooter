@@ -17,21 +17,13 @@ public abstract class Blackboard
     // Inputs to send to player
     public Vector2 lookDirection;
     public Vector2 movement;
-    public bool preformUse {get; private set;}
-    public bool cancelUse {get; private set;}
+    public bool preformUse { get; private set; }
+    public bool cancelUse { get; private set; }
     public bool interact;
     public bool drop;
 
-    // General perception data
-    public PlayerData[] playerDatas;
-    public ItemData[] itemDatas;
-    public ContainerData[] containerDatas;
-    public PlayerData? targetEnemy;
-    public ItemData? targetLoot;
-    public ContainerData? targetContainer;
-    
-
-    public Blackboard() {
+    public Blackboard()
+    {
 
     }
 
@@ -40,7 +32,7 @@ public abstract class Blackboard
         // inject inputs
         entity.OnMove(movement);
         entity.OnRotate(lookDirection, null);
-        
+
         if (entity.IsUsing() && !use)
         {
             cancelUse = true;
@@ -62,37 +54,27 @@ public abstract class Blackboard
         drop = false;
     }
 
-    public struct PlayerData
+    public T? GetNearest<T>(IEnumerable<T> entities) where T : struct, IPerceivedEntity
     {
-        public PlayerData(Vector2 position, float health) {
-            this.position = position;
-            this.health = health;
-        }
+        T? nearest = null;
+        float nearestDistance = float.MaxValue;
 
-        public Vector2 position;
-        public float health;
-    }
-    public struct ItemData
-    {
-        public ItemData(Vector2 position, List<String> tags, bool held, float dps) {
-            this.position = position;
-            this.tags = tags;
-            this.held = held;
-            this.dps = dps;
-        }
-
-        public Vector2 position;
-        public List<String> tags;
-        public bool held;
-        public float dps;
-    }
-    public struct ContainerData
-    {
-        public ContainerData(Vector2 position)
+        foreach (T entity in entities)
         {
-            this.position = position;
+            float distance = Vector2.Distance(this.entity.transform.position, entity.Position);
+
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearest = entity;
+            }
         }
 
-        public Vector2 position;
+        return nearest;
     }
+}
+
+public interface IPerceivedEntity
+{
+    Vector2 Position { get; }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using static PlayerBlackboard;
 
 public class PlayerBehaviorTree : BehaviorTree<PlayerBlackboard>
 {
@@ -21,23 +22,23 @@ public class PlayerBehaviorTree : BehaviorTree<PlayerBlackboard>
 
     public void Attack() {
         // Find target
-        if (!(blackboard.targetEnemy is Blackboard.PlayerData enemy))
+        if (!(blackboard.targetEnemy is PlayerData enemy))
         {
             return;
         }
 
-        blackboard.target = enemy.position;
+        blackboard.target = enemy.Position;
 
-        float distance = Vector2.Distance(blackboard.entity.transform.position, enemy.position);
+        float distance = Vector2.Distance(blackboard.entity.transform.position, enemy.Position);
         
-        RaycastHit2D[] hits = Physics2D.LinecastAll(blackboard.entity.transform.position, enemy.position, GameAssets.i.structuresOnly);
+        RaycastHit2D[] hits = Physics2D.LinecastAll(blackboard.entity.transform.position, enemy.Position, GameAssets.i.structuresOnly);
         bool hasLineOfSight = hits.Length == 0;
         
         bool inRange = distance <= blackboard.attackRange;
         Item heldItem = blackboard.entity.GetItem();
         bool hasGun = heldItem is Gun;
         
-        Vector2 directionToTarget = (enemy.position - (Vector2)blackboard.entity.transform.position).normalized;
+        Vector2 directionToTarget = (enemy.Position - (Vector2)blackboard.entity.transform.position).normalized;
         blackboard.lookDirection = Vector2.Lerp(blackboard.lookDirection.normalized, directionToTarget, blackboard.settings.movementSmoothingResponsiveness * Time.deltaTime);
         float rbRotation = blackboard.entity.GetRigidbody().rotation;
         bool lookingAt = Vector2.Dot(directionToTarget, blackboard.lookDirection) > 0.99f;
@@ -67,11 +68,11 @@ public class PlayerBehaviorTree : BehaviorTree<PlayerBlackboard>
     public void Loot() {
         blackboard.use = false;
 
-        if (blackboard.targetLoot is not Blackboard.ItemData loot) return;
+        if (blackboard.targetLoot is not ItemData loot) return;
         if (blackboard.entity is not Player player) return;
 
         blackboard.move = true;
-        blackboard.target = loot.position;
+        blackboard.target = loot.Position;
 
         Item item = GameMan.Instance.GetClosestItemInRange(player.transform.position, player.GetPickUpRadius(), player.GetItem());
         if (item == null) return;

@@ -13,30 +13,12 @@ public class ChickenUtilityScorer : UtilityScorer<ChickenBlackboard>
         {
             utilities["Eat"] = 100f;
             utilities["Attack"] = 0f;
-            blackboard.targetContainer = GetNearestContainer();
+            blackboard.targetStructure = blackboard.GetNearest(blackboard.structureDatas);
         }
         else
         {
             utilities["Attack"] = 100f;
             utilities["Eat"] = 0f;
         }
-    }
-
-    public Blackboard.ContainerData? GetNearestContainer()
-    {
-        Blackboard.ContainerData? nearestContainer = null;
-        float nearestDist = float.MaxValue;
-
-        foreach (Blackboard.ContainerData containerData in blackboard.containerDatas)
-        {
-            float distance = Vector2.Distance(blackboard.entity.transform.position, containerData.position);
-            if (distance < nearestDist)
-            {
-                nearestDist = distance;
-                nearestContainer = containerData;
-            }
-        }
-
-        return nearestContainer;
     }
 }

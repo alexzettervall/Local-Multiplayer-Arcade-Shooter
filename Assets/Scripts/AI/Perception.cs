@@ -6,16 +6,20 @@ public abstract class Perception<TBlackboard> where TBlackboard : Blackboard
 {
     protected TBlackboard blackboard;
 
+    private float perceptionTimer = 0f;
+
     public Perception(TBlackboard blackboard) {
         this.blackboard = blackboard;
     }
 
     public void Update() {
-        OnUpdate();
+        perceptionTimer -= Time.deltaTime;
+        if (perceptionTimer <= 0)
+        {
+            perceptionTimer = blackboard.settings.perceptionPeriod + Random.Range(-blackboard.settings.jitter, blackboard.settings.jitter);
+            UpdatePerception();
+        }
     }
 
-    public virtual void OnUpdate()
-    {
-        
-    }
+    protected abstract void UpdatePerception();
 }

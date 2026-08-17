@@ -1,4 +1,5 @@
 using UnityEngine;
+using static ChickenBlackboard;
 
 public class ChickenBehaviorTree : BehaviorTree<ChickenBlackboard>
 {
@@ -22,12 +23,12 @@ public class ChickenBehaviorTree : BehaviorTree<ChickenBlackboard>
 
     public void Eat()
     {
-        if (blackboard.targetContainer is not Blackboard.ContainerData container)
+        if (blackboard.targetStructure is not StructureData structure)
         {
             return;
         }
 
-        blackboard.target = container.position;
+        blackboard.target = structure.Position;
         blackboard.move = true;
         blackboard.use = Physics2D.Raycast(blackboard.entity.transform.position, blackboard.lookDirection, 1f, GameAssets.i.structuresOnly);
     }
