@@ -175,8 +175,8 @@ MonoBehaviour:
   sr: {fileID: 5874626212845002934}
   lastDamager: {fileID: 0}
   isDead: 0
-  maxHealth: 75
-  health: 75
+  maxHealth: 100
+  health: 100
   heldItem: {fileID: 0}
   itemHolder: {fileID: 0}
   reflectBullets: 0
