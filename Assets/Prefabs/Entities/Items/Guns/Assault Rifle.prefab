@@ -170,6 +170,10 @@ MonoBehaviour:
   health: 0
   heldItem: {fileID: 0}
   itemHolder: {fileID: 0}
+  reflectBullets: 0
+  blocksLasers: 1
+  canBeFrozen: 0
+  tags: []
   material: {fileID: 0}
   holdAnimation: {fileID: 0}
   pickUp: 2
@@ -184,8 +188,8 @@ MonoBehaviour:
   shootSound: 29
   bulletPrefab: {fileID: 5406932678097414640, guid: ba483742531096a41b01b2e54a9a2173, type: 3}
   firePoint: {fileID: 5219364931170773737}
-  ammo: 15
-  maxAmmo: 15
+  ammo: 30
+  maxAmmo: 30
   auto: 1
   damage: 27
   fireRate: 10
