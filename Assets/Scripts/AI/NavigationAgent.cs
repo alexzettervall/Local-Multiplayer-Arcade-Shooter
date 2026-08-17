@@ -11,6 +11,9 @@ public class NavigationAgent
     float repathTimer = 0f;
     Vector2 currentDirection = Vector2.zero;
 
+    bool wantToUse = false;
+    bool overridedUse = false;
+
     public NavigationAgent(Blackboard blackboard) {
         this.blackboard = blackboard;
     }
@@ -27,6 +30,17 @@ public class NavigationAgent
         }
         else {
             blackboard.movement = Vector2.zero;
+        }
+
+        if (wantToUse && !overridedUse)
+        {
+            blackboard.use = true;
+            overridedUse = true;
+        }
+        else if (!wantToUse && overridedUse)
+        {
+            blackboard.use = false;
+            overridedUse = false;
         }
     }
 
@@ -87,7 +101,7 @@ public class NavigationAgent
         currentDirection.Normalize();
         blackboard.movement = currentDirection;
         blackboard.lookDirection = currentDirection;
-        blackboard.use = structuresInWay.Count > 0;
+        wantToUse = structuresInWay.Count > 0;
     }
 
     public Vector2 ComputeAvoidance() {
