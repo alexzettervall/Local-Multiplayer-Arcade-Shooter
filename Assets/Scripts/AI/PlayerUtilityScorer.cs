@@ -84,6 +84,7 @@ public class PlayerUtilityScorer : UtilityScorer<PlayerBlackboard>
 
         foreach (Blackboard.ItemData itemData in blackboard.itemDatas) {
             if (itemData.held) continue;
+            if (!itemData.tags.Contains("deadly weapon")) continue;
 
             float distance = GameMan.Instance.GetLevel().FindDistance(blackboard.entity.transform.position, itemData.position, out path);
             float distanceFactor = 1f - distance / maxLootDistance;
