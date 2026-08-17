@@ -13,7 +13,10 @@ public class ChickenUtilityScorer : UtilityScorer<ChickenBlackboard>
         {
             utilities["Eat"] = 100f;
             utilities["Attack"] = 0f;
-            blackboard.targetStructure = blackboard.GetNearest(blackboard.structureDatas);
+            if (blackboard.targetStructure == null)
+            {
+                blackboard.targetStructure = blackboard.structureDatas[Random.Range(0, blackboard.structureDatas.Count)];
+            }
         }
         else
         {
