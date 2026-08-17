@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NavigationAgent
 {
     protected Blackboard blackboard;
-    List<Vector2> path = null;
+    AStar.Path path = null;
+    int pathStepIndex = -1;
     float repathTimer = 0f;
     Vector2 currentDirection = Vector2.zero;
 
@@ -34,47 +36,48 @@ public class NavigationAgent
             return;
         }
         path = GameObject.FindObjectOfType<Level>().FindPath(blackboard.entity.transform.position, target, blackboard.entity.GetMoveSpeed(), blackboard.entity.GetDPS());
-        // Skip first node if its behind entity
-        if (path.Count > 1)
+        pathStepIndex = -1;
+        if (path != null)
         {
-            Vector2 dir1 = path[0] - (Vector2)blackboard.entity.transform.position;
-            Vector2 dir2 = path[1] - (Vector2)blackboard.entity.transform.position;
+            Waypoint first = path.steps[0].from;
+            Waypoint second = path.steps[0].to;
+
+            Vector2 dir1 = first.position - (Vector2)blackboard.entity.transform.position;
+            Vector2 dir2 = second.position - (Vector2)blackboard.entity.transform.position;
 
             float dot = Vector2.Dot(dir1, dir2);
             if (dot < 0)
             {
-                path.RemoveAt(0);
+                pathStepIndex = 0;
             }
         }
     }
 
     public void Move() {
-        if (path == null) return;
-        if (blackboard.target is not Vector2 target)
-        {
-            return;
-        }
+        if (blackboard.target is not Vector2 target) return;
 
-        float distToTarget = Vector2.Distance(target, blackboard.entity.transform.position);
-        Vector2 desiredDirection = Vector2.zero;
+        Vector2 desiredDirection;
+        if (GetNextPosition() is not Vector2 nextPosition) return;
+        float avoidanceWeight;
+
         // Determine wether to go directly for target or follow the path
-        float avoidanceWeight = 1f;
+        float distToTarget = Vector2.Distance(target, blackboard.entity.transform.position);
         bool hasLineOfSight = !Physics2D.Linecast(blackboard.entity.transform.position, target, GameAssets.i.structuresOnly);
-        bool noPath = path.Count < 1;
         bool shouldMoveDirectly = distToTarget <= blackboard.settings.directMovementThreshold && hasLineOfSight;
-        if (noPath || shouldMoveDirectly) {
+
+        if (shouldMoveDirectly) {
             // Direct movement
-            desiredDirection = target - (Vector2)blackboard.entity.transform.position;
+            desiredDirection = target - nextPosition;
             avoidanceWeight = blackboard.settings.directMovementAvoidanceWeight;
         }
         else {
             // Follow path
-            desiredDirection = path[0] - (Vector2)blackboard.entity.transform.position;
+            desiredDirection = nextPosition - (Vector2)blackboard.entity.transform.position;
             avoidanceWeight = blackboard.settings.structureAvoidanceWeight;
 
-            float dist = Vector2.Distance(blackboard.entity.transform.position, path[0]);
+            float dist = Vector2.Distance(blackboard.entity.transform.position, nextPosition);
             if (dist < 1.42f) {
-                path.RemoveAt(0);
+                pathStepIndex++;
             }
         }
         desiredDirection += (ComputeAvoidance() * avoidanceWeight);
@@ -124,21 +127,30 @@ public class NavigationAgent
         return avoidance;
     }
 
-    public void DrawGizmos() {
-        if (blackboard.entity == null) {
-            return;
+    public Vector2? GetNextPosition()
+    {
+        if (path == null || pathStepIndex >= path.steps.Count) return blackboard.target;
+
+        if (pathStepIndex == -1)
+        {
+            return path.steps[0].from.position;
         }
+        return path.steps[pathStepIndex].to.position;
+    }
+
+    public void DrawGizmos() {
+        if (blackboard.entity == null) return;
+        if (path == null) return;
+
         Color nodeColor = new Color(0, 0, 1f);
         Color lineColor = new Color(0, 1f, 0);
-        Vector2 prevNode = blackboard.entity.transform.position;
-        foreach (Vector2 node in path) {
+        
+        foreach (AStar.PathStep step in path.steps) {
+
             Gizmos.color = lineColor;
-            if (prevNode != null) {
-                Gizmos.DrawLine(prevNode, node);
-            }
+            Gizmos.DrawLine(step.from.position, step.to.position);
             Gizmos.color = nodeColor;
-            prevNode = node;
-            Gizmos.DrawSphere(node, 0.1f);
+            Gizmos.DrawSphere(step.from.position, 0.3f);
         }
     }
 }
