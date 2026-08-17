@@ -309,4 +309,33 @@ public class GameMan : MonoBehaviour
             GameObject persistentPlayer = Instantiate(GameAssets.i.persistentPlayer);
         }
     }
+
+    public Item GetClosestItemInRange(Vector2 position, float radius, Item ignore)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, radius, 1 << 6);
+
+        Collider2D closestCollider = null;
+        float closestDist = float.MaxValue;
+
+        foreach (Collider2D collider in colliders)
+        {
+            Item item = collider.GetComponent<Item>();
+            if (item == null) continue;
+            if (item == ignore) continue;
+            
+            float dist = Vector2.Distance(collider.transform.position, position);
+            if (dist < closestDist)
+            {
+                closestDist = dist;
+                closestCollider = collider;
+            }
+        }
+
+        if (closestCollider != null)
+        {
+            return closestCollider.GetComponent<Item>();
+        }
+
+        return null;
+    }
 }
