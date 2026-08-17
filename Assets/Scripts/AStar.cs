@@ -3,9 +3,9 @@ using UnityEngine;
 
 public static class AStar
 {
-    public static List<Vector2> FindPath(NavGraph navGraph, Waypoint start, Waypoint goal, float moveSpeed, float dps)
+    public static Path FindPath(NavGraph navGraph, Waypoint start, Waypoint goal, float moveSpeed, float dps)
     {
-        if (start == null) return new List<Vector2>();
+        if (start == null) return null;
 
         var open = new List<PathNode>();
         var closed = new HashSet<Waypoint>();
@@ -27,7 +27,6 @@ public static class AStar
 
             closed.Add(current.waypoint);
 
-            Debug.Log(current.waypoint.connections);
             foreach (var connection in current.waypoint.connections)
             {
                 Waypoint neighbor = navGraph.GetWaypoint(connection.GetOther(current.waypoint));
@@ -54,7 +53,7 @@ public static class AStar
         }
 
         // No path found
-        return new List<Vector2>();
+        return null; // finish converting all paths to be of type AStarPath
     }
 
     private static float Heuristic(Waypoint a, Waypoint b)
@@ -62,20 +61,27 @@ public static class AStar
         return Vector2.Distance(a.position, b.position);
     }
 
-    private static List<Vector2> ReconstructPath(PathNode node)
+    private static Path ReconstructPath(PathNode node)
     {
-        List<Vector2> path = new List<Vector2>();
-        while (node != null)
+        if (node.Parent == null) return null;
+
+        Path path = new Path();
+        while (node.Parent != null)
         {
-            path.Insert(0, node.waypoint.position); // Add randomness
+            PathStep step = new PathStep();
+            step.to = node.waypoint;
+            step.from = node.Parent.waypoint;
+            step.connection = node.connection;
+            path.steps.Insert(0, step);
             node = node.Parent;
         }
         return path;
     }
 
-    private class PathNode
+    public class PathNode
     {
         public Waypoint waypoint;
+        public WaypointConnection connection;
         public PathNode Parent;
         public float G; // cost from start
         public float H; // heuristic to goal
@@ -85,8 +91,23 @@ public static class AStar
         {
             this.waypoint = waypoint;
             this.Parent = parent;
+            if (waypoint != null && parent != null)
+            {
+                this.connection = waypoint.GetConnection(parent.waypoint);
+            }
             this.G = g;
             this.H = h;
         }
+    }
+
+    public class Path
+    {
+        public List<PathStep> steps = new List<PathStep>();
+    }
+    public class PathStep
+    {
+        public Waypoint from;
+        public Waypoint to;
+        public WaypointConnection connection;
     }
 }
