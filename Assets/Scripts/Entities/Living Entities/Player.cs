@@ -16,6 +16,7 @@ public class Player : LivingEntity
     [SerializeField] private float punchDistance = 0.5f;
     [SerializeField] private int punchDamage = 15;
     [SerializeField] private float punchDelay = 0.33f;
+    [SerializeField] private float pickUpRadius = 0.7f;
     [SerializeField] private SpriteRenderer leftHandSr;
     [SerializeField] private SpriteRenderer rightHandSr;
     public bool isStatic = false;
@@ -117,28 +118,11 @@ public class Player : LivingEntity
     }
     public void Interact()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.7f, 1 << 6);
+        Item item = GameMan.Instance.GetClosestItemInRange(transform.position, pickUpRadius, heldItem);
 
-        Collider2D closestCollider = null;
-        float closestDist = float.MaxValue;
-
-        foreach (Collider2D collider in colliders)
+        if (item != null)
         {
-            if (collider.GetComponent<Item>() == heldItem)
-            {
-                continue;
-            }
-            float dist = Vector2.Distance(collider.transform.position, transform.position);
-            if (dist < closestDist)
-            {
-                closestDist = dist;
-                closestCollider = collider;
-            }
-        }
-
-        if (closestCollider != null)
-        {
-            PickUpItem(closestCollider.GetComponent<Item>());
+            PickUpItem(item);
         }
     }
     public void SetGunSprite(Sprite sprite)
@@ -188,6 +172,10 @@ public class Player : LivingEntity
             return punchDamage / punchDelay;
         }
         return Mathf.Max(punchDamage / punchDelay, item.GetDPS());
+    }
+    public float GetPickUpRadius()
+    {
+        return pickUpRadius;
     }
     protected override void Kill()
     {
