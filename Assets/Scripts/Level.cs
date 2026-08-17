@@ -281,6 +281,10 @@ public class Level : MonoBehaviour
             }
         } 
     }
+    public void OnStructureDestroyed()
+    {
+        navGraph.BuildCache();
+    }
     public void SpawnPlayer(int playerID)
     {
         if (playerSpawnIndex >= spawnPoints.Length)
