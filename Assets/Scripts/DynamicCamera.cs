@@ -39,7 +39,7 @@ public class DynamicCamera : MonoBehaviour
 
         Bounds bounds;
         Vector2 levelSize;
-        levelSize = level != null ? level.GetCurrentSize() : new Vector2(1f,1f);
+        levelSize = level != null ? level.GetCurrentSize() : defaultSize;
         if (level == null)
         {
             bounds = new Bounds(Vector3.zero, defaultSize);
