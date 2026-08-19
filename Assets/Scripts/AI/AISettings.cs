@@ -19,6 +19,7 @@ public class AISettings : ScriptableObject
     public float reactionDelay = 0.2f;
 
     [Header("Navigation")]
+    public AStarSettings aStarSettings;
     public float repathPeriod = 0.5f;
     public float structureAvoidanceRadius = 1f;
     public float structureAvoidanceWeight = 1f;
