@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class AStar
 {
-    public static Path FindPath(NavGraph navGraph, Waypoint start, Waypoint goal, float moveSpeed, float dps)
+    public static Path FindPath(AStarSettings aStarSettings, NavGraph navGraph, Waypoint start, Waypoint goal, float moveSpeed, float dps)
     {
         if (start == null) return null;
 
@@ -34,7 +34,7 @@ public static class AStar
                 if (closed.Contains(neighbor)) continue;
 
                 //float gScore = current.G + Vector2.Distance(current.waypoint.position, neighbor.position);f
-                float gScore = current.G + (connection.distance / moveSpeed) + (connection.damageNeeded / dps);
+                float gScore = current.G + (connection.distance / moveSpeed) + (connection.damageNeeded * aStarSettings.obstacleCostMultiplier / dps);
 
                 PathNode existing = open.Find(n => n.waypoint == neighbor);
                 if (existing != null)

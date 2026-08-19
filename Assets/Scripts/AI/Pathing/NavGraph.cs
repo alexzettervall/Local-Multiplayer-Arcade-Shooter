@@ -26,21 +26,12 @@ public class NavGraph : MonoBehaviour
         return closestWaypoint;
     }
 
-    public AStar.Path FindPath(Vector2 start, Vector2 goal, float moveSpeed, float dps)
+    public AStar.Path FindPath(AStarSettings aStarSettings, Vector2 start, Vector2 goal, float moveSpeed, float dps)
     {
         Waypoint a = GetNearest(start);
         Waypoint b = GetNearest(goal);
         if (a == null || b == null) return null;
-        return AStar.FindPath(this, a, b, moveSpeed, dps);
-    }
-
-    public float FindDistance(Vector2 start, Vector2 goal, float moveSpeed, float dps, out AStar.Path path) {
-        path = FindPath(start, goal, moveSpeed, dps);
-        float distance = 0f;
-        foreach (AStar.PathStep step in path.steps) {
-            distance += step.connection.distance;
-        }
-        return distance;
+        return AStar.FindPath(aStarSettings, this, a, b, moveSpeed, dps);
     }
 
     public Waypoint GetWaypoint(int id)

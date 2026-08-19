@@ -49,7 +49,7 @@ public class NavigationAgent
         {
             return;
         }
-        path = GameObject.FindObjectOfType<Level>().FindPath(blackboard.entity.transform.position, target, blackboard.entity.GetMoveSpeed(), blackboard.entity.GetDPS());
+        path = GameObject.FindObjectOfType<Level>().FindPath(blackboard.settings.aStarSettings, blackboard.entity.transform.position, target, blackboard.entity.GetMoveSpeed(), blackboard.entity.GetDPS());
         pathStepIndex = -1;
         if (path != null)
         {
