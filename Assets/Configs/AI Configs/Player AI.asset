@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 696ffaf3a7104457697ec6b0279e113f, type: 3}
-  m_Name: Chicken AI
+  m_Name: Player AI
   m_EditorClassIdentifier: 
   jitter: 0.1
-  perceptionPeriod: 1
+  perceptionPeriod: 0.2
   utilityRecalcPeriod: 2
   goalSwitchPenalty: 0.2
   stayEngagedRange: 3
   aimErrorMin: 1
   aimErrorMax: 5
   reactionDelay: 0.2
-  repathPeriod: 2
+  aStarSettings: {fileID: 11400000, guid: ebe6031a18abd433d9635a227625b95a, type: 2}
+  repathPeriod: 0.5
   structureAvoidanceRadius: 1
-  structureAvoidanceWeight: 0.2
-  grenadeAvoidanceRadius: 0
-  grenadeAvoidanceWeight: 0
+  structureAvoidanceWeight: 1
+  grenadeAvoidanceRadius: 5.46
+  grenadeAvoidanceWeight: 10
   gasAvoidanceRadius: 0
   gasAvoidanceWeight: 0
   movementSmoothingResponsiveness: 10
